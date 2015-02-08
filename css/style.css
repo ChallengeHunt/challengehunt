@@ -299,3 +299,8 @@ header h1 {
     opacity: 1;
   }
 }
+
+.tokenize-sample { 
+  width: 400px;
+  color: black;
+}
