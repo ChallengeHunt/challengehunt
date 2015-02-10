@@ -60,7 +60,7 @@ for (var i = 0; i <= active_contest_data.length; i++) {
  	newDiv.style.borderRadius = "10px 10px 10px 10px";
  	newDiv.style.borderColor = "black";
  	newDiv.style.marginBottom = "15px";
-
+// 
  	var startDateTime = active_contest_data[i].start.split("T");
  	var endDateTime = active_contest_data[i].end.split("T");
 
