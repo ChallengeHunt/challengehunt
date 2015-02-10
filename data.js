@@ -45,5 +45,34 @@ function getHosts() {
 function challengeData(data) {
 	var active_tabs = document.getElementById("active-contests");
 	console.log(JSON.parse(data));
-	active_tabs.innerText = JSON.parse(data)["active"];
+	// active_tabs.innerText = JSON.parse(data)["active"];
+
+	var active_contest_data = JSON.parse(data)["active"];
+
+for (var i = 0; i <= active_contest_data.length; i++) {
+	var newDiv = document.createElement('div');
+	newDiv.style.width = "360px";
+ 	newDiv.style.height = "130px"; 
+ 	newDiv.style.background = "#5CE62E"; 
+ 	newDiv.style.borderStyle = "solid"; 
+ 	newDiv.style.borderWidth = "2px";
+ 	newDiv.style.borderColor = "black";
+ 	newDiv.style.borderRadius = "10px 10px 10px 10px";
+ 	newDiv.style.borderColor = "black";
+ 	newDiv.style.marginBottom = "15px";
+
+ 	var startDateTime = active_contest_data[i].start.split("T");
+ 	var endDateTime = active_contest_data[i].end.split("T");
+
+ 	newDiv.innerHTML ="<span style='color:black; font-size:25px'>"+"<div style='text-align:center'>"+"  "+ active_contest_data[i].contest_name+ "</div>" +
+ 					  "<span style='color:black; font-size:12px'>"+"<div style='text-align:center; margin-top:2px'>"+ active_contest_data[i].host_name +"</div>" +"<br>"+ 
+ 					  "<span style='color:black; font-size:15px'>"+"  "+"<div style=' float:left'>"+ startDateTime[0] +"<br>"+
+ 					  "  "+ startDateTime[1] +"</div>" +"<br>"+ 
+ 					  "<span style='color:black; font-size:15px'>"+"  "+"<div style='float:right; margin-top:-30px'>"+ endDateTime[0] +"<br>"+  
+ 					  +"  "+ endDateTime[1] +"</div>"+ "<br>"+ 
+ 					  "<span style='color:black; font-size:20px'>"+"  "+ active_contest_data[i].duration +"</span>";
+ 	document.getElementById("active-contests").appendChild(newDiv);
+
+};
+	
 }
