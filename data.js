@@ -115,16 +115,9 @@ function generateCards(data) {
 			newDiv.style.background = "#47DAB5"; 
 	 	}
 
-	 	var startDateTime = active_contest_data[i].start.split("T");
-	 	var endDateTime = active_contest_data[i].end.split("T");
-	 	// var startTime = startDateTime[1].split("+");
-		// var endTime = endDateTime[1].split("+");
-
 		var startTime = toTimeZone(active_contest_data[i].start).split(",");
 		var endTime = toTimeZone(active_contest_data[i].end).split(",");
-		console.log(startTime);
-		console.log(endTime);
-
+	
 		var lengthOfContestname = active_contest_data[i].contest_name.length;
 
 		if(lengthOfContestname < 30) {
