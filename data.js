@@ -59,6 +59,7 @@ function toTimeZone(time) {
 	// var moment = require('moment-timezone');
 	// console.log(moment(1369266934311).zone('+0100').format('YYYY-MM-DD HH:mm'));
     // return moment(time, format).tz(zone).format(format);
+    return newD.toLocaleString()
 }
 
 function generateCards(data) {
@@ -116,29 +117,34 @@ function generateCards(data) {
 
 	 	var startDateTime = active_contest_data[i].start.split("T");
 	 	var endDateTime = active_contest_data[i].end.split("T");
-	 	var startTime = startDateTime[1].split("+");
-		var endTime = endDateTime[1].split("+");
+	 	// var startTime = startDateTime[1].split("+");
+		// var endTime = endDateTime[1].split("+");
+
+		var startTime = toTimeZone(active_contest_data[i].start).split(",");
+		var endTime = toTimeZone(active_contest_data[i].end).split(",");
+		console.log(startTime);
+		console.log(endTime);
 
 		var lengthOfContestname = active_contest_data[i].contest_name.length;
 
 		if(lengthOfContestname < 30) {
 	 		 	newDiv.innerHTML ="<img src='/img/codechef.com.png' style='width:98px;height:48px'>"+
-	 						"<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startDateTime[0] +"<br>"+
-	 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[0] +"</div>" +"<br>"+ 
+	 						"<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startTime[0] +"<br>"+
+	 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[1] +"</div>" +"<br>"+ 
 	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:5px; '>"+"  "+ active_contest_data[i].contest_name+ "</div>" +
 	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>"+ active_contest_data[i].host_name +"</div>" +"<br>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endDateTime[0] +"<br>"+  
-	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[0] +"</div>"+ "<br>"+  
+	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
+	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
 	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ active_contest_data[i].duration +"</span>";
 
 	 	}else{
 				newDiv.innerHTML ="<img src='/img/codechef.com.png' style='width:98px;height:48px'>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startDateTime[0] +"<br>"+
-	 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[0] +"</div>" +"<br>"+ 
+	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startTime[0] +"<br>"+
+	 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[1] +"</div>" +"<br>"+ 
 	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:-20px; '>"+"  "+ "<marquee>"+active_contest_data[i].contest_name+ "</marquee></div>" +
 	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>"+ active_contest_data[i].host_name +"</div>" +"<br>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endDateTime[0] +"<br>"+  
-	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[0] +"</div>"+ "<br>"+  
+	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
+	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
 	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ active_contest_data[i].duration +"</span>";
 
 	 	}
