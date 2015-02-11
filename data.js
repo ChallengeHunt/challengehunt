@@ -5,12 +5,12 @@ function getChallengeData() {
 		url: "http://challengehuntapp.appspot.com",
 		beforeSend: function () {
 	      	// $("#target").loadingOverlay();
-
 		},
 	    success: function (data) {
 	    	// $('#target').loadingOverlay('remove');
+	    	// localStorage.removeItem('data');
+	    	// localStorage.setItem('data', data);
 	    	generateCards(data);
-	    	
 	    },
 	    error: function(jq, status, message) {
             // alert('A jQuery error has occurred. Status: ' + status + ' - Message: ' + message);
@@ -19,30 +19,26 @@ function getChallengeData() {
 }
 
 getChallengeData();
+
 // get all the hosts
 function getHosts() {
-	var hosts = "";
 	$.ajax({
 		type:'GET',
 		url: "http://challengehuntapp.appspot.com/hosts",
 		beforeSend: function () {
-	      	var loading_screen = pleaseWait({
-			  logo: "assets/images/pathgather.png",
-			  backgroundColor: '#f46d3b',
-			  loadingHtml: "<div class='sk-spinner sk-spinner-wave'><div class='sk-rect1'></div><div class='sk-rect2'></div><div class='sk-rect3'></div><div class='sk-rect4'></div><div class='sk-rect5'></div></div>"
-			});
+	      	// $("#target").loadingOverlay();
 		},
 	    success: function (data) {
 	    	// $('#target').loadingOverlay('remove');
-	    	hosts = data;
+	    	loadDropDownWithHosts(data);
 	    },
 	    error: function(jq, status, message) {
-            alert('A jQuery error has occurred. Status: ' + status + ' - Message: ' + message);
+            // alert('A jQuery error has occurred. Status: ' + status + ' - Message: ' + message);
         }
 	});
-	return contests;
 }
 
+getHosts();
 
 function toTimeZone(time) {
 
@@ -77,7 +73,7 @@ function generateCards(data) {
 	var randomNumber = 0;
 	hosts = JSON.parse(localStorage.getItem('hosts'));
 	
-	for (var i = 0; i <= active_contest_data.length; i++) {
+	for (var i = 0; i < active_contest_data.length; i++) {
 
 	
 		var newDiv = document.createElement('div');
@@ -125,8 +121,7 @@ function generateCards(data) {
 
 		var lengthOfContestname = active_contest_data[i].contest_name.length;
 
-		if(lengthOfContestname < 30)
-	 	{
+		if(lengthOfContestname < 30) {
 	 		 	newDiv.innerHTML ="<img src='/img/codechef.com.png' style='width:98px;height:48px'>"+
 	 						"<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startDateTime[0] +"<br>"+
 	 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[0] +"</div>" +"<br>"+ 
@@ -148,14 +143,13 @@ function generateCards(data) {
 
 	 	}
 
-	 	if ((typeof localStorage["hosts"]) === 'undefined')) {
+	 	if ((typeof localStorage["hosts"]) === 'undefined') {
 			document.getElementById("active-contests").appendChild(newDiv);
 		}
 		else if (hosts.hasOwnProperty(active_contest_data[i].host_name)) {
 			document.getElementById("active-contests").appendChild(newDiv);
 		}
 	}
-// stopMarqueeOnHover();
 }
 
 // select all the options from drop down which are already in the local storage
