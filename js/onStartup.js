@@ -1,20 +1,15 @@
 function selectDropDownHosts() {
-	// var dropDown = document.document.createElement('select');
-	content = '<select id="tokenize" multiple="multiple" class="tokenize-sample">';
-	hosts = JSON.parse(localStorage.getItem('hosts'));
+	var dropDown = document.getElementById("tokenize");
+	selected_hosts = JSON.parse(localStorage.getItem('hosts'));
 
-	for (var i = 0; i < hosts.length; i++) {
-		content += '<option value="' + hosts[i] + '" selected="selected">'+ hosts[i] +'</option>';
-		// var newOption = document.createElement('option');
-		// newOption.value = hosts[i];
-		// newOption.selected = "selected";
-		// console.log(hosts[i]);
-		// newOption.innerText = hosts[i];
-		// dropDown.appendChild(newOption);
+	for (var i = 0; i < selected_hosts.length; i++) {
+		var newOption = document.createElement('option');
+		newOption.value = selected_hosts[i];
+		newOption.selected = true;
+		newOption.innerText = selected_hosts[i];
+		dropDown.appendChild(newOption);
 	}
-	// document.body.appendChild(dropDown);
-	content += "</select>";
-	document.body.innerHTML = content;
+	loadDropDown();
 }
 
 // selectDropDownHosts();

@@ -28,6 +28,7 @@ function getHosts() {
 		},
 	    success: function (data) {
 	    	// $('#target').loadingOverlay('remove');
+	    	$('#fasletokenize').hide();
 	    	loadDropDownWithHosts(data);
 	    },
 	    error: function(jq, status, message) {
@@ -40,6 +41,7 @@ getHosts();
 
 function challengeData(data) {
 	var active_tabs = document.getElementById("active-contests");
+	active_tabs.innerHTML = "";
 	console.log(JSON.parse(data));
 	// active_tabs.innerText = JSON.parse(data)["active"];
 
@@ -77,10 +79,12 @@ function challengeData(data) {
 	}
 }
 
+// select all the options from drop down which are already in the local storage
 function loadDropDownWithHosts(data) {
+
 	var dropDown = document.getElementById("tokenize");
 	var hosts = (JSON.parse(data))["hosts"]
-	console.log(hosts);
+	// console.log(hosts);
 	selected_hosts = JSON.parse(localStorage.getItem('hosts'));
 
 	for (var i = 0; i < hosts.length; i++) {
@@ -89,10 +93,13 @@ function loadDropDownWithHosts(data) {
 
 		if (selected_hosts.hasOwnProperty(hosts[i])) {
 			console.log("yo");
-			newOption.selected = "selected";
+			newOption.selected = true;
 		}
-		console.log(hosts[i]);
 		newOption.innerText = hosts[i];
 		dropDown.appendChild(newOption);
 	}
+
+	// selectUserHosts();
+	// whenReady();
+	loadDropDown();
 }

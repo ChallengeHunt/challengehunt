@@ -1,4 +1,10 @@
-$( document ).ready(function() {
+// $( document ).ready(function() {
+// 	$('#tokenize').hide();
+// 	$('#falsetokenize').tokenize()
+// });
+
+function loadDropDown() {
+	// $('#falsetokenize').hide();
 	$('#tokenize').tokenize({
 		placeholder: "Add more programming challenges platforms..",
 		// displayDropdownOnFocus: true,
@@ -37,7 +43,8 @@ $( document ).ready(function() {
 				localStorage.setItem('hosts', JSON.stringify(hosts));
 				// }
 			}
-		}
+			getChallengeData();
+		},
 	});
 	
-});
+}
