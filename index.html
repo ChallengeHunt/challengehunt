@@ -10,6 +10,16 @@
 	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
 	<link rel="stylesheet" type="text/css" href="/css/jquery.tokenize.css" />
 	<link rel="stylesheet" type="text/css" href="/css/please-wait.css" />
+
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+<!-- <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'> -->
+<!-- <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'> -->
+	<link href='http://fonts.googleapis.com/css?family=Inconsolata:700' rel='stylesheet' type='text/css'>
+	<!-- <link href='http://fonts.googleapis.com/css?family=Lobster+Two:700,400' rel='stylesheet' type='text/css'> -->
+	<link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/modernizr.js"></script> <!-- Modernizr -->
 	<script type="text/javascript" src="/js/please-wait.min.js"></script>
@@ -18,7 +28,10 @@
 </head>
 <body>
 <header>
-	<h1>Challenge Hunt</h1>
+	<!-- <h1 style="font-family: 'Pacifico', cursive; letter-spacing: 2px;">Challenge Hunt</h1> -->
+	<h1 style="font-family: 'Great Vibes', cursive; letter-spacing: 3px; font-weight: 500;"><b>Challenge Hunt</b></h1>
+	<!-- <h1 style="font-family: 'Kaushan Script', cursive;">Challenge Hunt</h1> -->
+
 </header>
 <select id="tokenize" multiple="multiple" class="tokenize-sample">
     <option value="1">CodeChef</option>
@@ -31,29 +44,26 @@
 <div class="cd-tabs">
 	<nav>
 		<ul class="cd-tabs-navigation">
-			<li><a data-content="inbox" class="selected" href="#0">Active</a></li>
-			<li><a data-content="new" href="#0">Upcoming</a></li>
-			<li><a data-content="gallery" href="#0">Archived</a></li>
+			<li><a data-content="inbox" class="selected" href="#0"><i class="fa fa-circle fa-lg" ></i><br>Active</a></li>
+			<li><a data-content="new" href="#0"><i class="fa fa-calendar fa-lg"></i><br>Upcoming</a></li>
+			<li><a data-content="gallery" href="#0"><i class="fa fa-archive  fa-lg"></i><br>Archived</a></li>
 		</ul> <!-- cd-tabs-navigation -->
 	</nav>
 
 	<ul class="cd-tabs-content">
 		<li data-content="inbox" class="selected" id="active-contests">
-
+		
 		</li>
 
 		<li data-content="new" id="upcoming-contests">
-			<p></p>
-
+		
 		</li>
 
 		<li data-content="gallery" id="archived-contests">
-			<p></p>
-
-		</li>
-
-
+		
 	</ul> <!-- cd-tabs-content -->
+</div>
+
 </div> <!-- cd-tabs -->
 <script type="text/javascript" src="/js/please-wait.min.js"></script>
 <script type="text/javascript" src="data.js"></script>
