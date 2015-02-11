@@ -163,7 +163,7 @@ function loadDropDownWithHosts(data) {
 		var newOption = document.createElement('option');
 		newOption.value = hosts[i];
 
-		if (selected_hosts.hasOwnProperty(hosts[i])) {
+		if (!((typeof localStorage["hosts"]) === 'undefined') && selected_hosts.hasOwnProperty(hosts[i])) {
 			console.log("yo");
 			newOption.selected = true;
 		}
