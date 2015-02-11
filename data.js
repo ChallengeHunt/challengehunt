@@ -17,30 +17,26 @@ function getChallengeData() {
 }
 
 getChallengeData();
+
 // get all the hosts
 function getHosts() {
-	var hosts = "";
 	$.ajax({
 		type:'GET',
 		url: "http://challengehuntapp.appspot.com/hosts",
 		beforeSend: function () {
-	      	var loading_screen = pleaseWait({
-			  logo: "assets/images/pathgather.png",
-			  backgroundColor: '#f46d3b',
-			  loadingHtml: "<div class='sk-spinner sk-spinner-wave'><div class='sk-rect1'></div><div class='sk-rect2'></div><div class='sk-rect3'></div><div class='sk-rect4'></div><div class='sk-rect5'></div></div>"
-			});
+	      	// $("#target").loadingOverlay();
 		},
 	    success: function (data) {
 	    	// $('#target').loadingOverlay('remove');
-	    	hosts = data;
+	    	loadDropDownWithHosts(data);
 	    },
 	    error: function(jq, status, message) {
-            alert('A jQuery error has occurred. Status: ' + status + ' - Message: ' + message);
+            // alert('A jQuery error has occurred. Status: ' + status + ' - Message: ' + message);
         }
 	});
-	return contests;
 }
 
+getHosts();
 
 function challengeData(data) {
 	var active_tabs = document.getElementById("active-contests");
@@ -49,30 +45,54 @@ function challengeData(data) {
 
 	var active_contest_data = JSON.parse(data)["active"];
 
-for (var i = 0; i <= active_contest_data.length; i++) {
-	var newDiv = document.createElement('div');
-	newDiv.style.width = "360px";
- 	newDiv.style.height = "130px"; 
- 	newDiv.style.background = "#5CE62E"; 
- 	newDiv.style.borderStyle = "solid"; 
- 	newDiv.style.borderWidth = "2px";
- 	newDiv.style.borderColor = "black";
- 	newDiv.style.borderRadius = "10px 10px 10px 10px";
- 	newDiv.style.borderColor = "black";
- 	newDiv.style.marginBottom = "15px";
-// 
- 	var startDateTime = active_contest_data[i].start.split("T");
- 	var endDateTime = active_contest_data[i].end.split("T");
+	for (var i = 0; i < active_contest_data.length; i++) {
 
- 	newDiv.innerHTML ="<span style='color:black; font-size:25px'>"+"<div style='text-align:center'>"+"  "+ active_contest_data[i].contest_name+ "</div>" +
- 					  "<span style='color:black; font-size:12px'>"+"<div style='text-align:center; margin-top:2px'>"+ active_contest_data[i].host_name +"</div>" +"<br>"+ 
- 					  "<span style='color:black; font-size:15px'>"+"  "+"<div style=' float:left'>"+ startDateTime[0] +"<br>"+
- 					  "  "+ startDateTime[1] +"</div>" +"<br>"+ 
- 					  "<span style='color:black; font-size:15px'>"+"  "+"<div style='float:right; margin-top:-30px'>"+ endDateTime[0] +"<br>"+  
- 					  +"  "+ endDateTime[1] +"</div>"+ "<br>"+ 
- 					  "<span style='color:black; font-size:20px'>"+"  "+ active_contest_data[i].duration +"</span>";
- 	document.getElementById("active-contests").appendChild(newDiv);
+		hosts = JSON.parse(localStorage.getItem('hosts'));
+		if (hosts.hasOwnProperty(active_contest_data[i].host_name)) {
 
-};
-	
+			var newDiv = document.createElement('div');
+			newDiv.style.width = "360px";
+		 	newDiv.style.height = "130px"; 
+		 	newDiv.style.background = "#5CE62E"; 
+		 	newDiv.style.borderStyle = "solid"; 
+		 	newDiv.style.borderWidth = "2px";
+		 	newDiv.style.borderColor = "black";
+		 	newDiv.style.borderRadius = "10px 10px 10px 10px";
+		 	newDiv.style.borderColor = "black";
+		 	newDiv.style.marginBottom = "15px";
+		// 
+		 	var startDateTime = active_contest_data[i].start.split("T");
+		 	var endDateTime = active_contest_data[i].end.split("T");
+
+		 	newDiv.innerHTML ="<span style='color:black; font-size:25px'>"+"<div style='text-align:center'>"+"  "+ active_contest_data[i].contest_name+ "</div>" +
+		 					  "<span style='color:black; font-size:12px'>"+"<div style='text-align:center; margin-top:2px'>"+ active_contest_data[i].host_name +"</div>" +"<br>"+ 
+		 					  "<span style='color:black; font-size:15px'>"+"  "+"<div style=' float:left'>"+ startDateTime[0] +"<br>"+
+		 					  "  "+ startDateTime[1] +"</div>" +"<br>"+ 
+		 					  "<span style='color:black; font-size:15px'>"+"  "+"<div style='float:right; margin-top:-30px'>"+ endDateTime[0] +"<br>"+  
+		 					  +"  "+ endDateTime[1] +"</div>"+ "<br>"+ 
+		 					  "<span style='color:black; font-size:20px'>"+"  "+ active_contest_data[i].duration +"</span>";
+		 	document.getElementById("active-contests").appendChild(newDiv);
+		}
+
+	}
+}
+
+function loadDropDownWithHosts(data) {
+	var dropDown = document.getElementById("tokenize");
+	var hosts = (JSON.parse(data))["hosts"]
+	console.log(hosts);
+	selected_hosts = JSON.parse(localStorage.getItem('hosts'));
+
+	for (var i = 0; i < hosts.length; i++) {
+		var newOption = document.createElement('option');
+		newOption.value = hosts[i];
+
+		if (selected_hosts.hasOwnProperty(hosts[i])) {
+			console.log("yo");
+			newOption.selected = "selected";
+		}
+		console.log(hosts[i]);
+		newOption.innerText = hosts[i];
+		dropDown.appendChild(newOption);
+	}
 }
