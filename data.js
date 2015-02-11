@@ -8,7 +8,9 @@ function getChallengeData() {
 		},
 	    success: function (data) {
 	    	// $('#target').loadingOverlay('remove');
-	    	challengeData(data);
+	    	// localStorage.removeItem('data');
+	    	// localStorage.setItem('data', data);
+	    	generateCards(data);
 	    },
 	    error: function(jq, status, message) {
             // alert('A jQuery error has occurred. Status: ' + status + ' - Message: ' + message);
@@ -28,7 +30,6 @@ function getHosts() {
 		},
 	    success: function (data) {
 	    	// $('#target').loadingOverlay('remove');
-	    	$('#fasletokenize').hide();
 	    	loadDropDownWithHosts(data);
 	    },
 	    error: function(jq, status, message) {
@@ -39,7 +40,28 @@ function getHosts() {
 
 getHosts();
 
-function challengeData(data) {
+function toTimeZone(time) {
+
+	var dateTimeTimezone = time.split("T");
+	var date = dateTimeTimezone[0].split("-");
+	var timeAndTimeZone = dateTimeTimezone[1].split("T")
+	var time = timeAndTimeZone[0].split(":");
+	// var d = new Date();
+	var d = new Date(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]), parseInt(time[0]), parseInt(time[1]), parseInt(time[2]), 0)
+	var offset = -(d.getTimezoneOffset());
+	console.log(d);
+	console.log(offset);
+	var newD = new Date(d.getTime() + offset*60000);
+	console.log(newD);
+	console.log(newD.toLocaleString());
+	// var format = 'YYYY-MM-DD HH:mm:ss Z.Z';
+	// console.log(time);
+	// var moment = require('moment-timezone');
+	// console.log(moment(1369266934311).zone('+0100').format('YYYY-MM-DD HH:mm'));
+    // return moment(time, format).tz(zone).format(format);
+}
+// dynamically create all the cards
+function generateCards(data) {
 	var active_tabs = document.getElementById("active-contests");
 	active_tabs.innerHTML = "";
 	console.log(JSON.parse(data));
@@ -64,7 +86,9 @@ function challengeData(data) {
 		 	newDiv.style.marginBottom = "15px";
 		// 
 		 	var startDateTime = active_contest_data[i].start.split("T");
+		 	var startTimeAndZone = startDateTime[1].split("+");
 		 	var endDateTime = active_contest_data[i].end.split("T");
+		 	console.log(toTimeZone(active_contest_data[i].start));
 
 		 	newDiv.innerHTML ="<span style='color:black; font-size:25px'>"+"<div style='text-align:center'>"+"  "+ active_contest_data[i].contest_name+ "</div>" +
 		 					  "<span style='color:black; font-size:12px'>"+"<div style='text-align:center; margin-top:2px'>"+ active_contest_data[i].host_name +"</div>" +"<br>"+ 
@@ -84,7 +108,6 @@ function loadDropDownWithHosts(data) {
 
 	var dropDown = document.getElementById("tokenize");
 	var hosts = (JSON.parse(data))["hosts"]
-	// console.log(hosts);
 	selected_hosts = JSON.parse(localStorage.getItem('hosts'));
 
 	for (var i = 0; i < hosts.length; i++) {
@@ -99,7 +122,5 @@ function loadDropDownWithHosts(data) {
 		dropDown.appendChild(newOption);
 	}
 
-	// selectUserHosts();
-	// whenReady();
 	loadDropDown();
 }
