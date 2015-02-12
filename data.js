@@ -117,30 +117,64 @@ function generateCards(data) {
 
 		var startTime = toTimeZone(active_contest_data[i].start).split(",");
 		var endTime = toTimeZone(active_contest_data[i].end).split(",");
-	
-		var lengthOfContestname = active_contest_data[i].contest_name.length;
 
-		if(lengthOfContestname < 30) {
-	 		 	newDiv.innerHTML ="<img src='/img/codechef.com.png' style='width:98px;height:48px'>"+
-	 						"<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startTime[0] +"<br>"+
-	 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[1] +"</div>" +"<br>"+ 
-	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:5px; '>"+"  "+ active_contest_data[i].contest_name+ "</div>" +
-	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>"+ active_contest_data[i].host_name +"</div>" +"<br>"+
+		var lengthOfContestname = active_contest_data[i].contest_name.length;
+		
+		if(imageExists("/img/"+active_contest_data[i].host_name+".png")){
+			if(lengthOfContestname < 30) {
+
+	 		 	newDiv.innerHTML ="<img src='/img/"+ active_contest_data[i].host_name  +".png' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
+	 						"<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"	+startTime[0] +"<br>"+
+	 					  "<i class='fa fa-play' style=' margin-right:5px;'></i>"+startTime[1] +"</div>" +"<br>"+ 
+	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:5px; '>"+"<a href='"+active_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +active_contest_data[i].contest_name+ "</a></div>" +
+	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>"+"<a href='"+active_contest_data[i].host_url +"' target='_blank' style='color:black'>" + active_contest_data[i].host_name +"</a></div>" +"<br>"+
 	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
 	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
 	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ active_contest_data[i].duration +"</span>";
 
+				
 	 	}else{
-				newDiv.innerHTML ="<img src='/img/codechef.com.png' style='width:98px;height:48px'>"+
+				newDiv.innerHTML ="<img src='/img/"+ active_contest_data[i].host_name +".png' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
 	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startTime[0] +"<br>"+
 	 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[1] +"</div>" +"<br>"+ 
-	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:-20px; '>"+"  "+ "<marquee>"+active_contest_data[i].contest_name+ "</marquee></div>" +
-	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>"+ active_contest_data[i].host_name +"</div>" +"<br>"+
+	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:-23px; '>"+"  "+ "<marquee>" + "<a href='"+active_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +active_contest_data[i].contest_name+ "</marquee></div>" +
+	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>" +"<a href='"+active_contest_data[i].host_url +"' target='_blank' style='color:black'>" +active_contest_data[i].host_name +"</a></div>" +"<br>"+
 	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
 	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
 	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ active_contest_data[i].duration +"</span>";
 
 	 	}
+
+		}else{
+
+
+					if(lengthOfContestname < 30) {
+
+	 		 	newDiv.innerHTML ="<img src='/img/default.png' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
+	 						"<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"	+startTime[0] +"<br>"+
+	 					  "<i class='fa fa-play' style=' margin-right:5px;'></i>"+startTime[1] +"</div>" +"<br>"+ 
+	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:5px; '>"+"<a href='"+active_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +active_contest_data[i].contest_name+ "</a></div>" +
+	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>"+"<a href='"+active_contest_data[i].host_url +"' target='_blank' style='color:black'>" + active_contest_data[i].host_name +"</a></div>" +"<br>"+
+	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
+	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
+	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ active_contest_data[i].duration +"</span>";
+
+				
+	 	}else{
+				newDiv.innerHTML ="<img src='/img/default.png' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
+	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startTime[0] +"<br>"+
+	 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[1] +"</div>" +"<br>"+ 
+	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:-23px; '>"+"  "+ "<marquee>" + "<a href='"+active_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +active_contest_data[i].contest_name+ "</marquee></div>" +
+	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>" +"<a href='"+active_contest_data[i].host_url +"' target='_blank' style='color:black'>" +active_contest_data[i].host_name +"</a></div>" +"<br>"+
+	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
+	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
+	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ active_contest_data[i].duration +"</span>";
+
+	 	}
+
+		}
+
+
 
 	 	if ((typeof localStorage["hosts"]) === 'undefined') {
 			document.getElementById("active-contests").appendChild(newDiv);
@@ -149,6 +183,17 @@ function generateCards(data) {
 			document.getElementById("active-contests").appendChild(newDiv);
 		}
 	}
+}
+
+function imageExists(image_url){
+
+    var http = new XMLHttpRequest();
+
+    http.open('GET', image_url, false);
+    http.send();
+
+    	return http.status != 404;
+
 }
 
 // select all the options from drop down which are already in the local storage
