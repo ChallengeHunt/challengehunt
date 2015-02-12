@@ -33,30 +33,36 @@
 	<!-- <h1 style="font-family: 'Kaushan Script', cursive;">Challenge Hunt</h1> -->
 
 </header>
-<select id="tokenize" multiple="multiple" class="tokenize-sample">
-</select>
+<div id="select-menu">
+	<center><i id="loader-select-menu" class="fa fa-spinner fa-pulse fa-3x" style="margin-top:5px"></i></center>
+	<select id="tokenize" multiple="multiple" class="tokenize-sample" style="visibility:hidden">
+	</select>
+</div>
 <script src="/js/tokenize-plugin.js"></script>
-<div class="cd-tabs">
-	<nav>
-		<ul class="cd-tabs-navigation">
-			<li><a data-content="inbox" class="selected" href="#0"><i class="fa fa-circle fa-lg" ></i><br>Active</a></li>
-			<li><a data-content="new" href="#0"><i class="fa fa-calendar fa-lg"></i><br>Upcoming</a></li>
-			<li><a data-content="gallery" href="#0"><i class="fa fa-archive  fa-lg"></i><br>Archived</a></li>
-		</ul> <!-- cd-tabs-navigation -->
-	</nav>
+<div id="tabs">
+	<center><i id="loader-drop-down" class="fa fa-spinner fa-pulse fa-3x" style="margin-top:5px"></i></center>
+	<div id="c-tabs" class="cd-tabs" style="visibility:hidden">
+		<nav>
+			<ul class="cd-tabs-navigation">
+				<li><a data-content="inbox" class="selected" href="#0"><i class="fa fa-circle fa-lg" ></i><br>Active</a></li>
+				<li><a data-content="new" href="#0"><i class="fa fa-calendar fa-lg"></i><br>Upcoming</a></li>
+				<li><a data-content="gallery" href="#0"><i class="fa fa-archive  fa-lg"></i><br>Archived</a></li>
+			</ul> <!-- cd-tabs-navigation -->
+		</nav>
 
-	<ul class="cd-tabs-content">
-		<li data-content="inbox" class="selected" id="active-contests">
-		
-		</li>
+		<ul class="cd-tabs-content">
+			<li data-content="inbox" class="selected" id="active-contests">
+			
+			</li>
 
-		<li data-content="new" id="upcoming-contests">
-		
-		</li>
+			<li data-content="new" id="upcoming-contests">
+			
+			</li>
 
-		<li data-content="gallery" id="archived-contests">
-		
-	</ul> <!-- cd-tabs-content -->
+			<li data-content="gallery" id="archived-contests">
+			
+		</ul> <!-- cd-tabs-content -->
+	</div>
 </div>
 
 </div> <!-- cd-tabs -->

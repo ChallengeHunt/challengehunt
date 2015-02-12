@@ -8,8 +8,13 @@ function getChallengeData() {
 		},
 	    success: function (data) {
 	    	// $('#target').loadingOverlay('remove');
-	    	// localStorage.removeItem('data');
-	    	// localStorage.setItem('data', data);
+	    	if(!((typeof localStorage["data"]) === 'undefined')) {
+				localStorage.removeItem('data');
+			}
+	    	localStorage.setItem('data', data);
+	    	$("#loader-drop-down").hide();
+	    	// $("#cd-tabs").show();
+	    	document.getElementById("c-tabs").style.visibility = "visible";
 	    	generateCards(data);
 	    },
 	    error: function(jq, status, message) {
@@ -26,10 +31,10 @@ function getHosts() {
 		type:'GET',
 		url: "http://challengehuntapp.appspot.com/hosts",
 		beforeSend: function () {
-	      	// $("#target").loadingOverlay();
+	      	
 		},
 	    success: function (data) {
-	    	// $('#target').loadingOverlay('remove');
+	    	$("#loader-select-menu").hide();
 	    	loadDropDownWithHosts(data);
 	    },
 	    error: function(jq, status, message) {
@@ -46,19 +51,9 @@ function toTimeZone(time) {
 	var date = dateTimeTimezone[0].split("-");
 	var timeAndTimeZone = dateTimeTimezone[1].split("T")
 	var time = timeAndTimeZone[0].split(":");
-	// var d = new Date();
 	var d = new Date(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]), parseInt(time[0]), parseInt(time[1]), parseInt(time[2]), 0)
 	var offset = -(d.getTimezoneOffset());
-	console.log(d);
-	console.log(offset);
 	var newD = new Date(d.getTime() + offset*60000);
-	console.log(newD);
-	console.log(newD.toLocaleString());
-	// var format = 'YYYY-MM-DD HH:mm:ss Z.Z';
-	// console.log(time);
-	// var moment = require('moment-timezone');
-	// console.log(moment(1369266934311).zone('+0100').format('YYYY-MM-DD HH:mm'));
-    // return moment(time, format).tz(zone).format(format);
     return newD.toLocaleString()
 }
 
@@ -66,8 +61,6 @@ function generateCards(data) {
 
 	var active_tabs = document.getElementById("active-contests");
 	active_tabs.innerHTML = "";
-	console.log(JSON.parse(data));
-	// active_tabs.innerText = JSON.parse(data)["active"];
 
 	var active_contest_data = JSON.parse(data)["active"];
 
@@ -124,7 +117,7 @@ function generateCards(data) {
 	 		 	newDiv.innerHTML ="<img src='/img/codechef.com.png' style='width:98px;height:48px'>"+
 	 						"<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startTime[0] +"<br>"+
 	 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[1] +"</div>" +"<br>"+ 
-	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:5px; '>"+"  "+ active_contest_data[i].contest_name+ "</div>" +
+	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:5px; '>"+"  "+ "<a href="+active_contest_data[i].contest_url+" target='_blank'>" + active_contest_data[i].contest_name+ "</a></div>" +
 	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>"+ active_contest_data[i].host_name +"</div>" +"<br>"+
 	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
 	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
@@ -163,12 +156,66 @@ function loadDropDownWithHosts(data) {
 		newOption.value = hosts[i];
 
 		if (!((typeof localStorage["hosts"]) === 'undefined') && selected_hosts.hasOwnProperty(hosts[i])) {
-			console.log("yo");
 			newOption.selected = true;
 		}
 		newOption.innerText = hosts[i];
 		dropDown.appendChild(newOption);
 	}
-
 	loadDropDown();
+}
+
+function loadDropDown() {
+	$('#tokenize').tokenize({
+		placeholder: "Add more programming challenges platforms..",
+		// displayDropdownOnFocus: true,
+		onAddToken: function(value, text){
+			if((typeof localStorage["hosts"]) === 'undefined') {
+				var hosts = {}
+				hosts[value] = true;
+				localStorage.setItem('hosts', JSON.stringify(hosts));
+			} else {
+				var hosts = JSON.parse(localStorage.getItem('hosts'));
+				if (hosts.hasOwnProperty(value)) {
+					console.log("already there")
+				} else {
+					hosts[value] = true;
+					localStorage.setItem('hosts', JSON.stringify(hosts));
+				}
+			}
+
+			if((typeof localStorage["data"]) === 'undefined') {
+				getChallengeData();
+			} else {
+				// if data already exists in localstorage, then call generateCards(data) else call getChallengeData()
+				var data = localStorage.getItem('data');
+				generateCards(data);
+			}
+		},
+		onRemoveToken: function(value){
+			hosts = JSON.parse(localStorage.getItem('hosts'));
+			
+			// check if hosts contain that value. should not be the case
+			if (!hosts.hasOwnProperty(value)) {
+				console.log("not there")
+			} else {
+				delete hosts[value];
+				var hostsLength = Object.keys(hosts).length;
+				// if all the hosts have been removed, delete the host key
+				if (hostsLength == 0) {
+					localStorage.removeItem('hosts');
+				} else {
+					localStorage.setItem('hosts', JSON.stringify(hosts));
+				}
+			}
+
+			// if data already exists in localstorage, then call generateCards(data) else call getChallengeData()
+			if((typeof localStorage["data"]) === 'undefined') {
+				getChallengeData();
+			} else {
+				var data = localStorage.getItem('data');
+				generateCards(data);
+			}
+		},
+	});
+	
 }
