@@ -8,8 +8,13 @@ function getChallengeData() {
 		},
 	    success: function (data) {
 	    	// $('#target').loadingOverlay('remove');
-	    	// localStorage.removeItem('data');
-	    	// localStorage.setItem('data', data);
+	    	if(!((typeof localStorage["data"]) === 'undefined')) {
+				localStorage.removeItem('data');
+			}
+	    	localStorage.setItem('data', data);
+	    	$("#loader-drop-down").hide();
+	    	// $("#cd-tabs").show();
+	    	document.getElementById("c-tabs").style.visibility = "visible";
 	    	generateCards(data);
 	    },
 	    error: function(jq, status, message) {
@@ -26,10 +31,10 @@ function getHosts() {
 		type:'GET',
 		url: "http://challengehuntapp.appspot.com/hosts",
 		beforeSend: function () {
-	      	// $("#target").loadingOverlay();
+	      	
 		},
 	    success: function (data) {
-	    	// $('#target').loadingOverlay('remove');
+	    	$("#loader-select-menu").hide();
 	    	loadDropDownWithHosts(data);
 	    },
 	    error: function(jq, status, message) {
@@ -46,19 +51,9 @@ function toTimeZone(time) {
 	var date = dateTimeTimezone[0].split("-");
 	var timeAndTimeZone = dateTimeTimezone[1].split("T")
 	var time = timeAndTimeZone[0].split(":");
-	// var d = new Date();
 	var d = new Date(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]), parseInt(time[0]), parseInt(time[1]), parseInt(time[2]), 0)
 	var offset = -(d.getTimezoneOffset());
-	console.log(d);
-	console.log(offset);
 	var newD = new Date(d.getTime() + offset*60000);
-	console.log(newD);
-	console.log(newD.toLocaleString());
-	// var format = 'YYYY-MM-DD HH:mm:ss Z.Z';
-	// console.log(time);
-	// var moment = require('moment-timezone');
-	// console.log(moment(1369266934311).zone('+0100').format('YYYY-MM-DD HH:mm'));
-    // return moment(time, format).tz(zone).format(format);
     return newD.toLocaleString()
 }
 
@@ -150,7 +145,7 @@ function generateCards(data) {
 
 					if(lengthOfContestname < 30) {
 
-	 		 	newDiv.innerHTML ="<img src='/img/default.png' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
+	 		 	newDiv.innerHTML ="<img src='/img/default.jpg' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
 	 						"<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"	+startTime[0] +"<br>"+
 	 					  "<i class='fa fa-play' style=' margin-right:5px;'></i>"+startTime[1] +"</div>" +"<br>"+ 
 	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:5px; '>"+"<a href='"+active_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +active_contest_data[i].contest_name+ "</a></div>" +
@@ -161,7 +156,7 @@ function generateCards(data) {
 
 				
 	 	}else{
-				newDiv.innerHTML ="<img src='/img/default.png' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
+				newDiv.innerHTML ="<img src='/img/default.jpg' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
 	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startTime[0] +"<br>"+
 	 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[1] +"</div>" +"<br>"+ 
 	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:-23px; '>"+"  "+ "<marquee>" + "<a href='"+active_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +active_contest_data[i].contest_name+ "</marquee></div>" +
@@ -192,8 +187,7 @@ function imageExists(image_url){
     http.open('GET', image_url, false);
     http.send();
 
-    	return http.status != 404;
-
+    return http.status != 404;
 }
 
 // select all the options from drop down which are already in the local storage
@@ -208,12 +202,66 @@ function loadDropDownWithHosts(data) {
 		newOption.value = hosts[i];
 
 		if (!((typeof localStorage["hosts"]) === 'undefined') && selected_hosts.hasOwnProperty(hosts[i])) {
-			console.log("yo");
 			newOption.selected = true;
 		}
 		newOption.innerText = hosts[i];
 		dropDown.appendChild(newOption);
 	}
-
 	loadDropDown();
+}
+
+function loadDropDown() {
+	$('#tokenize').tokenize({
+		placeholder: "Filter by platform names...",
+		// displayDropdownOnFocus: true,
+		onAddToken: function(value, text){
+			if((typeof localStorage["hosts"]) === 'undefined') {
+				var hosts = {}
+				hosts[value] = true;
+				localStorage.setItem('hosts', JSON.stringify(hosts));
+			} else {
+				var hosts = JSON.parse(localStorage.getItem('hosts'));
+				if (hosts.hasOwnProperty(value)) {
+					console.log("already there")
+				} else {
+					hosts[value] = true;
+					localStorage.setItem('hosts', JSON.stringify(hosts));
+				}
+			}
+
+			if((typeof localStorage["data"]) === 'undefined') {
+				getChallengeData();
+			} else {
+				// if data already exists in localstorage, then call generateCards(data) else call getChallengeData()
+				var data = localStorage.getItem('data');
+				generateCards(data);
+			}
+		},
+		onRemoveToken: function(value){
+			hosts = JSON.parse(localStorage.getItem('hosts'));
+			
+			// check if hosts contain that value. should not be the case
+			if (!hosts.hasOwnProperty(value)) {
+				console.log("not there")
+			} else {
+				delete hosts[value];
+				var hostsLength = Object.keys(hosts).length;
+				// if all the hosts have been removed, delete the host key
+				if (hostsLength == 0) {
+					localStorage.removeItem('hosts');
+				} else {
+					localStorage.setItem('hosts', JSON.stringify(hosts));
+				}
+			}
+
+			// if data already exists in localstorage, then call generateCards(data) else call getChallengeData()
+			if((typeof localStorage["data"]) === 'undefined') {
+				getChallengeData();
+			} else {
+				var data = localStorage.getItem('data');
+				generateCards(data);
+			}
+		},
+	});
+	
 }
