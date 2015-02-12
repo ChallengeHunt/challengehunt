@@ -485,6 +485,8 @@ function loadDropDown() {
 				// if data already exists in localstorage, then call generateCards(data) else call getChallengeData()
 				var data = localStorage.getItem('data');
 				generateCards(data);
+				generateCardsArchive(data);
+	    		generateCardsPending(data);
 			}
 		},
 		onRemoveToken: function(value){
@@ -510,6 +512,8 @@ function loadDropDown() {
 			} else {
 				var data = localStorage.getItem('data');
 				generateCards(data);
+				generateCardsArchive(data);
+	    		generateCardsPending(data);
 			}
 		},
 	});
