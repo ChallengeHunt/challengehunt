@@ -313,17 +313,15 @@ function generateCardsArchive(data) {
 
 	var archived_tabs = document.getElementById("archived-contests");
 	archived_tabs.innerHTML = "";
-	console.log(JSON.parse(data));
 	// archived_tabs.innerText = JSON.parse(data)["archived"];
 
 	var archived_contest_data = JSON.parse(data)["archived"];
-
+	console.log(archived_contest_data);
 	var randomNumber = 0;
 	hosts = JSON.parse(localStorage.getItem('hosts'));
 	
 	for (var i = 0; i < archived_contest_data.length; i++) {
 
-	
 		var newDiv = document.createElement('div');
 		newDiv.style.width = "360px";
 	 	newDiv.style.height = "130px"; 
@@ -369,7 +367,7 @@ function generateCardsArchive(data) {
 		
 		if(imageExists("/img/"+archived_contest_data[i].host_name+".png")){
 			if(lengthOfContestname < 30) {
-
+				console.log("hello" + i);
 	 		 	newDiv.innerHTML ="<img src='/img/"+ archived_contest_data[i].host_name  +".png' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
 	 						"<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"	+startTime[0] +"<br>"+
 	 					  "<i class='fa fa-play' style=' margin-right:5px;'></i>"+startTime[1] +"</div>" +"<br>"+ 
@@ -380,66 +378,66 @@ function generateCardsArchive(data) {
 	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ archived_contest_data[i].duration +"</span>";
 
 				
-	 	}else{
-				newDiv.innerHTML ="<img src='/img/"+ archived_contest_data[i].host_name +".png' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startTime[0] +"<br>"+
-	 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[1] +"</div>" +"<br>"+ 
-	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:-23px; '>"+"  "+ "<marquee>" + "<a href='"+archived_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +archived_contest_data[i].contest_name+ "</marquee></div>" +
-	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>" +"<a href='"+archived_contest_data[i].host_url +"' target='_blank' style='color:black'>" +archived_contest_data[i].host_name +"</a></div>" +"<br>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
-	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
-	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ archived_contest_data[i].duration +"</span>";
+		 	} else {
+					newDiv.innerHTML ="<img src='/img/"+ archived_contest_data[i].host_name +".png' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
+		 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startTime[0] +"<br>"+
+		 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[1] +"</div>" +"<br>"+ 
+		 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:-23px; '>"+"  "+ "<marquee>" + "<a href='"+archived_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +archived_contest_data[i].contest_name+ "</marquee></div>" +
+		 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>" +"<a href='"+archived_contest_data[i].host_url +"' target='_blank' style='color:black'>" +archived_contest_data[i].host_name +"</a></div>" +"<br>"+
+		 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
+		 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
+		 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ archived_contest_data[i].duration +"</span>";
 
-	 	}
+		 	}
 
-		}else{
+		} else {
 
+			console.log("hello" + i);
+			if(lengthOfContestname < 30) {
 
-					if(lengthOfContestname < 30) {
+		 		 	newDiv.innerHTML ="<img src='/img/default.jpg' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
+		 						"<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"	+startTime[0] +"<br>"+
+		 					  "<i class='fa fa-play' style=' margin-right:5px;'></i>"+startTime[1] +"</div>" +"<br>"+ 
+		 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:5px; '>"+"<a href='"+archived_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +archived_contest_data[i].contest_name+ "</a></div>" +
+		 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>"+"<a href='"+archived_contest_data[i].host_url +"' target='_blank' style='color:black'>" + archived_contest_data[i].host_name +"</a></div>" +"<br>"+
+		 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
+		 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
+		 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ archived_contest_data[i].duration +"</span>";
 
-	 		 	newDiv.innerHTML ="<img src='/img/default.jpg' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
-	 						"<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"	+startTime[0] +"<br>"+
-	 					  "<i class='fa fa-play' style=' margin-right:5px;'></i>"+startTime[1] +"</div>" +"<br>"+ 
-	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:5px; '>"+"<a href='"+archived_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +archived_contest_data[i].contest_name+ "</a></div>" +
-	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>"+"<a href='"+archived_contest_data[i].host_url +"' target='_blank' style='color:black'>" + archived_contest_data[i].host_name +"</a></div>" +"<br>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
-	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
-	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ archived_contest_data[i].duration +"</span>";
+					
+		 	}else{
+					newDiv.innerHTML ="<img src='/img/default.jpg' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
+		 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startTime[0] +"<br>"+
+		 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[1] +"</div>" +"<br>"+ 
+		 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:-23px; '>"+"  "+ "<marquee>" + "<a href='"+archived_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +archived_contest_data[i].contest_name+ "</marquee></div>" +
+		 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>" +"<a href='"+archived_contest_data[i].host_url +"' target='_blank' style='color:black'>" +archived_contest_data[i].host_name +"</a></div>" +"<br>"+
+		 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
+		 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
+		 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ archived_contest_data[i].duration +"</span>";
 
-				
-	 	}else{
-				newDiv.innerHTML ="<img src='/img/default.jpg' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startTime[0] +"<br>"+
-	 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[1] +"</div>" +"<br>"+ 
-	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:-23px; '>"+"  "+ "<marquee>" + "<a href='"+archived_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +archived_contest_data[i].contest_name+ "</marquee></div>" +
-	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>" +"<a href='"+archived_contest_data[i].host_url +"' target='_blank' style='color:black'>" +archived_contest_data[i].host_name +"</a></div>" +"<br>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
-	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
-	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ archived_contest_data[i].duration +"</span>";
-
-	 	}
-
+		 	}
 		}
-
-
 
 	 	if ((typeof localStorage["hosts"]) === 'undefined') {
 			document.getElementById("archived-contests").appendChild(newDiv);
+			console.log("hello" + i);
 		}
 		else if (hosts.hasOwnProperty(archived_contest_data[i].host_name)) {
 			document.getElementById("archived-contests").appendChild(newDiv);
+			console.log("hello" + i);
 		}
 	}
 }
 
 function imageExists(image_url){
-
-    var http = new XMLHttpRequest();
-
-    http.open('GET', image_url, false);
-    http.send();
-
-    return http.status != 404;
+	try {
+	    var http = new XMLHttpRequest();
+	    http.open('GET', image_url, false);
+	    http.send();
+	    return http.status != 404;
+	} catch (err) {
+		return false;
+	}
 }
 
 // select all the options from drop down which are already in the local storage
