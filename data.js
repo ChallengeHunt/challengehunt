@@ -66,6 +66,8 @@ function generateCards(data) {
 
 	var randomNumber = 0;
 	hosts = JSON.parse(localStorage.getItem('hosts'));
+
+	var activeContestCount = 0;
 	
 	for (var i = 0; i < active_contest_data.length; i++) {
 
@@ -137,9 +139,11 @@ function generateCards(data) {
 
 	 	if ((typeof localStorage["hosts"]) === 'undefined') {
 			document.getElementById("active-contests").appendChild(newDiv);
+			activeContestCount = activeContestCount + 1;
 		}
 		else if (hosts.hasOwnProperty(active_contest_data[i].host_name)) {
 			document.getElementById("active-contests").appendChild(newDiv);
+			activeContestCount = activeContestCount + 1;
 		}
 	}
 }
@@ -166,7 +170,7 @@ function loadDropDownWithHosts(data) {
 
 function loadDropDown() {
 	$('#tokenize').tokenize({
-		placeholder: "Add more programming challenges platforms..",
+		placeholder: "Filter by platform names...",
 		// displayDropdownOnFocus: true,
 		onAddToken: function(value, text){
 			if((typeof localStorage["hosts"]) === 'undefined') {

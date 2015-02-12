@@ -1,14 +1,19 @@
 {
   "manifest_version": 2,
 
-  "name": "Getting started example",
-  "description": "This extension shows a Google Image search result for the current page",
-  "version": "1.0",
+  "name": "Challenge Hunt",
+  "description": "All programming challenges at one place",
+  "version": "0.0.1",
+
+   "background": {
+    "scripts": ["js/jquery-1.11.2.min.js", "js/background.js"]
+  },
 
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "index.html"
   },
+
   "permissions": [
     "activeTab",
     "https://ajax.googleapis.com/",
