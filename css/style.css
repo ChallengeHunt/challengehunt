@@ -14,19 +14,19 @@ Primary style
 }
 
 body {
-  max-width: 375px; 
-  min-height: 450px; 
   font-size: 100%;
   font-family: "PT Sans", sans-serif;
   color: #f8f7ee;
-  background-color: #29324e;
+  background-color: #563d7c;
+  max-width: 380px;
+  min-height: 300px;
+  overflow: hidden;
 }
 
 a {
   color: #f05451;
   text-decoration: none;
 }
-
 
 /* -------------------------------- 
 
@@ -35,16 +35,15 @@ Main components
 -------------------------------- */
 header {
   position: relative;
-  height: 50px;
-  line-height: 60px;
+  height: 160px;
+  line-height: 180px;
   text-align: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 header h1 {
-  font-size: 30px;
-  font-size: 2.75rem;
-  margin-top: 27px;
+  font-size: 20px;
+  font-size: 1.25rem;
 }
 @media only screen and (min-width: 768px) {
   header {
@@ -57,13 +56,10 @@ header h1 {
   }
 }
 
-
-
-/*Inner white box*/
 .cd-tabs {
   position: relative;
   width: 100%;
-  max-width: 375px;     
+  max-width: 960px;
   margin: 2em auto;
   margin-bottom: 0px;
 }
@@ -81,8 +77,8 @@ header h1 {
   width: 50px;
   z-index: 1;
   pointer-events: none;
-  /*background: -webkit-linear-gradient( right , #f8f7ee, rgba(248, 247, 238, 0));*/
-  /*background: linear-gradient(to left, #f8f7ee, rgba(248, 247, 238, 0));*/
+  background: -webkit-linear-gradient( right , #f8f7ee, rgba(248, 247, 238, 0));
+  background: linear-gradient(to left, #f8f7ee, rgba(248, 247, 238, 0));
   visibility: visible;
   opacity: 1;
   -webkit-transition: opacity .3s 0s, visibility 0s 0s;
@@ -101,9 +97,7 @@ header h1 {
   transition: opacity .3s 0s, visibility 0s .3s;
 }
 .cd-tabs nav {
-
-    /*To make navigation tabs scrollable 
-  overflow: auto; */
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
   background: #f8f7ee;
   box-shadow: inset 0 -2px 3px rgba(203, 196, 130, 0.06);
@@ -130,10 +124,8 @@ header h1 {
   }
 }
 
-
-
 .cd-tabs-navigation {
-  width: 558px;
+  width: 360px;
 }
 .cd-tabs-navigation:after {
   content: "";
@@ -146,18 +138,16 @@ header h1 {
 .cd-tabs-navigation a {
   position: relative;
   display: block;
-  height: 50px;
-  width: 130px;
+  height: 60px;
+  width: 120px;
   text-align: center;
   font-size: 12px;
-  font-size: 1rem;
+  font-size: 0.75rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 700;
   color: #c3c2b9;
-  padding-top: 8px; 
-
-   /*To adjust icons for archive etc.*/
+  padding-top: 34px;
 }
 .no-touch .cd-tabs-navigation a:hover {
   color: #29324e;
@@ -168,8 +158,7 @@ header h1 {
   box-shadow: inset 0 2px 0 #f05451;
   color: #29324e;
 }
-
-/*.cd-tabs-navigation a::before {
+.cd-tabs-navigation a::before {
   /* icons */
   position: absolute;
   top: 12px;
@@ -180,7 +169,7 @@ header h1 {
   width: 20px;
   background-image: url("../img/vicons.svg");
   background-repeat: no-repeat;
-}*/
+}
 .cd-tabs-navigation a[data-content='inbox']::before {
   background-position: 0 0;
 }
@@ -190,6 +179,15 @@ header h1 {
 .cd-tabs-navigation a[data-content='gallery']::before {
   background-position: -40px 0;
 }
+.cd-tabs-navigation a[data-content='store']::before {
+  background-position: -60px 0;
+}
+.cd-tabs-navigation a[data-content='settings']::before {
+  background-position: -80px 0;
+}
+.cd-tabs-navigation a[data-content='trash']::before {
+  background-position: -100px 0;
+}
 .cd-tabs-navigation a[data-content='inbox'].selected::before {
   background-position: 0 -20px;
 }
@@ -198,6 +196,15 @@ header h1 {
 }
 .cd-tabs-navigation a[data-content='gallery'].selected::before {
   background-position: -40px -20px;
+}
+.cd-tabs-navigation a[data-content='store'].selected::before {
+  background-position: -60px -20px;
+}
+.cd-tabs-navigation a[data-content='settings'].selected::before {
+  background-position: -80px -20px;
+}
+.cd-tabs-navigation a[data-content='trash'].selected::before {
+  background-position: -100px -20px;
 }
 @media only screen and (min-width: 768px) {
   .cd-tabs-navigation {
@@ -308,9 +315,4 @@ header h1 {
   100% {
     opacity: 1;
   }
-}
-
-.tokenize-sample { 
-  width: 400px;
-  color: black;
 }
