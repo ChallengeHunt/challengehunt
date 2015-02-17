@@ -14,7 +14,7 @@ Primary style
 }
 
 body {
-  min-width: 450px; 
+  max-width: 375px; 
   min-height: 450px; 
   font-size: 100%;
   font-family: "PT Sans", sans-serif;
@@ -62,9 +62,10 @@ header h1 {
 /*Inner white box*/
 .cd-tabs {
   position: relative;
-  width: 90%;
-  max-width: 450px;     
+  width: 100%;
+  max-width: 375px;     
   margin: 2em auto;
+  margin-bottom: 0px;
 }
 .cd-tabs:after {
   content: "";
