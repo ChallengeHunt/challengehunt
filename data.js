@@ -69,6 +69,7 @@ function generateCards(data) {
 
 	var active_contest_data = JSON.parse(data)["active"];
 
+	var numberOfActiveContests = 0;
 	var randomNumber = 0;
 	hosts = JSON.parse(localStorage.getItem('hosts'));
 	
@@ -176,11 +177,14 @@ function generateCards(data) {
 
 	 	if ((typeof localStorage["hosts"]) === 'undefined') {
 			document.getElementById("active-contests").appendChild(newDiv);
+			numberOfActiveContests += 1;
 		}
 		else if (hosts.hasOwnProperty(active_contest_data[i].host_name)) {
 			document.getElementById("active-contests").appendChild(newDiv);
+			numberOfActiveContests += 1;
 		}
 	}
+	chrome.browserAction.setBadgeText({text:numberOfActiveContests.toString()});
 }
 
 function generateCardsPending(data) {

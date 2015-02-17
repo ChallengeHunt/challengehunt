@@ -76,12 +76,12 @@ function updateBadge() {
 	});
 }
 
-var pollInterval = 1000 * 60 * 2; // 1 minute, in milliseconds
+var pollInterval = 1000 * 60 * 10; // 10 minutes, in milliseconds
 
 function startRequest() {
 	updateBadge();
 	console.log(pollInterval);
 	window.setTimeout(startRequest, pollInterval);
-}
+} 
 
 startRequest();
