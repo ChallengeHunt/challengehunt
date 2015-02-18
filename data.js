@@ -1,3 +1,20 @@
+function initialize() {
+	if (((typeof localStorage["data"]) === 'undefined') && ((typeof localStorage["hosts_data"]) === 'undefined')){
+		getChallengeData();
+		getHosts();
+	}
+	else {
+		data = localStorage.getItem('data');
+		hosts_data = localStorage.getItem('hosts_data');
+		generateCards(data);
+	    generateCardsArchive(data);
+	    generateCardsPending(data);
+	    loadDropDownWithHosts(hosts_data);
+	}
+}
+
+initialize();
+
 // get all the challenge data
 function getChallengeData() {
 	$.ajax({
@@ -12,9 +29,9 @@ function getChallengeData() {
 				localStorage.removeItem('data');
 			}
 	    	localStorage.setItem('data', data);
-	    	$("#loader-drop-down").hide();
-	    	// $("#cd-tabs").show();
-	    	document.getElementById("c-tabs").style.visibility = "visible";
+	    	// $("#loader-drop-down").hide();
+	    	// // $("#cd-tabs").show();
+	    	// document.getElementById("c-tabs").style.visibility = "visible";
 	    	generateCards(data);
 	    	generateCardsArchive(data);
 	    	generateCardsPending(data);
@@ -26,7 +43,7 @@ function getChallengeData() {
 	});
 }
 
-getChallengeData();
+// getChallengeData();
 
 // get all the hosts
 function getHosts() {
@@ -37,7 +54,7 @@ function getHosts() {
 	      	
 		},
 	    success: function (data) {
-	    	$("#loader-select-menu").hide();
+	    	// $("#loader-select-menu").hide();
 	    	loadDropDownWithHosts(data);
 	    },
 	    error: function(jq, status, message) {
@@ -46,7 +63,7 @@ function getHosts() {
 	});
 }
 
-getHosts();
+// getHosts();
 
 function toTimeZone(time) {
 
@@ -60,8 +77,6 @@ function toTimeZone(time) {
     return newD.toLocaleString()
 }
 
-
-
 function generateCards(data) {
 
 	var active_tabs = document.getElementById("active-contests");
@@ -70,7 +85,7 @@ function generateCards(data) {
 	// active_tabs.innerText = JSON.parse(data)["active"];
 
 	var active_contest_data = JSON.parse(data)["active"];
-
+	var numberOfActiveContests = 0;
 	
 	hosts = JSON.parse(localStorage.getItem('hosts'));
 	
@@ -167,11 +182,14 @@ function generateCards(data) {
 
 	 	if ((typeof localStorage["hosts"]) === 'undefined') {
 			document.getElementById("active-contests").appendChild(newDiv);
+			numberOfActiveContests += 1;
 		}
 		else if (hosts.hasOwnProperty(active_contest_data[i].host_name)) {
 			document.getElementById("active-contests").appendChild(newDiv);
+			numberOfActiveContests += 1;
 		}
-	}
+
+	chrome.browserAction.setBadgeText({text:numberOfActiveContests.toString()});
 }
 
 function dateFormatted(date){
@@ -227,7 +245,7 @@ function generateCardsPending(data) {
 
 	var randomNumber = 0;
 	hosts = JSON.parse(localStorage.getItem('hosts'));
-	
+
 	for (var i = 0; i < pending_contest_data.length; i++) {
 
 	
@@ -338,9 +356,6 @@ function generateCardsPending(data) {
 		}
 	}
 }
-
-
-
 
 function generateCardsArchive(data) {
 
@@ -519,7 +534,7 @@ function loadDropDown() {
 				var data = localStorage.getItem('data');
 				generateCards(data);
 				generateCardsArchive(data);
-	    		generateCardsPending(data);
+				generateCardsPending(data);
 			}
 		},
 		onRemoveToken: function(value){
@@ -546,7 +561,7 @@ function loadDropDown() {
 				var data = localStorage.getItem('data');
 				generateCards(data);
 				generateCardsArchive(data);
-	    		generateCardsPending(data);
+				generateCardsPending(data);
 			}
 		},
 	});
