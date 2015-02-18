@@ -60,6 +60,8 @@ function toTimeZone(time) {
     return newD.toLocaleString()
 }
 
+
+
 function generateCards(data) {
 
 	var active_tabs = document.getElementById("active-contests");
@@ -69,14 +71,14 @@ function generateCards(data) {
 
 	var active_contest_data = JSON.parse(data)["active"];
 
-	var randomNumber = 0;
+	
 	hosts = JSON.parse(localStorage.getItem('hosts'));
 	
 	for (var i = 0; i < active_contest_data.length; i++) {
 
 	
 		var newDiv = document.createElement('div');
-		newDiv.style.width = "360px";
+		newDiv.style.width = "320px";
 	 	newDiv.style.height = "130px"; 
 	 	newDiv.style.borderStyle = "solid"; 
 	 	newDiv.style.borderWidth = "2px";
@@ -86,91 +88,80 @@ function generateCards(data) {
 	 	newDiv.style.marginBottom = "15px";
 	 
 
-	 	if(randomNumber<9){
-	 		randomNumber = randomNumber+1;
-		}else{
-			randomNumber = 1;
-		}
+	 	newDiv.style.background = "#F2F2F7"; 
+	 	
 
-
-	 	if(randomNumber==1){
-			newDiv.style.background = "#66FF33"; 
-	 	}else if(randomNumber==4){
-			newDiv.style.background = "#FFFF4D"; 
-	 	}else if(randomNumber==6){
-			newDiv.style.background = "#FF8533"; 
-	 	}else if(randomNumber==2){
-			newDiv.style.background = "#FF85AD"; 
-	 	}else if(randomNumber==8){
-			newDiv.style.background = "#DB94FF"; 
-	 	}else if(randomNumber==3){
-			newDiv.style.background = "#70B8FF"; 
-	 	}else if(randomNumber==5){
-			newDiv.style.background = "#82FFFF"; 
-	 	}else if(randomNumber==7){
-			newDiv.style.background = "#CCFF33"; 
-	 	}else if(randomNumber==9){
-			newDiv.style.background = "#47DAB5"; 
-	 	}
-
-		var startTime = toTimeZone(active_contest_data[i].start).split(",");
-		var endTime = toTimeZone(active_contest_data[i].end).split(",");
+		var startDateTime = toTimeZone(active_contest_data[i].start).split(",");
+		var endDateTime = toTimeZone(active_contest_data[i].end).split(",");
 
 		var lengthOfContestname = active_contest_data[i].contest_name.length;
 		
+		
+
 		if(imageExists("/img/"+active_contest_data[i].host_name+".png")){
-			if(lengthOfContestname < 30) {
-
-	 		 	newDiv.innerHTML ="<img src='/img/"+ active_contest_data[i].host_name  +".png' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
-	 						"<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"	+startTime[0] +"<br>"+
-	 					  "<i class='fa fa-play' style=' margin-right:5px;'></i>"+startTime[1] +"</div>" +"<br>"+ 
-	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:5px; '>"+"<a href='"+active_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +active_contest_data[i].contest_name+ "</a></div>" +
-	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>"+"<a href='"+active_contest_data[i].host_url +"' target='_blank' style='color:black'>" + active_contest_data[i].host_name +"</a></div>" +"<br>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
-	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
-	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ active_contest_data[i].duration +"</span>";
-
-				
-	 	}else{
-				newDiv.innerHTML ="<img src='/img/"+ active_contest_data[i].host_name +".png' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startTime[0] +"<br>"+
-	 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[1] +"</div>" +"<br>"+ 
-	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:-23px; '>"+"  "+ "<marquee>" + "<a href='"+active_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +active_contest_data[i].contest_name+ "</marquee></div>" +
-	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>" +"<a href='"+active_contest_data[i].host_url +"' target='_blank' style='color:black'>" +active_contest_data[i].host_name +"</a></div>" +"<br>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
-	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
-	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ active_contest_data[i].duration +"</span>";
-
-	 	}
+			
+			var logoDiv = document.createElement('img');
+			logoDiv.setAttribute('src', '/img/'+ active_contest_data[i].host_name  +'.png');
+			logoDiv.style.cssText =  "border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
+			newDiv.appendChild(logoDiv);
 
 		}else{
 
-
-					if(lengthOfContestname < 30) {
-
-	 		 	newDiv.innerHTML ="<img src='/img/default.jpg' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
-	 						"<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"	+startTime[0] +"<br>"+
-	 					  "<i class='fa fa-play' style=' margin-right:5px;'></i>"+startTime[1] +"</div>" +"<br>"+ 
-	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:5px; '>"+"<a href='"+active_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +active_contest_data[i].contest_name+ "</a></div>" +
-	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>"+"<a href='"+active_contest_data[i].host_url +"' target='_blank' style='color:black'>" + active_contest_data[i].host_name +"</a></div>" +"<br>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
-	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
-	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ active_contest_data[i].duration +"</span>";
-
-				
-	 	}else{
-				newDiv.innerHTML ="<img src='/img/default.jpg' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startTime[0] +"<br>"+
-	 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[1] +"</div>" +"<br>"+ 
-	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:-23px; '>"+"  "+ "<marquee>" + "<a href='"+active_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +active_contest_data[i].contest_name+ "</marquee></div>" +
-	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>" +"<a href='"+active_contest_data[i].host_url +"' target='_blank' style='color:black'>" +active_contest_data[i].host_name +"</a></div>" +"<br>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
-	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
-	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ active_contest_data[i].duration +"</span>";
-
-	 	}
+			var logoDiv = document.createElement('img');
+			logoDiv.setAttribute('src', '/img/default.jpg');
+			logoDiv.style.cssText =  "border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
+			newDiv.appendChild(logoDiv);
 
 		}
+
+
+
+		var startDate = dateFormatted(startDateTime[0]);
+		var startTime = timeFormatted(startDateTime[1]);
+
+		var startDateTimeDiv = document.createElement('div');
+		startDateTimeDiv.style.cssText =  "float:right; margin-top:5px; margin-right:3px; color:black; font-size:14px; font-family: Roboto, sans-serif;"	
+		startDateTimeDiv.innerHTML = "<i class='fa fa-play' style=' margin-right:5px;'></i>" + startDate + startTime ;
+		newDiv.appendChild(startDateTimeDiv);
+
+
+		if(lengthOfContestname < 28) {
+
+			var contestNameDiv = document.createElement('div');
+			contestNameDiv.style.cssText =  "color:black; font-size:24px;  font-family: Courgette, cursive; text-align:center;  "	
+			contestNameDiv.innerHTML = "<a href='"+active_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +active_contest_data[i].contest_name+ "</a>";
+			newDiv.appendChild(contestNameDiv);			
+
+		}else{
+
+			var contestNameDiv = document.createElement('div');
+			contestNameDiv.style.cssText =  "color:black; font-size:24px;  font-family: Courgette, cursive; text-align:center; margin-top:-4px; "	
+			contestNameDiv.innerHTML = "<marquee behavior='scroll' id='link'><a href='"+active_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +active_contest_data[i].contest_name+ "</a></marquee>";
+			newDiv.appendChild(contestNameDiv);			
+
+		}
+				
+
+		var contestUrlDiv = document.createElement('div');
+		contestUrlDiv.style.cssText =  "color:black; font-size:14px; font-family: Inconsolata, cursive ; text-align:center;  "	
+		contestUrlDiv.innerHTML = "<a href='"+active_contest_data[i].host_url +"' target='_blank' style='color:black'>" + active_contest_data[i].host_name +"</a>"
+		newDiv.appendChild(contestUrlDiv);
+
+
+		var durationDiv = document.createElement('div');
+		durationDiv.style.cssText =  "float:left; color:black; font-size:16px; margin-top:18px;"	
+		durationDiv.innerHTML = "Duration: " + active_contest_data[i].duration   ;
+		newDiv.appendChild(durationDiv);
+ 
+
+
+ 		var endDate = dateFormatted(endDateTime[0]);
+ 		var endTime = timeFormatted(endDateTime[1]);
+
+		var endDateTimeDiv = document.createElement('div');
+		endDateTimeDiv.style.cssText =  "float:right; margin-top:20px; margin-right:3px; color:black; font-size:14px; font-family: Roboto, sans-serif;"	
+		endDateTimeDiv.innerHTML = "<i class='fa fa-stop' style=' margin-right:5px'	></i>"+ endDate + endTime  ;
+		newDiv.appendChild(endDateTimeDiv);
 
 
 
@@ -182,6 +173,48 @@ function generateCards(data) {
 		}
 	}
 }
+
+function dateFormatted(date){
+
+	var start = date.split("/");
+
+	var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep","Oct", "Nov", "Dec"];
+
+	var dd = start[1];
+	if(dd.length == 1){
+		dd = "0" + dd;
+	}
+	var mm = months[start[0]-1];
+	var yyyy = start[2];
+
+	return dd + " " + mm + " " + yyyy ;
+
+}
+
+function timeFormatted(time){
+
+	var start = time.split(":");
+
+	var hour = start[0];
+	var min = start[1];
+
+	var checkTimeOfDay = start[2].split(" ");
+	if(checkTimeOfDay[1]=="PM"){
+		var timeOfDay = "pm";
+	}else if(checkTimeOfDay[1]=="AM"){
+		var timeOfDay = "am";
+	}
+	return hour + ":" + min + timeOfDay ;
+
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var link = document.getElementById('link');
+    // onClick's logic below:
+    link.addEventListener('onmouseover', function() {
+        this.stop(); 
+    });
+});
 
 function generateCardsPending(data) {
 

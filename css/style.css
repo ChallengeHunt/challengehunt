@@ -14,7 +14,7 @@ Primary style
 }
 
 body {
-  min-width: 450px; 
+  max-width: 375px; 
   min-height: 450px; 
   font-size: 100%;
   font-family: "PT Sans", sans-serif;
