@@ -11,6 +11,10 @@ div.Tokenize
     position: relative;
     display: inline-block;
     zoom: 1;
+    min-width: 325px;
+    color: black;
+    display: table;
+    margin: 0 auto;
 }
 
 div.Tokenize ul
@@ -18,7 +22,7 @@ div.Tokenize ul
     list-style: none;
     padding: 0;
     /*------Space around search box--------*/
-    margin-left: 40px;
+    /*margin-left: 40px;*/
     margin-top: 30px;
 }
 
@@ -113,9 +117,10 @@ div.Tokenize ul.Dropdown
 
     display: none;
     width: 90%;
+    min-width: 325px;
     padding: 5px 0;
     margin: -1px 0 0 0;
-    margin-left: 40px;
+    /*margin-left: 40px;*/
     position: absolute;
     background-color: white;
     overflow-y: auto;

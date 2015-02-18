@@ -1,3 +1,20 @@
+function initialize() {
+	if (((typeof localStorage["data"]) === 'undefined') && ((typeof localStorage["hosts_data"]) === 'undefined')){
+		getChallengeData();
+		getHosts();
+	}
+	else {
+		data = localStorage.getItem('data');
+		hosts_data = localStorage.getItem('hosts_data');
+		generateCards(data);
+	    generateCardsArchive(data);
+	    generateCardsPending(data);
+	    loadDropDownWithHosts(hosts_data);
+	}
+}
+
+initialize();
+
 // get all the challenge data
 function getChallengeData() {
 	$.ajax({
@@ -12,9 +29,9 @@ function getChallengeData() {
 				localStorage.removeItem('data');
 			}
 	    	localStorage.setItem('data', data);
-	    	$("#loader-drop-down").hide();
-	    	// $("#cd-tabs").show();
-	    	document.getElementById("c-tabs").style.visibility = "visible";
+	    	// $("#loader-drop-down").hide();
+	    	// // $("#cd-tabs").show();
+	    	// document.getElementById("c-tabs").style.visibility = "visible";
 	    	generateCards(data);
 	    	generateCardsArchive(data);
 	    	generateCardsPending(data);
@@ -26,7 +43,7 @@ function getChallengeData() {
 	});
 }
 
-getChallengeData();
+// getChallengeData();
 
 // get all the hosts
 function getHosts() {
@@ -37,7 +54,7 @@ function getHosts() {
 	      	
 		},
 	    success: function (data) {
-	    	$("#loader-select-menu").hide();
+	    	// $("#loader-select-menu").hide();
 	    	loadDropDownWithHosts(data);
 	    },
 	    error: function(jq, status, message) {
@@ -46,7 +63,7 @@ function getHosts() {
 	});
 }
 
-getHosts();
+// getHosts();
 
 function toTimeZone(time) {
 
@@ -310,9 +327,6 @@ function generateCardsPending(data) {
 	}
 }
 
-
-
-
 function generateCardsArchive(data) {
 
 	var archived_tabs = document.getElementById("archived-contests");
@@ -489,6 +503,8 @@ function loadDropDown() {
 				// if data already exists in localstorage, then call generateCards(data) else call getChallengeData()
 				var data = localStorage.getItem('data');
 				generateCards(data);
+				generateCardsArchive(data);
+				generateCardsPending(data);
 			}
 		},
 		onRemoveToken: function(value){
@@ -514,6 +530,8 @@ function loadDropDown() {
 			} else {
 				var data = localStorage.getItem('data');
 				generateCards(data);
+				generateCardsArchive(data);
+				generateCardsPending(data);
 			}
 		},
 	});
