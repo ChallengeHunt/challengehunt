@@ -91,7 +91,6 @@ function generateCards(data) {
 	
 	for (var i = 0; i < active_contest_data.length; i++) {
 
-	
 		var newDiv = document.createElement('div');
 		newDiv.style.width = "320px";
 	 	newDiv.style.height = "130px"; 
@@ -102,9 +101,9 @@ function generateCards(data) {
 	 	newDiv.style.borderColor = "black";
 	 	newDiv.style.marginBottom = "15px";
 	 
-
-	 	newDiv.style.background = "#F2F2F7"; 
-	 	
+	 	newDiv.style.background = "#F2F2F7";
+	 	newDiv.addEventListener('mouseover', changeBackgroundColorOnMouseOver, false);
+	 	newDiv.addEventListener('mouseout', changeBackgroundColorOnMouseOut, false);
 
 		var startDateTime = toTimeZone(active_contest_data[i].start).split(",");
 		var endDateTime = toTimeZone(active_contest_data[i].end).split(",");
@@ -224,16 +223,30 @@ function timeFormatted(time){
 		var timeOfDay = "am";
 	}
 	return hour + ":" + min + timeOfDay ;
-
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    var link = document.getElementById('link');
-    // onClick's logic below:
-    link.addEventListener('onmouseover', function() {
-        this.stop(); 
-    });
-});
+
+
+function changeBackgroundColorOnMouseOver(e, newDiv) {
+	console.log("on mouse over");
+	// e.style.background = "green";
+	var target = e.target || e.srcElement;
+	console.log(target.style.width)
+	console.log(e.srcElement)
+	if (target.style.width == "320px") {
+		target.style.background = "#563d7c";
+	}
+}
+
+function changeBackgroundColorOnMouseOut(e) {
+	console.log("on mouse out");
+	// e.style.background = "green";
+	var target = e.target || e.srcElement;
+	// console.log(target);
+	if (target.style.width == "320px") {
+		target.style.background = "#F2F2F7";
+	}
+}
 
 function generateCardsPending(data) {
 
