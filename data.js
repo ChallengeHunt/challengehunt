@@ -188,6 +188,7 @@ function generateCards(data) {
 			document.getElementById("active-contests").appendChild(newDiv);
 			numberOfActiveContests += 1;
 		}
+	}
 
 	chrome.browserAction.setBadgeText({text:numberOfActiveContests.toString()});
 }
