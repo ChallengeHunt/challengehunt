@@ -1,3 +1,4 @@
+
 /* -------------------------------- 
 
 Primary style
@@ -45,6 +46,13 @@ header h1 {
   font-size: 50px;
   font-size: 1.25rem;
 }
+
+.cards:hover {
+  background: rgba(255,255,255,0.5) !important;
+  /*color: #ffffff !important; */
+  /* rgba(255,255,255,0.5) */
+}
+
 @media only screen and (min-width: 768px) {
   header {
     height: 200px;
@@ -254,7 +262,7 @@ header h1 {
 }
 
 .cd-tabs-content {
-  background: #ffffff;
+  background: #f6f6f6;
 }
 .cd-tabs-content li {
   display: none;

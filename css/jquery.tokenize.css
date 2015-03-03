@@ -11,7 +11,7 @@ div.Tokenize
     position: relative;
     display: inline-block;
     zoom: 1;
-    min-width: 325px;
+    min-width: 335px;
     color: black;
     display: table;
     margin: 0 auto;
@@ -23,7 +23,7 @@ div.Tokenize ul
     padding: 0;
     /*------Space around search box--------*/
     /*margin-left: 40px;*/
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 div.Tokenize ul li
@@ -77,7 +77,7 @@ div.Tokenize ul.TokensContainer li.TokenSearch input
 }
 
 div.Tokenize ul.TokensContainer li.Placeholder {
-    color: #ddd;
+    color: #909090;
     position: absolute;
     line-height: 20px;
     padding: 5px 0 0 5px;

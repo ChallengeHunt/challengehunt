@@ -92,18 +92,24 @@ function generateCards(data) {
 	for (var i = 0; i < active_contest_data.length; i++) {
 
 		var newDiv = document.createElement('div');
-		newDiv.style.width = "320px";
-	 	newDiv.style.height = "130px"; 
+		newDiv.style.width = "330px";
+	 	newDiv.style.height = "135px"; 
 	 	newDiv.style.borderStyle = "solid"; 
-	 	newDiv.style.borderWidth = "2px";
-	 	newDiv.style.borderColor = "black";
-	 	newDiv.style.borderRadius = "8px 8px 8px 8px";
-	 	newDiv.style.borderColor = "black";
-	 	newDiv.style.marginBottom = "15px";
-	 
-	 	newDiv.style.background = "#F2F2F7";
-	 	newDiv.addEventListener('mouseover', changeBackgroundColorOnMouseOver, false);
-	 	newDiv.addEventListener('mouseout', changeBackgroundColorOnMouseOut, false);
+	 	newDiv.style.borderWidth = "1px";
+	 	newDiv.style.borderColor = "#C8C8C8";
+	 	// newDiv.style.borderRadius = "8px 8px 8px 8px";
+	 	// newDiv.style.borderColor = "black";
+	 	newDiv.style.paddingTop = "3px";
+	 	newDiv.style.paddingBottom = "3px";
+	 	newDiv.style.paddingLeft = "5px";
+	 	newDiv.style.paddingRight = "5px";
+	 	newDiv.style.marginBottom = "14px";
+	 	// newDiv.style.webkitBoxShadow = "0 10px 6px -6px #777";
+	 	
+	 	newDiv.style.background = "#ffffff";
+	 	newDiv.className = "cards";
+	 	// newDiv.addEventListener('mouseover', changeBackgroundColorOnMouseOver, false);
+	 	// newDiv.addEventListener('mouseout', changeBackgroundColorOnMouseOut, false);
 
 		var startDateTime = toTimeZone(active_contest_data[i].start).split(",");
 		var endDateTime = toTimeZone(active_contest_data[i].end).split(",");
@@ -116,19 +122,15 @@ function generateCards(data) {
 			
 			var logoDiv = document.createElement('img');
 			logoDiv.setAttribute('src', '/img/'+ active_contest_data[i].host_name  +'.png');
-			logoDiv.style.cssText =  "border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
+			logoDiv.style.cssText =  "border:1px solid #eee; border-radius: 2px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
 			newDiv.appendChild(logoDiv);
-
-		}else{
-
+		} else {
 			var logoDiv = document.createElement('img');
 			logoDiv.setAttribute('src', '/img/default.jpg');
 			logoDiv.style.cssText =  "border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
 			newDiv.appendChild(logoDiv);
 
 		}
-
-
 
 		var startDate = dateFormatted(startDateTime[0]);
 		var startTime = timeFormatted(startDateTime[1]);
@@ -142,11 +144,12 @@ function generateCards(data) {
 		if(lengthOfContestname < 28) {
 
 			var contestNameDiv = document.createElement('div');
-			contestNameDiv.style.cssText =  "color:black; font-size:24px;  font-family: Courgette, cursive; text-align:center;  "	
+			// contestNameDiv.className = "cards";
+			contestNameDiv.style.cssText =  "color:black; font-size:24px;  font-family: Courgette, cursive; text-align:center;"	
 			contestNameDiv.innerHTML = "<a href='"+active_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +active_contest_data[i].contest_name+ "</a>";
 			newDiv.appendChild(contestNameDiv);			
 
-		}else{
+		} else {
 
 			var contestNameDiv = document.createElement('div');
 			contestNameDiv.style.cssText =  "color:black; font-size:24px;  font-family: Courgette, cursive; text-align:center; margin-top:-4px; "	
@@ -176,6 +179,7 @@ function generateCards(data) {
 		endDateTimeDiv.style.cssText =  "float:right; margin-top:20px; margin-right:3px; color:black; font-size:14px; font-family: Roboto, sans-serif;"	
 		endDateTimeDiv.innerHTML = "<i class='fa fa-stop' style=' margin-right:5px'	></i>"+ endDate + endTime  ;
 		newDiv.appendChild(endDateTimeDiv);
+		// newDiv.style.cssText = "margin: 8px auto; -webkit-box-shadow: 0 5px 3px -3px #777;";
 
 
 
@@ -227,7 +231,7 @@ function timeFormatted(time){
 
 
 
-function changeBackgroundColorOnMouseOver(e, newDiv) {
+function changeBackgroundColorOnMouseOver(e) {
 	console.log("on mouse over");
 	// e.style.background = "green";
 	var target = e.target || e.srcElement;
