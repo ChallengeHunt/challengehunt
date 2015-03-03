@@ -155,7 +155,7 @@ function generateCards(data) {
 			var contestNameDiv = document.createElement('div');
 			contestNameDiv.style.cssText =  "font-size:24px;  font-family: Courgette, cursive; text-align:center; margin-top:-4px; "	
 			// contestNameDiv.innerHTML = "<marquee behavior='scroll' id='link'><a href='"+active_contest_data[i].contest_url +"' target='_blank'>" +active_contest_data[i].contest_name+ "</a></marquee>";
-						// contestNameDiv.className = "marquee";
+			// contestNameDiv.className = "marquee";
 			contestNameDiv.innerHTML = "<a href='"+active_contest_data[i].contest_url +"' target='_blank'>" +active_contest_data[i].contest_name+ "</div>";
 			contestNameDiv.className = "marquee";
 			newDiv.appendChild(contestNameDiv);			
@@ -275,103 +275,104 @@ function generateCardsPending(data) {
 
 	for (var i = 0; i < pending_contest_data.length; i++) {
 
-	
 		var newDiv = document.createElement('div');
-		newDiv.style.width = "360px";
-	 	newDiv.style.height = "130px"; 
+		newDiv.style.width = "330px";
+	 	newDiv.style.height = "135px"; 
 	 	newDiv.style.borderStyle = "solid"; 
-	 	newDiv.style.borderWidth = "2px";
-	 	newDiv.style.borderColor = "black";
-	 	newDiv.style.borderRadius = "8px 8px 8px 8px";
-	 	newDiv.style.borderColor = "black";
-	 	newDiv.style.marginBottom = "15px";
-	 
+	 	// newDiv.style.borderWidth = "1px";
+	 	newDiv.style.borderColor = "#C8C8C8";
+	 	newDiv.style.overflow = "hidden";
+	 	// newDiv.style.borderRadius = "8px 8px 8px 8px";
+	 	// newDiv.style.borderColor = "black";
+	 	newDiv.style.paddingTop = "3px";
+	 	newDiv.style.paddingBottom = "3px";
+	 	newDiv.style.paddingLeft = "5px";
+	 	newDiv.style.paddingRight = "5px";
+	 	newDiv.style.marginBottom = "14px";
+	 	// newDiv.style.webkitBoxShadow = "0 10px 6px -6px #777";
+	 	
+	 	newDiv.style.background = "#F8F8F8";
+	 	newDiv.className = "cards grow";
+	 	
+	 	// newDiv.addEventListener('mouseover', changeBackgroundColorOnMouseOver, false);
+	 	// newDiv.addEventListener('mouseout', changeBackgroundColorOnMouseOut, false);
 
-	 	if(randomNumber<9){
-	 		randomNumber = randomNumber+1;
-		}else{
-			randomNumber = 1;
-		}
-
-
-	 	if(randomNumber==1){
-			newDiv.style.background = "#66FF33"; 
-	 	}else if(randomNumber==4){
-			newDiv.style.background = "#FFFF4D"; 
-	 	}else if(randomNumber==6){
-			newDiv.style.background = "#FF8533"; 
-	 	}else if(randomNumber==2){
-			newDiv.style.background = "#FF85AD"; 
-	 	}else if(randomNumber==8){
-			newDiv.style.background = "#DB94FF"; 
-	 	}else if(randomNumber==3){
-			newDiv.style.background = "#70B8FF"; 
-	 	}else if(randomNumber==5){
-			newDiv.style.background = "#82FFFF"; 
-	 	}else if(randomNumber==7){
-			newDiv.style.background = "#CCFF33"; 
-	 	}else if(randomNumber==9){
-			newDiv.style.background = "#47DAB5"; 
-	 	}
-
-		var startTime = toTimeZone(pending_contest_data[i].start).split(",");
-		var endTime = toTimeZone(pending_contest_data[i].end).split(",");
+		var startDateTime = toTimeZone(pending_contest_data[i].start).split(",");
+		var endDateTime = toTimeZone(pending_contest_data[i].end).split(",");
 
 		var lengthOfContestname = pending_contest_data[i].contest_name.length;
 		
+		
+
 		if(imageExists("/img/"+pending_contest_data[i].host_name+".png")){
-			if(lengthOfContestname < 30) {
-
-	 		 	newDiv.innerHTML ="<img src='/img/"+ pending_contest_data[i].host_name  +".png' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
-	 						"<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"	+startTime[0] +"<br>"+
-	 					  "<i class='fa fa-play' style=' margin-right:5px;'></i>"+startTime[1] +"</div>" +"<br>"+ 
-	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:5px; '>"+"<a href='"+pending_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +pending_contest_data[i].contest_name+ "</a></div>" +
-	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>"+"<a href='"+pending_contest_data[i].host_url +"' target='_blank' style='color:black'>" + pending_contest_data[i].host_name +"</a></div>" +"<br>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
-	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
-	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ pending_contest_data[i].duration +"</span>";
-
-				
-	 	}else{
-				newDiv.innerHTML ="<img src='/img/"+ pending_contest_data[i].host_name +".png' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startTime[0] +"<br>"+
-	 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[1] +"</div>" +"<br>"+ 
-	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:-23px; '>"+"  "+ "<marquee>" + "<a href='"+pending_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +pending_contest_data[i].contest_name+ "</marquee></div>" +
-	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>" +"<a href='"+pending_contest_data[i].host_url +"' target='_blank' style='color:black'>" +pending_contest_data[i].host_name +"</a></div>" +"<br>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
-	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
-	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ pending_contest_data[i].duration +"</span>";
-
-	 	}
-
-		}else{
-
-
-					if(lengthOfContestname < 30) {
-
-	 		 	newDiv.innerHTML ="<img src='/img/default.jpg' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
-	 						"<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"	+startTime[0] +"<br>"+
-	 					  "<i class='fa fa-play' style=' margin-right:5px;'></i>"+startTime[1] +"</div>" +"<br>"+ 
-	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:5px; '>"+"<a href='"+pending_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +pending_contest_data[i].contest_name+ "</a></div>" +
-	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>"+"<a href='"+pending_contest_data[i].host_url +"' target='_blank' style='color:black'>" + pending_contest_data[i].host_name +"</a></div>" +"<br>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
-	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
-	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ pending_contest_data[i].duration +"</span>";
-
-				
-	 	}else{
-				newDiv.innerHTML ="<img src='/img/default.jpg' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startTime[0] +"<br>"+
-	 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[1] +"</div>" +"<br>"+ 
-	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:-23px; '>"+"  "+ "<marquee>" + "<a href='"+pending_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +pending_contest_data[i].contest_name+ "</marquee></div>" +
-	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>" +"<a href='"+pending_contest_data[i].host_url +"' target='_blank' style='color:black'>" +pending_contest_data[i].host_name +"</a></div>" +"<br>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
-	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
-	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ pending_contest_data[i].duration +"</span>";
-
-	 	}
+			
+			var logoDiv = document.createElement('img');
+			logoDiv.setAttribute('src', '/img/'+ pending_contest_data[i].host_name  +'.png');
+			logoDiv.style.cssText =  "border:1px solid #eee; border-radius: 2px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
+			newDiv.appendChild(logoDiv);
+		} else {
+			var logoDiv = document.createElement('img');
+			logoDiv.setAttribute('src', '/img/default.jpg');
+			logoDiv.style.cssText =  "border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
+			newDiv.appendChild(logoDiv);
 
 		}
+
+		var startDate = dateFormatted(startDateTime[0]);
+		var startTime = timeFormatted(startDateTime[1]);
+
+		var startDateTimeDiv = document.createElement('div');
+		startDateTimeDiv.style.cssText =  "float:right; margin-top:5px; margin-right:3px;  font-size:14px; font-family: Roboto, sans-serif;"	
+		startDateTimeDiv.innerHTML = "<i class='fa fa-play' style=' margin-right:5px;'></i>" + startDate + startTime ;
+		newDiv.appendChild(startDateTimeDiv);
+
+
+		if(lengthOfContestname < 28) {
+
+			var contestNameDiv = document.createElement('div');
+			contestNameDiv.style.cssText =  "font-size:24px;  font-family: Courgette, cursive; text-align:center;"	
+			contestNameDiv.innerHTML = "<a href='"+pending_contest_data[i].contest_url +"' target='_blank'>" +pending_contest_data[i].contest_name+ "</a>";
+			newDiv.appendChild(contestNameDiv);			
+
+		} else {
+
+			var contestNameDiv = document.createElement('div');
+			contestNameDiv.style.cssText =  "font-size:24px;  font-family: Courgette, cursive; text-align:center; margin-top:-4px; "	
+			// contestNameDiv.innerHTML = "<marquee behavior='scroll' id='link'><a href='"+active_contest_data[i].contest_url +"' target='_blank'>" +active_contest_data[i].contest_name+ "</a></marquee>";
+			// contestNameDiv.className = "marquee";
+			contestNameDiv.innerHTML = "<a href='"+pending_contest_data[i].contest_url +"' target='_blank'>" +pending_contest_data[i].contest_name+ "</div>";
+			contestNameDiv.className = "marquee";
+			newDiv.appendChild(contestNameDiv);			
+
+		}
+				
+
+		var contestUrlDiv = document.createElement('div');
+		contestUrlDiv.style.cssText =  " font-size:14px; font-family: Inconsolata, cursive ; text-align:center;  "	
+		
+		var contestUrlLink = document.createElement('a');
+		contestUrlLink.href = pending_contest_data[i].host_url;
+		contestUrlLink.target = "blank";
+		contestUrlLink.innerHTML =  pending_contest_data[i].host_name ;
+		contestUrlDiv.appendChild(contestUrlLink);
+		newDiv.appendChild(contestUrlDiv);
+
+
+		var durationDiv = document.createElement('div');
+		durationDiv.style.cssText =  "float:left; font-size:16px; margin-top:18px;"	
+		durationDiv.innerHTML = "Duration: " + pending_contest_data[i].duration   ;
+		newDiv.appendChild(durationDiv);
+ 
+
+
+ 		var endDate = dateFormatted(endDateTime[0]);
+ 		var endTime = timeFormatted(endDateTime[1]);
+
+		var endDateTimeDiv = document.createElement('div');
+		endDateTimeDiv.style.cssText =  "float:right; margin-top:20px; margin-right:3px; font-size:14px; font-family: Roboto, sans-serif;"	
+		endDateTimeDiv.innerHTML = "<i class='fa fa-stop' style=' margin-right:5px'	></i>"+ endDate + endTime  ;
+		newDiv.appendChild(endDateTimeDiv);
+		// newDiv.style.cssText = "margin: 8px auto; -webkit-box-shadow: 0 5px 3px -3px #777;";
 
 
 
@@ -395,103 +396,108 @@ function generateCardsArchive(data) {
 	var randomNumber = 0;
 	hosts = JSON.parse(localStorage.getItem('hosts'));
 	
-	for (var i = 0; i < archived_contest_data.length; i++) {
+		for (var i = 0; i < archived_contest_data.length; i++) {
 
 		var newDiv = document.createElement('div');
-		newDiv.style.width = "360px";
-	 	newDiv.style.height = "130px"; 
+		newDiv.style.width = "330px";
+	 	newDiv.style.height = "135px"; 
 	 	newDiv.style.borderStyle = "solid"; 
-	 	newDiv.style.borderWidth = "2px";
-	 	newDiv.style.borderColor = "black";
-	 	newDiv.style.borderRadius = "8px 8px 8px 8px";
-	 	newDiv.style.borderColor = "black";
-	 	newDiv.style.marginBottom = "15px";
-	 
+	 	// newDiv.style.borderWidth = "1px";
+	 	newDiv.style.borderColor = "#C8C8C8";
+	 	newDiv.style.overflow = "hidden";
+	 	// newDiv.style.borderRadius = "8px 8px 8px 8px";
+	 	// newDiv.style.borderColor = "black";
+	 	newDiv.style.paddingTop = "3px";
+	 	newDiv.style.paddingBottom = "3px";
+	 	newDiv.style.paddingLeft = "5px";
+	 	newDiv.style.paddingRight = "5px";
+	 	newDiv.style.marginBottom = "14px";
+	 	// newDiv.style.webkitBoxShadow = "0 10px 6px -6px #777";
+	 	
+	 	newDiv.style.background = "#F8F8F8";
+	 	newDiv.className = "cards grow";
+	 	
+	 	// newDiv.addEventListener('mouseover', changeBackgroundColorOnMouseOver, false);
+	 	// newDiv.addEventListener('mouseout', changeBackgroundColorOnMouseOut, false);
 
-	 	if(randomNumber<9){
-	 		randomNumber = randomNumber+1;
-		}else{
-			randomNumber = 1;
-		}
-
-
-	 	if(randomNumber==1){
-			newDiv.style.background = "#66FF33"; 
-	 	}else if(randomNumber==4){
-			newDiv.style.background = "#FFFF4D"; 
-	 	}else if(randomNumber==6){
-			newDiv.style.background = "#FF8533"; 
-	 	}else if(randomNumber==2){
-			newDiv.style.background = "#FF85AD"; 
-	 	}else if(randomNumber==8){
-			newDiv.style.background = "#DB94FF"; 
-	 	}else if(randomNumber==3){
-			newDiv.style.background = "#70B8FF"; 
-	 	}else if(randomNumber==5){
-			newDiv.style.background = "#82FFFF"; 
-	 	}else if(randomNumber==7){
-			newDiv.style.background = "#CCFF33"; 
-	 	}else if(randomNumber==9){
-			newDiv.style.background = "#47DAB5"; 
-	 	}
-
-		var startTime = toTimeZone(archived_contest_data[i].start).split(",");
-		var endTime = toTimeZone(archived_contest_data[i].end).split(",");
+		var startDateTime = toTimeZone(archived_contest_data[i].start).split(",");
+		var endDateTime = toTimeZone(archived_contest_data[i].end).split(",");
 
 		var lengthOfContestname = archived_contest_data[i].contest_name.length;
 		
+		
+
 		if(imageExists("/img/"+archived_contest_data[i].host_name+".png")){
-			if(lengthOfContestname < 30) {
-				console.log("hello" + i);
-	 		 	newDiv.innerHTML ="<img src='/img/"+ archived_contest_data[i].host_name  +".png' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
-	 						"<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"	+startTime[0] +"<br>"+
-	 					  "<i class='fa fa-play' style=' margin-right:5px;'></i>"+startTime[1] +"</div>" +"<br>"+ 
-	 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:5px; '>"+"<a href='"+archived_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +archived_contest_data[i].contest_name+ "</a></div>" +
-	 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>"+"<a href='"+archived_contest_data[i].host_url +"' target='_blank' style='color:black'>" + archived_contest_data[i].host_name +"</a></div>" +"<br>"+
-	 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
-	 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
-	 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ archived_contest_data[i].duration +"</span>";
+			
+			var logoDiv = document.createElement('img');
+			logoDiv.setAttribute('src', '/img/'+ archived_contest_data[i].host_name  +'.png');
+			logoDiv.style.cssText =  "border:1px solid #eee; border-radius: 2px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
+			newDiv.appendChild(logoDiv);
+		} else {
+			var logoDiv = document.createElement('img');
+			logoDiv.setAttribute('src', '/img/default.jpg');
+			logoDiv.style.cssText =  "border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
+			newDiv.appendChild(logoDiv);
 
-				
-		 	} else {
-					newDiv.innerHTML ="<img src='/img/"+ archived_contest_data[i].host_name +".png' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
-		 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startTime[0] +"<br>"+
-		 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[1] +"</div>" +"<br>"+ 
-		 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:-23px; '>"+"  "+ "<marquee>" + "<a href='"+archived_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +archived_contest_data[i].contest_name+ "</marquee></div>" +
-		 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>" +"<a href='"+archived_contest_data[i].host_url +"' target='_blank' style='color:black'>" +archived_contest_data[i].host_name +"</a></div>" +"<br>"+
-		 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
-		 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
-		 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ archived_contest_data[i].duration +"</span>";
+		}
 
-		 	}
+		var startDate = dateFormatted(startDateTime[0]);
+		var startTime = timeFormatted(startDateTime[1]);
+
+		var startDateTimeDiv = document.createElement('div');
+		startDateTimeDiv.style.cssText =  "float:right; margin-top:5px; margin-right:3px;  font-size:14px; font-family: Roboto, sans-serif;"	
+		startDateTimeDiv.innerHTML = "<i class='fa fa-play' style=' margin-right:5px;'></i>" + startDate + startTime ;
+		newDiv.appendChild(startDateTimeDiv);
+
+
+		if(lengthOfContestname < 28) {
+
+			var contestNameDiv = document.createElement('div');
+			contestNameDiv.style.cssText =  "font-size:24px;  font-family: Courgette, cursive; text-align:center;"	
+			contestNameDiv.innerHTML = "<a href='"+archived_contest_data[i].contest_url +"' target='_blank'>" +archived_contest_data[i].contest_name+ "</a>";
+			newDiv.appendChild(contestNameDiv);			
 
 		} else {
 
-			console.log("hello" + i);
-			if(lengthOfContestname < 30) {
+			var contestNameDiv = document.createElement('div');
+			contestNameDiv.style.cssText =  "font-size:24px;  font-family: Courgette, cursive; text-align:center; margin-top:-4px; "	
+			// contestNameDiv.innerHTML = "<marquee behavior='scroll' id='link'><a href='"+active_contest_data[i].contest_url +"' target='_blank'>" +active_contest_data[i].contest_name+ "</a></marquee>";
+			// contestNameDiv.className = "marquee";
+			contestNameDiv.innerHTML = "<a href='"+archived_contest_data[i].contest_url +"' target='_blank'>" +archived_contest_data[i].contest_name+ "</div>";
+			contestNameDiv.className = "marquee";
+			newDiv.appendChild(contestNameDiv);			
 
-		 		 	newDiv.innerHTML ="<img src='/img/default.jpg' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
-		 						"<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"	+startTime[0] +"<br>"+
-		 					  "<i class='fa fa-play' style=' margin-right:5px;'></i>"+startTime[1] +"</div>" +"<br>"+ 
-		 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:5px; '>"+"<a href='"+archived_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +archived_contest_data[i].contest_name+ "</a></div>" +
-		 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>"+"<a href='"+archived_contest_data[i].host_url +"' target='_blank' style='color:black'>" + archived_contest_data[i].host_name +"</a></div>" +"<br>"+
-		 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
-		 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
-		 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ archived_contest_data[i].duration +"</span>";
-
-					
-		 	}else{
-					newDiv.innerHTML ="<img src='/img/default.jpg' style='border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;'>"+
-		 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style=' float:right; margin-top:5px; margin-right:3px'>"+ startTime[0] +"<br>"+
-		 					  "<i class='fa fa-play' style=' margin-right:5px'></i>"+startTime[1] +"</div>" +"<br>"+ 
-		 					  "<span style='color:black; font-size:24px;  font-family: Courgette, cursive;'>"+"<div style='text-align:center; margin-top:-23px; '>"+"  "+ "<marquee>" + "<a href='"+archived_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +archived_contest_data[i].contest_name+ "</marquee></div>" +
-		 					  "<span style='color:black; font-size:14px; font-family: Inconsolata, ;'>"+"<div style='text-align:center; margin-top:0px; '>" +"<a href='"+archived_contest_data[i].host_url +"' target='_blank' style='color:black'>" +archived_contest_data[i].host_name +"</a></div>" +"<br>"+
-		 					  "<span style='color:black; font-size:12px; font-family: Roboto, sans-serif;'>"+"  "+"<div style='float:right; margin-top:-20px; margin-right:3px; margin-bottom:3px'>"+ endTime[0] +"<br>"+  
-		 					  "<i class='fa fa-stop' style=' margin-right:5px'></i>"+ endTime[1] +"</div>"+ "<br>"+  
-		 					  "<span style='color:black; font-size:18px; margin-top:5px'>"+"<div style='text-align:left; margin-top:-35px'>"+"  "+ archived_contest_data[i].duration +"</span>";
-
-		 	}
 		}
+				
+
+		var contestUrlDiv = document.createElement('div');
+		contestUrlDiv.style.cssText =  " font-size:14px; font-family: Inconsolata, cursive ; text-align:center;  "	
+		
+		var contestUrlLink = document.createElement('a');
+		contestUrlLink.href = archived_contest_data[i].host_url;
+		contestUrlLink.target = "blank";
+		contestUrlLink.innerHTML =  archived_contest_data[i].host_name ;
+		contestUrlDiv.appendChild(contestUrlLink);
+		newDiv.appendChild(contestUrlDiv);
+
+
+		var durationDiv = document.createElement('div');
+		durationDiv.style.cssText =  "float:left; font-size:16px; margin-top:18px;"	
+		durationDiv.innerHTML = "Duration: " + archived_contest_data[i].duration   ;
+		newDiv.appendChild(durationDiv);
+ 
+
+
+ 		var endDate = dateFormatted(endDateTime[0]);
+ 		var endTime = timeFormatted(endDateTime[1]);
+
+		var endDateTimeDiv = document.createElement('div');
+		endDateTimeDiv.style.cssText =  "float:right; margin-top:20px; margin-right:3px; font-size:14px; font-family: Roboto, sans-serif;"	
+		endDateTimeDiv.innerHTML = "<i class='fa fa-stop' style=' margin-right:5px'	></i>"+ endDate + endTime  ;
+		newDiv.appendChild(endDateTimeDiv);
+		// newDiv.style.cssText = "margin: 8px auto; -webkit-box-shadow: 0 5px 3px -3px #777;";
+
+
 
 	 	if ((typeof localStorage["hosts"]) === 'undefined') {
 			document.getElementById("archived-contests").appendChild(newDiv);
