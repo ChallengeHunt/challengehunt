@@ -95,8 +95,9 @@ function generateCards(data) {
 		newDiv.style.width = "330px";
 	 	newDiv.style.height = "135px"; 
 	 	newDiv.style.borderStyle = "solid"; 
-	 	newDiv.style.borderWidth = "1px";
+	 	// newDiv.style.borderWidth = "1px";
 	 	newDiv.style.borderColor = "#C8C8C8";
+	 	newDiv.style.overflow = "hidden";
 	 	// newDiv.style.borderRadius = "8px 8px 8px 8px";
 	 	// newDiv.style.borderColor = "black";
 	 	newDiv.style.paddingTop = "3px";
@@ -106,8 +107,9 @@ function generateCards(data) {
 	 	newDiv.style.marginBottom = "14px";
 	 	// newDiv.style.webkitBoxShadow = "0 10px 6px -6px #777";
 	 	
-	 	newDiv.style.background = "#ffffff";
-	 	newDiv.className = "cards";
+	 	newDiv.style.background = "#F8F8F8";
+	 	newDiv.className = "cards grow";
+	 	
 	 	// newDiv.addEventListener('mouseover', changeBackgroundColorOnMouseOver, false);
 	 	// newDiv.addEventListener('mouseout', changeBackgroundColorOnMouseOut, false);
 
@@ -136,7 +138,7 @@ function generateCards(data) {
 		var startTime = timeFormatted(startDateTime[1]);
 
 		var startDateTimeDiv = document.createElement('div');
-		startDateTimeDiv.style.cssText =  "float:right; margin-top:5px; margin-right:3px; color:black; font-size:14px; font-family: Roboto, sans-serif;"	
+		startDateTimeDiv.style.cssText =  "float:right; margin-top:5px; margin-right:3px;  font-size:14px; font-family: Roboto, sans-serif;"	
 		startDateTimeDiv.innerHTML = "<i class='fa fa-play' style=' margin-right:5px;'></i>" + startDate + startTime ;
 		newDiv.appendChild(startDateTimeDiv);
 
@@ -144,29 +146,36 @@ function generateCards(data) {
 		if(lengthOfContestname < 28) {
 
 			var contestNameDiv = document.createElement('div');
-			// contestNameDiv.className = "cards";
-			contestNameDiv.style.cssText =  "color:black; font-size:24px;  font-family: Courgette, cursive; text-align:center;"	
-			contestNameDiv.innerHTML = "<a href='"+active_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +active_contest_data[i].contest_name+ "</a>";
+			contestNameDiv.style.cssText =  "font-size:24px;  font-family: Courgette, cursive; text-align:center;"	
+			contestNameDiv.innerHTML = "<a href='"+active_contest_data[i].contest_url +"' target='_blank'>" +active_contest_data[i].contest_name+ "</a>";
 			newDiv.appendChild(contestNameDiv);			
 
 		} else {
 
 			var contestNameDiv = document.createElement('div');
-			contestNameDiv.style.cssText =  "color:black; font-size:24px;  font-family: Courgette, cursive; text-align:center; margin-top:-4px; "	
-			contestNameDiv.innerHTML = "<marquee behavior='scroll' id='link'><a href='"+active_contest_data[i].contest_url +"' target='_blank' style='color:black'>" +active_contest_data[i].contest_name+ "</a></marquee>";
+			contestNameDiv.style.cssText =  "font-size:24px;  font-family: Courgette, cursive; text-align:center; margin-top:-4px; "	
+			// contestNameDiv.innerHTML = "<marquee behavior='scroll' id='link'><a href='"+active_contest_data[i].contest_url +"' target='_blank'>" +active_contest_data[i].contest_name+ "</a></marquee>";
+						// contestNameDiv.className = "marquee";
+			contestNameDiv.innerHTML = "<marquee direction='right' behavior='alternate' width='200'><a href='"+active_contest_data[i].contest_url +"' target='_blank'>" +active_contest_data[i].contest_name+ "</a></marquee>";
+
 			newDiv.appendChild(contestNameDiv);			
 
 		}
 				
 
 		var contestUrlDiv = document.createElement('div');
-		contestUrlDiv.style.cssText =  "color:black; font-size:14px; font-family: Inconsolata, cursive ; text-align:center;  "	
-		contestUrlDiv.innerHTML = "<a href='"+active_contest_data[i].host_url +"' target='_blank' style='color:black'>" + active_contest_data[i].host_name +"</a>"
+		contestUrlDiv.style.cssText =  " font-size:14px; font-family: Inconsolata, cursive ; text-align:center;  "	
+		
+		var contestUrlLink = document.createElement('a');
+		contestUrlLink.href = active_contest_data[i].host_url;
+		contestUrlLink.target = "blank";
+		contestUrlLink.innerHTML =  active_contest_data[i].host_name ;
+		contestUrlDiv.appendChild(contestUrlLink);
 		newDiv.appendChild(contestUrlDiv);
 
 
 		var durationDiv = document.createElement('div');
-		durationDiv.style.cssText =  "float:left; color:black; font-size:16px; margin-top:18px;"	
+		durationDiv.style.cssText =  "float:left; font-size:16px; margin-top:18px;"	
 		durationDiv.innerHTML = "Duration: " + active_contest_data[i].duration   ;
 		newDiv.appendChild(durationDiv);
  
@@ -176,7 +185,7 @@ function generateCards(data) {
  		var endTime = timeFormatted(endDateTime[1]);
 
 		var endDateTimeDiv = document.createElement('div');
-		endDateTimeDiv.style.cssText =  "float:right; margin-top:20px; margin-right:3px; color:black; font-size:14px; font-family: Roboto, sans-serif;"	
+		endDateTimeDiv.style.cssText =  "float:right; margin-top:20px; margin-right:3px; font-size:14px; font-family: Roboto, sans-serif;"	
 		endDateTimeDiv.innerHTML = "<i class='fa fa-stop' style=' margin-right:5px'	></i>"+ endDate + endTime  ;
 		newDiv.appendChild(endDateTimeDiv);
 		// newDiv.style.cssText = "margin: 8px auto; -webkit-box-shadow: 0 5px 3px -3px #777;";
