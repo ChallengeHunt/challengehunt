@@ -68,7 +68,7 @@ function initialize() {
 	}
 }
 
-var pollInterval = 1000 * 60 * 15; // 10 minutes, in milliseconds
+var pollInterval = 1000 * 60 * 15; // 15 minutes, in milliseconds
 
 function startRequest() {
 	initialize();
