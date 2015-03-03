@@ -156,8 +156,8 @@ function generateCards(data) {
 			contestNameDiv.style.cssText =  "font-size:24px;  font-family: Courgette, cursive; text-align:center; margin-top:-4px; "	
 			// contestNameDiv.innerHTML = "<marquee behavior='scroll' id='link'><a href='"+active_contest_data[i].contest_url +"' target='_blank'>" +active_contest_data[i].contest_name+ "</a></marquee>";
 						// contestNameDiv.className = "marquee";
-			contestNameDiv.innerHTML = "<marquee direction='left' behavior='scroll'><a href='"+active_contest_data[i].contest_url +"' target='_blank'>" +active_contest_data[i].contest_name+ "</a></marquee>";
-
+			contestNameDiv.innerHTML = "<a href='"+active_contest_data[i].contest_url +"' target='_blank'>" +active_contest_data[i].contest_name+ "</div>";
+			contestNameDiv.className = "marquee";
 			newDiv.appendChild(contestNameDiv);			
 
 		}

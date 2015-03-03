@@ -88,31 +88,28 @@ header h1 {
    color: white !important;
 }
 
-/* define the animation */
-/*@-webkit-keyframes marquee {
-  0%   { @-webkit-transform: @-webkit-translate(0, 0); }
-  100% { @-webkit-transform: @-webkit-translate(-100%, 0); }
-}*/
-
-/* define your limiting container */
-/*.cards .marquee {
-  width: 450px;
+@-webkit-keyframes marquee {
+  from {
+    left: 100%;
+  }
+  to {
+    left: -23em;
+  }
+}
+.marquee {
+  position: relative;
+  width: 100%;
   margin: 0 auto;
-  white-space: nowrap;
-  overflow: hidden;
   box-sizing: border-box;
-}
-*/
-
-/* this is the tray moving around your container */
-
-
-.cards marquee {
-    position: relative;
-    @-webkit-animation: moving 5s 1;
-    animation: moving 5s 1;
+  /*overflow: hidden;*/
+  white-space: nowrap;
+  -webkit-animation: marquee 7s linear infinite;
 }
 
+.marquee:hover {
+  -webkit-animation-play-state: paused !important;
+  animation-play-state: paused !important;
+}
 
 
 @media only screen and (min-width: 768px) {
