@@ -148,16 +148,17 @@ header h1 {
 .cd-tabs-navigation a {
   position: relative;
   display: block;
-  height: 60px;
+  height: 50px;
   width: 125px;
   text-align: center;
   /*font-size: 50px;*/
-  font-size: 0.80rem;
+  font-size: 1rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 700;
   color: #c3c2b9;
-  padding-top: 34px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .no-touch .cd-tabs-navigation a:hover {
   color: #29324e;
