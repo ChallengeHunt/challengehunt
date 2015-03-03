@@ -44,17 +44,34 @@ function getHosts(callback) {
 	});
 }
 
-function updateBadge() {
+function isFirstInstall() {
+
+	if(!localStorage.settings) {
+	   settings = {};
+	   settings["firstuse"] = 1;     
+	   localStorage.settings = JSON.stringify(settings);
+	   console.log("yo install");	
+	   return true;
+	}
+	return false;
+}
+
+function initialize() {
+
 	getData(function(data) {
 		chrome.browserAction.setBadgeText({text:data.toString()});
 	});
-	getHosts(function(data){});
+
+	if (isFirstInstall()) {
+		getHosts(function(data){});
+		chrome.tabs.create({ url: "https://google.com" });
+	}
 }
 
 var pollInterval = 1000 * 60 * 15; // 10 minutes, in milliseconds
 
 function startRequest() {
-	updateBadge();
+	initialize();
 	console.log(pollInterval);
 	window.setTimeout(startRequest, pollInterval);
 } 
