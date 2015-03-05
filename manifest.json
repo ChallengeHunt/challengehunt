@@ -6,7 +6,7 @@
   "version": "0.0.1",
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
   "background": {
-    "scripts": ["js/jquery-1.11.2.min.js", "js/background.js"]
+    "scripts": ["js/background.js"]
   },
 
   "browser_action": {
