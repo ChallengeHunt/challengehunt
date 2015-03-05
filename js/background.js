@@ -1,6 +1,3 @@
-
-
-
 function getData(callback) {
 	var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
@@ -46,7 +43,7 @@ function getHosts(callback) {
 	        if(xmlhttp.status == 200){
 	           	var data = xmlhttp.responseText;
 	           	if(!((typeof localStorage["hosts_data"]) === 'undefined')) {
-				localStorage.removeItem('hosts_data');
+					localStorage.removeItem('hosts_data');
 				}
 		    	localStorage.setItem('hosts_data', data);
 		    	callback(data);
