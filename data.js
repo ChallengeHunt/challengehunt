@@ -153,11 +153,11 @@ function generateCards(data) {
 		} else {
 
 			var contestNameDiv = document.createElement('div');
-			contestNameDiv.style.cssText =  "font-size:24px;  font-family: Courgette, cursive; text-align:center; margin-top:-4px; "	
+			contestNameDiv.style.cssText =  "font-size:100%;  font-family: Courgette, cursive; text-align:center; margin-top:-4px; "	
 			// contestNameDiv.innerHTML = "<marquee behavior='scroll' id='link'><a href='"+active_contest_data[i].contest_url +"' target='_blank'>" +active_contest_data[i].contest_name+ "</a></marquee>";
 			// contestNameDiv.className = "marquee";
 			contestNameDiv.innerHTML = "<a href='"+active_contest_data[i].contest_url +"' target='_blank'>" +active_contest_data[i].contest_name+ "</div>";
-			contestNameDiv.className = "marquee";
+			// contestNameDiv.className = "marquee";
 			newDiv.appendChild(contestNameDiv);			
 
 		}
@@ -337,11 +337,11 @@ function generateCardsPending(data) {
 		} else {
 
 			var contestNameDiv = document.createElement('div');
-			contestNameDiv.style.cssText =  "font-size:24px;  font-family: Courgette, cursive; text-align:center; margin-top:-4px; "	
+			contestNameDiv.style.cssText =  "font-size:100%;  font-family: Courgette, cursive; text-align:center; margin-top:-4px; "	
 			// contestNameDiv.innerHTML = "<marquee behavior='scroll' id='link'><a href='"+active_contest_data[i].contest_url +"' target='_blank'>" +active_contest_data[i].contest_name+ "</a></marquee>";
 			// contestNameDiv.className = "marquee";
 			contestNameDiv.innerHTML = "<a href='"+pending_contest_data[i].contest_url +"' target='_blank'>" +pending_contest_data[i].contest_name+ "</div>";
-			contestNameDiv.className = "marquee";
+			// contestNameDiv.className = "marquee";
 			newDiv.appendChild(contestNameDiv);			
 
 		}
@@ -460,11 +460,11 @@ function generateCardsArchive(data) {
 		} else {
 
 			var contestNameDiv = document.createElement('div');
-			contestNameDiv.style.cssText =  "font-size:24px;  font-family: Courgette, cursive; text-align:center; margin-top:-4px; "	
+			contestNameDiv.style.cssText =  "font-size:100%;  font-family: Courgette, cursive; text-align:center; margin-top:-4px; "	
 			// contestNameDiv.innerHTML = "<marquee behavior='scroll' id='link'><a href='"+active_contest_data[i].contest_url +"' target='_blank'>" +active_contest_data[i].contest_name+ "</a></marquee>";
 			// contestNameDiv.className = "marquee";
 			contestNameDiv.innerHTML = "<a href='"+archived_contest_data[i].contest_url +"' target='_blank'>" +archived_contest_data[i].contest_name+ "</div>";
-			contestNameDiv.className = "marquee";
+			// contestNameDiv.className = "marquee";
 			newDiv.appendChild(contestNameDiv);			
 
 		}

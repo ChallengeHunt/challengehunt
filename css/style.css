@@ -1,8 +1,5 @@
-
 /* -------------------------------- 
-
 Primary style
-
 -------------------------------- */
 *, *::after, *::before {
   -webkit-box-sizing: border-box;
@@ -30,9 +27,7 @@ a {
 }
 
 /* -------------------------------- 
-
 Main components 
-
 -------------------------------- */
 header {
   position: relative;

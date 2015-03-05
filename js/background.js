@@ -64,7 +64,7 @@ function initialize() {
 
 	if (isFirstInstall()) {
 		getHosts(function(data){});
-		chrome.tabs.create({ url: "https://google.com" });
+		chrome.tabs.create({ url: "http://challengehunt.github.io/challengehunt/help.html" });
 	}
 }
 
