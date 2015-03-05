@@ -459,6 +459,18 @@ footer {
   background: #fff;
 }
 
+#foot {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  font-size: 16px;
+  color: #3f4549;
+  bottom: 5px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  text-align: center;
+}
+
 .inner-footer  ul li,a  {
 	list-style:none;
 }
