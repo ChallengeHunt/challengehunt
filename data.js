@@ -126,6 +126,12 @@ function generateCards(data) {
 			logoDiv.setAttribute('src', '/img/'+ active_contest_data[i].host_name  +'.png');
 			logoDiv.style.cssText =  "border:1px solid #eee; border-radius: 2px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
 			newDiv.appendChild(logoDiv);
+		} else if(active_contest_data[i].host_name=="facebook.com/hackercup"){
+			var logoDiv = document.createElement('img');
+			logoDiv.setAttribute('src', '/img/hackercup.jpg');
+			logoDiv.style.cssText =  "border:1px solid #eee; border-radius: 2px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
+			newDiv.appendChild(logoDiv);
+
 		} else {
 			var logoDiv = document.createElement('img');
 			logoDiv.setAttribute('src', '/img/default.jpg');
@@ -287,7 +293,14 @@ function generateCardsPending(data) {
 			logoDiv.setAttribute('src', '/img/'+ pending_contest_data[i].host_name  +'.png');
 			logoDiv.style.cssText =  "border:1px solid #eee; border-radius: 2px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
 			newDiv.appendChild(logoDiv);
-		} else {
+		}else if(pending_contest_data[i].host_name=="facebook.com/hackercup"){
+			var logoDiv = document.createElement('img');
+			logoDiv.setAttribute('src', '/img/hackercup.jpg');
+			logoDiv.style.cssText =  "border:1px solid #eee; border-radius: 2px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
+			newDiv.appendChild(logoDiv);
+
+		}  else {
+
 			var logoDiv = document.createElement('img');
 			logoDiv.setAttribute('src', '/img/default.jpg');
 			logoDiv.style.cssText =  "border:1px solid #eee; border-radius: 2px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
@@ -410,6 +423,12 @@ function generateCardsArchive(data) {
 			logoDiv.setAttribute('src', '/img/'+ archived_contest_data[i].host_name  +'.png');
 			logoDiv.style.cssText =  "border:1px solid #eee; border-radius: 2px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
 			newDiv.appendChild(logoDiv);
+		} else if(archived_contest_data[i].host_name=="facebook.com/hackercup"){
+			var logoDiv = document.createElement('img');
+			logoDiv.setAttribute('src', '/img/hackercup.jpg');
+			logoDiv.style.cssText =  "border:1px solid #eee; border-radius: 2px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
+			newDiv.appendChild(logoDiv);
+
 		} else {
 			var logoDiv = document.createElement('img');
 			logoDiv.setAttribute('src', '/img/default.jpg');
