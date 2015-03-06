@@ -129,7 +129,7 @@ function generateCards(data) {
 		} else {
 			var logoDiv = document.createElement('img');
 			logoDiv.setAttribute('src', '/img/default.jpg');
-			logoDiv.style.cssText =  "border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
+			logoDiv.style.cssText =  "border:1px solid #eee; border-radius: 2px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
 			newDiv.appendChild(logoDiv);
 
 		}
@@ -238,29 +238,6 @@ function timeFormatted(time){
 	return hour + ":" + min + timeOfDay ;
 }
 
-
-
-function changeBackgroundColorOnMouseOver(e) {
-	console.log("on mouse over");
-	// e.style.background = "green";
-	var target = e.target || e.srcElement;
-	console.log(target.style.width)
-	console.log(e.srcElement)
-	if (target.style.width == "320px") {
-		target.style.background = "#563d7c";
-	}
-}
-
-function changeBackgroundColorOnMouseOut(e) {
-	console.log("on mouse out");
-	// e.style.background = "green";
-	var target = e.target || e.srcElement;
-	// console.log(target);
-	if (target.style.width == "320px") {
-		target.style.background = "#F2F2F7";
-	}
-}
-
 function generateCardsPending(data) {
 
 	var pending_tabs = document.getElementById("pending-contests");
@@ -313,7 +290,7 @@ function generateCardsPending(data) {
 		} else {
 			var logoDiv = document.createElement('img');
 			logoDiv.setAttribute('src', '/img/default.jpg');
-			logoDiv.style.cssText =  "border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
+			logoDiv.style.cssText =  "border:1px solid #eee; border-radius: 2px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
 			newDiv.appendChild(logoDiv);
 
 		}
@@ -436,7 +413,7 @@ function generateCardsArchive(data) {
 		} else {
 			var logoDiv = document.createElement('img');
 			logoDiv.setAttribute('src', '/img/default.jpg');
-			logoDiv.style.cssText =  "border:2px solid black; border-radius: 10px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
+			logoDiv.style.cssText =  "border:1px solid #eee; border-radius: 2px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
 			newDiv.appendChild(logoDiv);
 
 		}
