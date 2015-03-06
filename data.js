@@ -290,7 +290,11 @@ function generateCardsPending(data) {
 		} else {
 			var logoDiv = document.createElement('img');
 			logoDiv.setAttribute('src', '/img/default.jpg');
+<<<<<<< HEAD
 			logoDiv.style.cssText =  "border:1px solid #eee; border-radius: 2px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
+=======
+			logoDiv.style.cssText =  "margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
+>>>>>>> 16af2c7d08249317039a924e9851597e730f06c3
 			newDiv.appendChild(logoDiv);
 
 		}
@@ -413,7 +417,11 @@ function generateCardsArchive(data) {
 		} else {
 			var logoDiv = document.createElement('img');
 			logoDiv.setAttribute('src', '/img/default.jpg');
+<<<<<<< HEAD
 			logoDiv.style.cssText =  "border:1px solid #eee; border-radius: 2px; margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
+=======
+			logoDiv.style.cssText =  "margin-top:1px; margin-left:1px;height:30%;width30%;margin-bottom:12px;"	
+>>>>>>> 16af2c7d08249317039a924e9851597e730f06c3
 			newDiv.appendChild(logoDiv);
 
 		}
