@@ -3,7 +3,7 @@
 
   "name": "Challenge Hunt",
   "description": "All programming challenges at one place",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
   "background": {
     "scripts": ["js/background.js"]
@@ -12,6 +12,11 @@
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "index.html"
+  },
+
+  "icons": { 
+    "16": "icon.png",
+    "48": "icon48.png"
   },
 
   "permissions": [

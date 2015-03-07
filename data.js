@@ -1,5 +1,6 @@
 function initialize() {
-	if (((typeof localStorage["data"]) === 'undefined') && ((typeof localStorage["hosts_data"]) === 'undefined')){
+	if (!localStorage.data || !localStorage.hosts_data) {
+		console.log("error in background.js");
 		getChallengeData();
 		getHosts();
 	}
@@ -84,7 +85,8 @@ function generateCards(data) {
 	console.log(JSON.parse(data));
 	// active_tabs.innerText = JSON.parse(data)["active"];
 
-	var active_contest_data = JSON.parse(data)["active"];
+	var active_contests = JSON.parse(data);
+	var active_contest_data = active_contests["active"];
 	var numberOfActiveContests = 0;
 	
 	hosts = JSON.parse(localStorage.getItem('hosts'));
