@@ -150,19 +150,24 @@ function generateCards(data) {
 	var active_contest_data = active_contests["active"];
 	var numberOfActiveContests = 0;
 	
+	var prev_contest_name = "";
+
 	hosts = JSON.parse(localStorage.getItem('hosts'));
 	
 	for (var i = 0; i < active_contest_data.length; i++) {
-		active_card = applyStyle(active_contest_data[i]);
+		if(prev_contest_name!=active_contest_data[i].contest_name){
+			active_card = applyStyle(active_contest_data[i]);
 
-	 	if ((typeof localStorage["hosts"]) === 'undefined') {
-			document.getElementById("active-contests").appendChild(active_card);
-			numberOfActiveContests += 1;
+	 		if ((typeof localStorage["hosts"]) === 'undefined') {
+				document.getElementById("active-contests").appendChild(active_card);
+				numberOfActiveContests += 1;
+			}
+			else if (hosts.hasOwnProperty(active_contest_data[i].host_name)) {
+				document.getElementById("active-contests").appendChild(active_card);
+				numberOfActiveContests += 1;
+			}
 		}
-		else if (hosts.hasOwnProperty(active_contest_data[i].host_name)) {
-			document.getElementById("active-contests").appendChild(active_card);
-			numberOfActiveContests += 1;
-		}
+		prev_contest_name = active_contest_data[i].contest_name;
 	}
 
 	chrome.browserAction.setBadgeText({text:numberOfActiveContests.toString()});
@@ -177,8 +182,13 @@ function generateCardsPending(data) {
 	var pending_contest_data = JSON.parse(data)["pending"];
 	hosts = JSON.parse(localStorage.getItem('hosts'));
 
+	var prev_contest_name = "";
+
+
 	for (var i = 0; i < pending_contest_data.length; i++) {
 
+	if(prev_contest_name!=pending_contest_data[i].contest_name){
+	
 		upcomingDiv = applyStyle(pending_contest_data[i]);
 	 	if ((typeof localStorage["hosts"]) === 'undefined') {
 			document.getElementById("pending-contests").appendChild(upcomingDiv);
@@ -186,6 +196,10 @@ function generateCardsPending(data) {
 		else if (hosts.hasOwnProperty(pending_contest_data[i].host_name)) {
 			document.getElementById("pending-contests").appendChild(upcomingDiv);
 		}
+
+		prev_contest_name = pending_contest_data[i].contest_name;
+	}
+
 	}
 }
 
@@ -198,8 +212,12 @@ function generateCardsArchive(data) {
 	var archived_contest_data = JSON.parse(data)["archived"];
 	hosts = JSON.parse(localStorage.getItem('hosts'));
 	
+	var prev_contest_name = "";
+
 	for (var i = 0; i < archived_contest_data.length; i++) {
 
+	if(prev_contest_name!=archived_contest_data[i].contest_name){
+	
 		archived_card = applyStyle(archived_contest_data[i]);
 	 	if ((typeof localStorage["hosts"]) === 'undefined') {
 			document.getElementById("archived-contests").appendChild(archived_card);
@@ -207,6 +225,9 @@ function generateCardsArchive(data) {
 		else if (hosts.hasOwnProperty(archived_contest_data[i].host_name)) {
 			document.getElementById("archived-contests").appendChild(archived_card);
 		}
+
+		prev_contest_name = archived_contest_data[i].contest_name;
+	}
 	}
 }
 
