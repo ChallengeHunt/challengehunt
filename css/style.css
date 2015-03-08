@@ -59,13 +59,24 @@ header h1 {
 }
 
 .cards{
-    color: black !important;
-  }
+  color: black !important;
+  width: 330px;
+  height: 135px; 
+  border-style: solid; 
+  border-color: #C8C8C8;
+  overflow: hidden;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: 14px;
+  background: #F8F8F8;
+}
 
 
 .cards:hover {
    color: white !important;   /*To change font color */
-  background: #563d7c !important;
+    background: #563d7c !important;
 
     -webkit-box-shadow: 0 10px 6px -6px #777;
     box-shadow: 0 10px 6px -6px #777;
@@ -81,6 +92,57 @@ header h1 {
 
 .cards:hover a{
    color: white !important;
+}
+
+.logo {
+  border:1px solid #eee;
+  border-radius: 2px; 
+  margin-top:1px; 
+  margin-left:1px;
+  height:30%;
+  /*width: 30%;*/
+  margin-bottom:12px;
+}
+
+.time {
+  float:right; 
+  margin-right:3px;  
+  font-size:14px; 
+  font-family: Roboto, sans-serif;
+}
+
+.start-time {
+  margin-top:5px; 
+}
+
+.end-time {
+  margin-top:20px;
+  margin-bottom: 3px;
+}
+
+.contest-name-short {
+  font-size:24px;
+  font-family: Courgette, cursive;
+  text-align:center;
+}
+
+.contest-name-long {
+  font-size:100%;
+  font-family: Courgette, cursive;
+  text-align:center;
+}
+
+.contest-url {
+  font-size:14px;
+  font-family: Inconsolata, cursive;
+  text-align:center;
+}
+
+.duration {
+  float:left;
+  font-size:16px;
+  margin-top:18px;
+  margin-bottom: 3px;
 }
 
 @-webkit-keyframes marquee {
