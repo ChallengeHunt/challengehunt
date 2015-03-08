@@ -14,15 +14,18 @@ function getData(callback) {
 				}
 		    	localStorage.setItem('data', data);
 				
+				var prevContestName = "";
+
 				for (var i = 0; i < active_contest_data.length; i++) {
-					if ((typeof localStorage["hosts"]) === 'undefined') {
-						// document.getElementById("active-contests").appendChild(newDiv);
-						activeContestCount = activeContestCount + 1;
+					if(prevContestName != active_contest_data[i].contest_name){
+						if ((typeof localStorage["hosts"]) === 'undefined') {
+							activeContestCount = activeContestCount + 1;
+						}
+						else if (hosts.hasOwnProperty(active_contest_data[i].host_name)) {
+							activeContestCount = activeContestCount + 1;
+						}
 					}
-					else if (hosts.hasOwnProperty(active_contest_data[i].host_name)) {
-						// document.getElementById("active-contests").appendChild(newDiv);
-						activeContestCount = activeContestCount + 1;
-					}
+					prevContestName = active_contest_data[i].contest_name;
 	           	}
 	           	console.log(activeContestCount);
 				callback(activeContestCount);

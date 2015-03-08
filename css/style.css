@@ -11,6 +11,10 @@ Primary style
   content: '';
 }
 
+html {
+    overflow-y:scroll;
+}
+
 body {
   font-size: 100%;
   font-family: "PT Sans", sans-serif;
