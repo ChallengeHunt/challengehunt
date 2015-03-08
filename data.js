@@ -150,12 +150,12 @@ function generateCards(data) {
 	var active_contest_data = active_contests["active"];
 	var numberOfActiveContests = 0;
 	
-	var prev_contest_name = "";
+	var prevContestName = "";
 
 	hosts = JSON.parse(localStorage.getItem('hosts'));
 	
 	for (var i = 0; i < active_contest_data.length; i++) {
-		if(prev_contest_name!=active_contest_data[i].contest_name){
+		if(prevContestName != active_contest_data[i].contest_name){
 			active_card = applyStyle(active_contest_data[i]);
 
 	 		if ((typeof localStorage["hosts"]) === 'undefined') {
@@ -167,7 +167,7 @@ function generateCards(data) {
 				numberOfActiveContests += 1;
 			}
 		}
-		prev_contest_name = active_contest_data[i].contest_name;
+		prevContestName = active_contest_data[i].contest_name;
 	}
 
 	chrome.browserAction.setBadgeText({text:numberOfActiveContests.toString()});
@@ -182,24 +182,23 @@ function generateCardsPending(data) {
 	var pending_contest_data = JSON.parse(data)["pending"];
 	hosts = JSON.parse(localStorage.getItem('hosts'));
 
-	var prev_contest_name = "";
+	var prevContestName = "";
 
 
 	for (var i = 0; i < pending_contest_data.length; i++) {
 
-	if(prev_contest_name!=pending_contest_data[i].contest_name){
-	
-		upcomingDiv = applyStyle(pending_contest_data[i]);
-	 	if ((typeof localStorage["hosts"]) === 'undefined') {
-			document.getElementById("pending-contests").appendChild(upcomingDiv);
-		}
-		else if (hosts.hasOwnProperty(pending_contest_data[i].host_name)) {
-			document.getElementById("pending-contests").appendChild(upcomingDiv);
-		}
+		if(prevContestName != pending_contest_data[i].contest_name){
+		
+			upcomingDiv = applyStyle(pending_contest_data[i]);
+		 	if ((typeof localStorage["hosts"]) === 'undefined') {
+				document.getElementById("pending-contests").appendChild(upcomingDiv);
+			}
+			else if (hosts.hasOwnProperty(pending_contest_data[i].host_name)) {
+				document.getElementById("pending-contests").appendChild(upcomingDiv);
+			}
 
-		prev_contest_name = pending_contest_data[i].contest_name;
-	}
-
+			prevContestName = pending_contest_data[i].contest_name;
+		}
 	}
 }
 
@@ -212,22 +211,22 @@ function generateCardsArchive(data) {
 	var archived_contest_data = JSON.parse(data)["archived"];
 	hosts = JSON.parse(localStorage.getItem('hosts'));
 	
-	var prev_contest_name = "";
+	var prevContestName = "";
 
 	for (var i = 0; i < archived_contest_data.length; i++) {
 
-	if(prev_contest_name!=archived_contest_data[i].contest_name){
-	
-		archived_card = applyStyle(archived_contest_data[i]);
-	 	if ((typeof localStorage["hosts"]) === 'undefined') {
-			document.getElementById("archived-contests").appendChild(archived_card);
-		}
-		else if (hosts.hasOwnProperty(archived_contest_data[i].host_name)) {
-			document.getElementById("archived-contests").appendChild(archived_card);
-		}
+		if(prevContestName != archived_contest_data[i].contest_name){
+		
+			archived_card = applyStyle(archived_contest_data[i]);
+		 	if ((typeof localStorage["hosts"]) === 'undefined') {
+				document.getElementById("archived-contests").appendChild(archived_card);
+			}
+			else if (hosts.hasOwnProperty(archived_contest_data[i].host_name)) {
+				document.getElementById("archived-contests").appendChild(archived_card);
+			}
 
-		prev_contest_name = archived_contest_data[i].contest_name;
-	}
+			prevContestName = archived_contest_data[i].contest_name;
+		}
 	}
 }
 
