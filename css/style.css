@@ -126,13 +126,13 @@ header h1 {
 
 .contest-name-short {
   font-size:24px;
-  font-family: Courgette, cursive;
+  font-family: Roboto Condensed;
   text-align:center;
 }
 
 .contest-name-long {
   font-size:100%;
-  font-family: Courgette, cursive;
+  font-family: Roboto Condensed;
   text-align:center;
 }
 
