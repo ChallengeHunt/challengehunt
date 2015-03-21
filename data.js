@@ -1,6 +1,5 @@
 function initialize() {
 	if (!localStorage.data || !localStorage.hosts_data) {
-		console.log("error in background.js");
 		getChallengeData();
 		getHosts();
 	}
@@ -65,9 +64,18 @@ function applyStyle(data) {
 
 	var newDiv = document.createElement('div');
  	newDiv.className = "cards grow";
-
-	var startDateTime = toTimeZone(data.start).split(",");
+ 	
+ 	var startDateTime = toTimeZone(data.start).split(",");
 	var endDateTime = toTimeZone(data.end).split(",");
+	
+	if(startDateTime.length == 1 && endDateTime.length == 1) {
+		startDateTime = toTimeZone(data.start).split(" ");
+		endDateTime = toTimeZone(data.end).split(" ");
+	}
+
+	var startDate = dateFormatted(startDateTime[0]);
+	var startTime = timeFormatted(startDateTime[1]);
+	var startDateTimeDiv = document.createElement('div');
 	var lengthOfContestname = data.contest_name.length;
 
 	if(imageExists("/img/"+data.host_name+".png")) {
@@ -89,10 +97,6 @@ function applyStyle(data) {
 		logoDiv.className = "logo";
 		newDiv.appendChild(logoDiv);
 	}
-
-	var startDate = dateFormatted(startDateTime[0]);
-	var startTime = timeFormatted(startDateTime[1]);
-	var startDateTimeDiv = document.createElement('div');
 
 	startDateTimeDiv.className = "time start-time";
 	startDateTimeDiv.innerHTML = "<i class='fa fa-play' style=' margin-right:5px;'></i>" + startDate + startTime ;
@@ -262,7 +266,6 @@ function loadDropDown() {
 			} else {
 				var hosts = JSON.parse(localStorage.getItem('hosts'));
 				if (hosts.hasOwnProperty(value)) {
-					console.log("already there")
 				} else {
 					hosts[value] = true;
 					localStorage.setItem('hosts', JSON.stringify(hosts));

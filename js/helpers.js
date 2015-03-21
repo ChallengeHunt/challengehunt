@@ -35,20 +35,23 @@ function dateFormatted(date){
 	var mm = months[start[0]-1];
 	var yyyy = start[2];
 
-	return dd + " " + mm + " " + yyyy ;
+	return dd + " " + mm + " " + yyyy;
 }
 
 function timeFormatted(time){
 	var start = time.split(":");
-
 	var hour = start[0];
 	var min = start[1];
-
-	var checkTimeOfDay = start[2].split(" ");
-	if(checkTimeOfDay[1]=="PM"){
-		var timeOfDay = "pm";
-	}else if(checkTimeOfDay[1]=="AM"){
-		var timeOfDay = "am";
+	
+	if (start[2].split(" ").length == 2) { 
+		var checkTimeOfDay = start[2].split(" ");
+		if(checkTimeOfDay[1]=="PM"){
+			var timeOfDay = "pm";
+		}else if(checkTimeOfDay[1]=="AM"){
+			var timeOfDay = "am";
+		}
+		return hour + ":" + min + timeOfDay ;
+	} else {
+		return " " + hour + ":" + min; //+ start[2] ;
 	}
-	return hour + ":" + min + timeOfDay ;
 }
