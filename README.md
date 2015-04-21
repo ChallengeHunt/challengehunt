@@ -9,7 +9,9 @@ Happy Hunting!
 You can install Challenge Hunt from [here](https://chrome.google.com/webstore/detail/challenge-hunt/cgbnhngdlmhjbmgkekedepoapmoingjj?utm_source=chrome-app-launcher-info-dialog).
 
 ###Made By:
+
 [Archit Verma](https://github.com/architv) and [Chirrag Nangia](https://github.com/chirrag03)
 
 ###License:
+
 Open sourced under [MIT License](https://github.com/ChallengeHunt/challengehunt/blob/master/LICENSE.md).
