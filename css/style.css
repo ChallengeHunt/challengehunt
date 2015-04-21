@@ -98,6 +98,17 @@ header h1 {
    color: white !important;
 }
 
+.logo-upcoming {
+  float: left !important;
+  border:1px solid #eee;
+  border-radius: 2px; 
+  margin-top:1px; 
+  margin-left:1px;
+  height:30%;
+  /*width: 30%;*/
+  margin-bottom:12px;
+}
+
 .logo {
   border:1px solid #eee;
   border-radius: 2px; 
@@ -108,11 +119,16 @@ header h1 {
   margin-bottom:12px;
 }
 
+.calendar {
+  margin: 0 45% 12% 30%;
+}
+
 .time {
   float:right; 
   margin-right:3px;  
   font-size:14px; 
   font-family: Roboto, sans-serif;
+  /*width: 50%;*/
 }
 
 .start-time {

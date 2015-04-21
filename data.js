@@ -60,7 +60,7 @@ function getHosts() {
 }
 
 // creates a new card and applies all the style to it. returns the created card
-function applyStyle(data) {
+function applyStyle(data, type) {
 
 	var newDiv = document.createElement('div');
  	newDiv.className = "cards grow";
@@ -78,29 +78,39 @@ function applyStyle(data) {
 	var startDateTimeDiv = document.createElement('div');
 	var lengthOfContestname = data.contest_name.length;
 
+	var logoDiv = document.createElement('img');
+
 	if(imageExists("/img/"+data.host_name+".png")) {
-		
-		var logoDiv = document.createElement('img');
 		logoDiv.setAttribute('src', '/img/'+ data.host_name  +'.png');
-		logoDiv.className = "logo";
-		newDiv.appendChild(logoDiv);
 	}
 	// special case for hackercup 
 	else if(data.host_name == "facebook.com/hackercup") {
-		var logoDiv = document.createElement('img');
 		logoDiv.setAttribute('src', '/img/hackercup.jpg');
-		logoDiv.className = "logo";
-		newDiv.appendChild(logoDiv);
 	} else {
-		var logoDiv = document.createElement('img');
 		logoDiv.setAttribute('src', '/img/default.jpg');
-		logoDiv.className = "logo";
-		newDiv.appendChild(logoDiv);
 	}
+
+	if (type == "upcoming") {
+		logoDiv.className = "logo-upcoming";
+	} else {
+		logoDiv.className = "logo";	
+	}
+	newDiv.appendChild(logoDiv);
 
 	startDateTimeDiv.className = "time start-time";
 	startDateTimeDiv.innerHTML = "<i class='fa fa-play' style=' margin-right:5px;'></i>" + startDate + startTime ;
 	newDiv.appendChild(startDateTimeDiv);
+
+	if (type == "upcoming") {
+		var startDateForCalender = dateForCalendar(startDateTime[0]) + 'T' + timeForCalendar(startDateTime[1]);
+		var endDateForCalendar = dateForCalendar(endDateTime[0]) + 'T' + timeForCalendar(endDateTime[1]);
+		var calendarTime = startDateForCalender + '/' + endDateForCalendar;
+	    calendarLink = "https://www.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(data.contest_name)+"&dates="+calendarTime+"&location="+data.contest_url+"&pli=1&uid=&sf=true&output=xml#eventpage_6"
+		var calendarDiv = document.createElement('div');
+		calendarDiv.className = "calendar";
+		calendarDiv.innerHTML = "<center><a href='" + calendarLink + "' target='_blank'><i class='fa fa-bell-o'></i></a></center>";
+		newDiv.appendChild(calendarDiv);
+	}
 
 
 	if(lengthOfContestname < 28) {
@@ -160,7 +170,7 @@ function generateCards(data) {
 	
 	for (var i = 0; i < active_contest_data.length; i++) {
 		if(prevContestName != active_contest_data[i].contest_name){
-			active_card = applyStyle(active_contest_data[i]);
+			active_card = applyStyle(active_contest_data[i], "active");
 
 	 		if ((typeof localStorage["hosts"]) === 'undefined') {
 				document.getElementById("active-contests").appendChild(active_card);
@@ -193,7 +203,7 @@ function generateCardsPending(data) {
 
 		if(prevContestName != pending_contest_data[i].contest_name){
 		
-			upcomingDiv = applyStyle(pending_contest_data[i]);
+			upcomingDiv = applyStyle(pending_contest_data[i], "upcoming");
 		 	if ((typeof localStorage["hosts"]) === 'undefined') {
 				document.getElementById("pending-contests").appendChild(upcomingDiv);
 			}
@@ -221,7 +231,7 @@ function generateCardsArchive(data) {
 
 		if(prevContestName != archived_contest_data[i].contest_name){
 		
-			archived_card = applyStyle(archived_contest_data[i]);
+			archived_card = applyStyle(archived_contest_data[i], "archived");
 		 	if ((typeof localStorage["hosts"]) === 'undefined') {
 				document.getElementById("archived-contests").appendChild(archived_card);
 			}

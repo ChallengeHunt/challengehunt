@@ -55,3 +55,28 @@ function timeFormatted(time){
 		return " " + hour + ":" + min; //+ start[2] ;
 	}
 }
+
+function timeForCalendar(time) {
+	var formattedTime = time.split(' ');
+	var hours = 0;
+	if (formattedTime[2] == "PM") {
+		hours = 12;
+	}
+	var timeOfDay = formattedTime[1].split(':');
+	hours += parseInt(timeOfDay[0]);
+	minutes = timeOfDay[1];
+	seconds = timeOfDay[2];
+
+	if (hours < 10) {
+		hours = "0" + hours; 
+	}
+	return "" + hours + minutes + seconds;
+}
+
+function dateForCalendar(date) {
+	var formattedDate = date.split('/');
+	if(parseInt(formattedDate[0]) < 10) {
+		formattedDate[0] = "0" + formattedDate[0];
+	}
+	return "" + formattedDate[2] + formattedDate[0] + formattedDate[1];
+}
