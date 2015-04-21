@@ -4,7 +4,6 @@ function getData(callback) {
 	    if (xmlhttp.readyState == 4 ) {
 	        if(xmlhttp.status == 200){
 	           	var data = xmlhttp.responseText;
-	           	console.log(data);
 	           	var active_contest_data = JSON.parse(data)["active"];
 				var hosts = JSON.parse(localStorage.getItem('hosts'));
 				var activeContestCount = 0;
@@ -51,7 +50,6 @@ function getHosts(callback) {
 				}
 		    	localStorage.setItem('hosts_data', data);
 		    	callback(data);
-		    	console.log(data);
 		    }
 	       	else {
 	           
@@ -74,6 +72,17 @@ function isFirstInstall() {
 	return false;
 }
 
+function isUpdated() {
+	if(!localStorage.updated) {
+	   updated = {};
+	   updated["version"] = 1;     
+	   localStorage.updated = JSON.stringify(settings);
+	   console.log("yo updated");	
+	   return true;
+	}
+	return false;
+}
+
 function initialize() {
 
 	getData(function(data) {
@@ -83,6 +92,10 @@ function initialize() {
 	if (isFirstInstall()) {
 		getHosts(function(data){});
 		chrome.tabs.create({ url: "http://challengehunt.github.io/challengehunt/help.html" });
+	}
+	else if (isUpdated()) {
+		getHosts(function(data){});
+		chrome.tabs.create({ url: "http://challengehunt.github.io/challengehunt/update.html" });
 	}
 }
 
