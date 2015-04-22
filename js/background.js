@@ -74,7 +74,7 @@ function isFirstInstall() {
 
 function isUpdated() {
 	updatedVersion = JSON.parse(localStorage.getItem('updated'));
-	if(updatedVersion["version"] < 2) {
+	if(!localStorage.updated || updatedVersion["version"] < 2) {
 	   updated = {};
 	   updated["version"] = 2;     
 	   localStorage.updated = JSON.stringify(updated);
