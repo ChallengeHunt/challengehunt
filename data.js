@@ -6,9 +6,6 @@ function initialize() {
 	else {
 		data = localStorage.getItem('data');
 		hosts_data = localStorage.getItem('hosts_data');
-		updated = {};
-	   	updated["version"] = 1;     
-	   	localStorage.updated = JSON.stringify(updated);
 		generateCards(data);
 	    generateCardsArchive(data);
 	    generateCardsPending(data);
