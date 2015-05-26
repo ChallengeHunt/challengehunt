@@ -168,11 +168,13 @@ header h1 {
 /* footer */
 footer{
   padding: 10px;
-  color: white;
-  /*background-color: #5491f5;*/
+  margin-bottom: 2px;
   text-align: center;
   font-family: font-family: Roboto, sans-serif;
+}
 
+footer a {
+  color: white;
 }
 
 @-webkit-keyframes marquee {

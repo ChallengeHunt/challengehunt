@@ -74,9 +74,9 @@ function isFirstInstall() {
 
 function isUpdated() {
 	updatedVersion = JSON.parse(localStorage.getItem('updated'));
-	if(!localStorage.updated || updatedVersion["version"] < 2) {
+	if(!localStorage.updated || updatedVersion["version"] < 3) {
 	   updated = {};
-	   updated["version"] = 2;     
+	   updated["version"] = 3;     
 	   localStorage.updated = JSON.stringify(updated);
 	   console.log("yo updated");	
 	   return true;
@@ -95,8 +95,8 @@ function initialize() {
 		chrome.tabs.create({ url: "http://challengehunt.github.io/challengehunt/help.html" });
 	}
 	else if (isUpdated()) {
-		// getHosts(function(data){});
-		chrome.tabs.create({ url: "http://challengehunt.github.io/challengehunt/update.html" });
+		getHosts(function(data){});
+		// chrome.tabs.create({ url: "http://challengehunt.github.io/challengehunt/update.html" });
 	}
 }
 
