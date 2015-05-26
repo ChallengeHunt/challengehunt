@@ -24,14 +24,10 @@ function getChallengeData() {
 	      	// $("#target").loadingOverlay();
 		},
 	    success: function (data) {
-	    	// $('#target').loadingOverlay('remove');
 	    	if(!((typeof localStorage["data"]) === 'undefined')) {
 				localStorage.removeItem('data');
 			}
 	    	localStorage.setItem('data', data);
-	    	// $("#loader-drop-down").hide();
-	    	// // $("#cd-tabs").show();
-	    	// document.getElementById("c-tabs").style.visibility = "visible";
 	    	generateCards(data);
 	    	generateCardsArchive(data);
 	    	generateCardsPending(data);
@@ -73,7 +69,7 @@ function applyStyle(data, type) {
 		endDateTime = toTimeZone(data.end).split(" ");
 	}
 
-	var startDate = dateFormatted(startDateTime[0]);
+	var startDate = dateFormatted(startDateTime[0], startDateTime[1]);
 	var startTime = timeFormatted(startDateTime[1]);
 	var startDateTimeDiv = document.createElement('div');
 	var lengthOfContestname = data.contest_name.length;
@@ -83,10 +79,15 @@ function applyStyle(data, type) {
 	if(imageExists("/img/"+data.host_name+".png")) {
 		logoDiv.setAttribute('src', '/img/'+ data.host_name  +'.png');
 	}
-	// special case for hackercup 
+	// special case for hackercup
 	else if(data.host_name == "facebook.com/hackercup") {
 		logoDiv.setAttribute('src', '/img/hackercup.jpg');
-	} else {
+	} 
+	// another case for codejam
+	else if(data.host_name == "google.com/codejam") {
+		logoDiv.setAttribute('src', '/img/codejam.png');
+	} 
+	else {
 		logoDiv.setAttribute('src', '/img/default.jpg');
 	}
 
@@ -102,8 +103,8 @@ function applyStyle(data, type) {
 	newDiv.appendChild(startDateTimeDiv);
 
 	if (type == "upcoming") {
-		var startDateForCalender = dateForCalendar(startDateTime[0]) + 'T' + timeForCalendar(startDateTime[1]);
-		var endDateForCalendar = dateForCalendar(endDateTime[0]) + 'T' + timeForCalendar(endDateTime[1]);
+		var startDateForCalender = dateForCalendar(startDateTime[0], startDateTime[1]) + 'T' + timeForCalendar(startDateTime[1]);
+		var endDateForCalendar = dateForCalendar(endDateTime[0], startDateTime[1]) + 'T' + timeForCalendar(endDateTime[1]);
 		var calendarTime = startDateForCalender + '/' + endDateForCalendar;
 	    calendarLink = "https://www.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(data.contest_name)+"&dates="+calendarTime+"&location="+data.contest_url+"&pli=1&uid=&sf=true&output=xml#eventpage_6"
 		var calendarDiv = document.createElement('div');
@@ -143,7 +144,7 @@ function applyStyle(data, type) {
 	durationDiv.innerHTML = "Duration: " + data.duration;
 	newDiv.appendChild(durationDiv);
 
-	var endDate = dateFormatted(endDateTime[0]);
+	var endDate = dateFormatted(endDateTime[0], endDateTime[1]);
 	var endTime = timeFormatted(endDateTime[1]);
 
 	var endDateTimeDiv = document.createElement('div');

@@ -104,7 +104,7 @@ var pollInterval = 1000 * 60 * 15; // 15 minutes, in milliseconds
 
 function startRequest() {
 	initialize();
-	console.log(pollInterval);
+	// console.log(pollInterval);
 	window.setTimeout(startRequest, pollInterval);
 } 
 

@@ -15,26 +15,34 @@ function toTimeZone(time) {
 
 	var dateTimeTimezone = time.split("T");
 	var date = dateTimeTimezone[0].split("-");
-	var timeAndTimeZone = dateTimeTimezone[1].split("T")
+	var timeAndTimeZone = dateTimeTimezone[1].split("T");
 	var time = timeAndTimeZone[0].split(":");
-	var d = new Date(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]), parseInt(time[0]), parseInt(time[1]), parseInt(time[2]), 0)
+	var d = new Date(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]), parseInt(time[0]), parseInt(time[1]), parseInt(time[2]), 0);
 	var offset = -(d.getTimezoneOffset());
 	var newD = new Date(d.getTime() + offset*60000);
-    return newD.toLocaleString()
+    return newD.toLocaleString();
 }
 
-function dateFormatted(date){
+function dateFormatted(date, time){
+	// console.log(time);
+	var timeOfDay = time.split(":");
 	var start = date.split("/");
-
+	// console.log(start);
 	var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep","Oct", "Nov", "Dec"];
 
-	var dd = start[1];
-	if(dd.length == 1){
-		dd = "0" + dd;
+	if (timeOfDay[2].split(" ").length == 2) { 
+		var dd = start[1];
+		if(dd.length == 1){
+			dd = "0" + dd;
+		}
+		var mm =  months[start[0]-1];
+		var yyyy = start[2];
+	} else {
+		var dd = start[0];
+		var mm = months[start[1]-1];
+		var yyyy = start[2];
 	}
-	var mm = months[start[0]-1];
-	var yyyy = start[2];
-
+	// console.log(dd + " " + mm + " " + yyyy);
 	return dd + " " + mm + " " + yyyy;
 }
 
@@ -57,26 +65,46 @@ function timeFormatted(time){
 }
 
 function timeForCalendar(time) {
-	var formattedTime = time.split(' ');
-	var hours = 0;
-	if (formattedTime[2] == "PM") {
-		hours = 12;
-	}
-	var timeOfDay = formattedTime[1].split(':');
-	hours += parseInt(timeOfDay[0]);
-	minutes = timeOfDay[1];
-	seconds = timeOfDay[2];
+	// console.log(time);
+	try {
+		var formattedTime = time.split(' ');
+		var hours = 0;
+		if (formattedTime[2] == "PM") {
+			hours = 12;
+		}
+		var timeOfDay = formattedTime[1].split(':');
+		hours += parseInt(timeOfDay[0]);
+		minutes = timeOfDay[1];
+		seconds = timeOfDay[2];
 
-	if (hours < 10) {
-		hours = "0" + hours; 
+		if (hours < 10) {
+			hours = "0" + hours; 
+		}
+	} catch(err) {
+		var formattedTime = time.split(':');
+		var hours = formattedTime[0];
+		var minutes = formattedTime[1];
+		var seconds = formattedTime[2];
 	}
+	// console.log("" + hours + minutes + seconds);
 	return "" + hours + minutes + seconds;
 }
 
-function dateForCalendar(date) {
+function dateForCalendar(date, time) {
+	var timeOfDay = time.split(":");
+	var start = date.split("/");
+	// console.log(start);
+	var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep","Oct", "Nov", "Dec"];
 	var formattedDate = date.split('/');
-	if(parseInt(formattedDate[0]) < 10) {
-		formattedDate[0] = "0" + formattedDate[0];
+	if (timeOfDay[2].split(" ").length == 2) { 
+		if(parseInt(formattedDate[0]) < 10) {
+			formattedDate[0] = "0" + formattedDate[0];
+		}
+		// console.log("" + formattedDate[2] + formattedDate[0] + formattedDate[1]);
+		return "" + formattedDate[2] + formattedDate[0] + formattedDate[1];
+	} else {
+		// return
+		// console.log("" + formattedDate[2] + formattedDate[1] + formattedDate[0]);
+		return "" + formattedDate[2] + formattedDate[1] + formattedDate[0];
 	}
-	return "" + formattedDate[2] + formattedDate[0] + formattedDate[1];
 }
