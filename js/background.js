@@ -4,6 +4,7 @@ function getData(callback) {
 	    if (xmlhttp.readyState == 4 ) {
 	        if(xmlhttp.status == 200){
 	           	var data = xmlhttp.responseText;
+	           	console.log(data);
 	           	var active_contest_data = JSON.parse(data)["active"];
 				var hosts = JSON.parse(localStorage.getItem('hosts'));
 				var activeContestCount = 0;
@@ -35,7 +36,7 @@ function getData(callback) {
 	    }
 	}
 
-    xmlhttp.open("GET", "http://challengehuntapp.appspot.com", true);
+    xmlhttp.open("GET", "http://challengehuntapp.appspot.com/v2", true);
     xmlhttp.send();
 }
 

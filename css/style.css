@@ -177,6 +177,10 @@ footer a {
   color: white;
 }
 
+footer a #center {
+  margin: 0 auto;
+}
+
 @-webkit-keyframes marquee {
   from {
     left: 100%;

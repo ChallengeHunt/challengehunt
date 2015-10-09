@@ -1,7 +1,6 @@
 function initialize() {
 	if (!localStorage.data || !localStorage.hosts_data) {
 		getChallengeData();
-		getHosts();
 	}
 	else {
 		data = localStorage.getItem('data');
@@ -19,7 +18,7 @@ initialize();
 function getChallengeData() {
 	$.ajax({
 		type:'GET',
-		url: "http://challengehuntapp.appspot.com",
+		url: "http://challengehuntapp.appspot.com/v2",
 		beforeSend: function () {
 	      	// $("#target").loadingOverlay();
 		},
@@ -61,16 +60,26 @@ function applyStyle(data, type) {
 	var newDiv = document.createElement('div');
  	newDiv.className = "cards grow";
  	
- 	var startDateTime = toTimeZone(data.start).split(",");
-	var endDateTime = toTimeZone(data.end).split(",");
+ // 	var startDateTime = toTimeZone(data.start).split(",");
+	// var endDateTime = toTimeZone(data.end).split(",");
 	
-	if(startDateTime.length == 1 && endDateTime.length == 1) {
-		startDateTime = toTimeZone(data.start).split(" ");
-		endDateTime = toTimeZone(data.end).split(" ");
+	
+	if (type == "upcoming") {
+		var startDateTime = toTimeZone(data.start).split(",");
+		var startDate = dateFormatted(startDateTime[0], startDateTime[1]);
+		var startTime = timeFormatted(startDateTime[1]);
+		if (startDateTime.length == 1) {
+			startDateTime = toTimeZone(data.start).split(" ");
+		}
+	} else {
+		var endDateTime = toTimeZone(data.end).split(",");
+		if (endDateTime.length == 1) {
+			endDateTime = toTimeZone(data.end).split(" ");
+		}
 	}
 
-	var startDate = dateFormatted(startDateTime[0], startDateTime[1]);
-	var startTime = timeFormatted(startDateTime[1]);
+	// var startDate = dateFormatted(startDateTime[0], startDateTime[1]);
+	// var startTime = timeFormatted(startDateTime[1]);
 	var startDateTimeDiv = document.createElement('div');
 	var lengthOfContestname = data.contest_name.length;
 
@@ -98,15 +107,17 @@ function applyStyle(data, type) {
 	}
 	newDiv.appendChild(logoDiv);
 
-	startDateTimeDiv.className = "time start-time";
-	startDateTimeDiv.innerHTML = "<i class='fa fa-play' style=' margin-right:5px;'></i>" + startDate + startTime ;
-	newDiv.appendChild(startDateTimeDiv);
+	if (type == "upcoming") {
+		startDateTimeDiv.className = "time start-time";
+		startDateTimeDiv.innerHTML = "<i class='fa fa-play' style=' margin-right:5px;'></i>" + startDate + startTime ;
+		newDiv.appendChild(startDateTimeDiv);
+	}
 
 	if (type == "upcoming") {
-		var startDateForCalender = dateForCalendar(startDateTime[0], startDateTime[1]) + 'T' + timeForCalendar(startDateTime[1]);
-		var endDateForCalendar = dateForCalendar(endDateTime[0], startDateTime[1]) + 'T' + timeForCalendar(endDateTime[1]);
-		var calendarTime = startDateForCalender + '/' + endDateForCalendar;
-	    calendarLink = "https://www.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(data.contest_name)+"&dates="+calendarTime+"&location="+data.contest_url+"&pli=1&uid=&sf=true&output=xml#eventpage_6"
+		// var startDateForCalender = dateForCalendar(startDateTime[0], startDateTime[1]) + 'T' + timeForCalendar(startDateTime[1]);
+		// var endDateForCalendar = dateForCalendar(endDateTime[0], startDateTime[1]) + 'T' + timeForCalendar(endDateTime[1]);
+		// var calendarTime = startDateForCalender + '/' + endDateForCalendar;
+	    calendarLink = "https://www.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(data.contest_name)+"&location="+data.contest_url+"&pli=1&uid=&sf=true&output=xml#eventpage_6"
 		var calendarDiv = document.createElement('div');
 		calendarDiv.className = "calendar";
 		calendarDiv.innerHTML = "<center><a href='" + calendarLink + "' target='_blank'><i class='fa fa-bell-o'></i></a></center>";
@@ -144,13 +155,14 @@ function applyStyle(data, type) {
 	durationDiv.innerHTML = "Duration: " + data.duration;
 	newDiv.appendChild(durationDiv);
 
-	var endDate = dateFormatted(endDateTime[0], endDateTime[1]);
-	var endTime = timeFormatted(endDateTime[1]);
-
-	var endDateTimeDiv = document.createElement('div');
-	endDateTimeDiv.className = "time end-time"
-	endDateTimeDiv.innerHTML = "<i class='fa fa-stop' style=' margin-right:5px'	></i>"+ endDate + endTime  ;
-	newDiv.appendChild(endDateTimeDiv);
+	if (type == "active" || type == "archived") {
+		var endDate = dateFormatted(endDateTime[0], endDateTime[1]);
+		var endTime = timeFormatted(endDateTime[1]);
+		var endDateTimeDiv = document.createElement('div');
+		endDateTimeDiv.className = "time end-time"
+		endDateTimeDiv.innerHTML = "<i class='fa fa-stop' style=' margin-right:5px'	></i>"+ endDate + endTime  ;
+		newDiv.appendChild(endDateTimeDiv);
+	}
 
 	return newDiv;
 }
