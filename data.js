@@ -59,10 +59,6 @@ function applyStyle(data, type) {
 
 	var newDiv = document.createElement('div');
  	newDiv.className = "cards grow";
- 	
- // 	var startDateTime = toTimeZone(data.start).split(",");
-	// var endDateTime = toTimeZone(data.end).split(",");
-	
 	
 	if (type == "upcoming") {
 		var startDateTime = toTimeZone(data.start).split(",");
