@@ -4,72 +4,66 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href='css/pt-sans.css' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
-	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
-	<link rel="stylesheet" type="text/css" href="/css/jquery.tokenize.css" />
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	<link href='css/inconsolata-700.css' rel='stylesheet' type='text/css'>
-	<link href='css/great-vibes.css' rel='stylesheet' type='text/css'>
-	<!-- <link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'> -->
-	<link href='css/roboto-condensed.css' rel='stylesheet' type='text/css'>
-	<!-- <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'> -->
-	<script src="/js/jquery-1.11.2.min.js"></script>
-	<script src="/js/modernizr.js"></script> <!-- Modernizr -->
+	 <!-- Material Design fonts -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Material Design -->
+  <link href="/css/bootstrap-material-design.css" rel="stylesheet">
+  <link href="/css/ripples.min.css" rel="stylesheet">
+  <link href="http://fezvrasta.github.io/snackbarjs/dist/snackbar.min.css" rel="stylesheet">
+
+
+  <!-- Custom CSS files -->
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
   	
 	<title>Challenge Hunt</title>
 </head>
-<body>
-<header>
-	<!-- <h1 style="font-family: 'Pacifico', cursive; letter-spacing: 2px;">Challenge Hunt</h1> -->
-	<h1 style="font-family: 'Great Vibes', cursive; letter-spacing: 3px; font-weight: 500; font-size: 50px;"><b>Challenge Hunt</b></h1>
-	<!-- <h1 style="font-family: 'Kaushan Script', cursive;">Challenge Hunt</h1> -->
+<body style="width: 500px;">
+ <div class="bs-component">
 
-</header>
-<div id="select-menu">
-	<!-- <center><i id="loader-select-menu" class="fa fa-spinner fa-pulse fa-3x" style="margin-top:5px"></i></center> -->
-	<select id="tokenize" multiple="multiple" class="tokenize-sample">
-	</select>
-</div>
-<script src="/js/tokenize-plugin.js"></script>
-<div id="tabs">
-	<!-- <center><i id="loader-drop-down" class="fa fa-spinner fa-pulse fa-3x" style="margin-top:5px"></i></center> -->
-	<div id="c-tabs" class="cd-tabs">
-		<nav>
-			<ul class="cd-tabs-navigation">
-				<li class="active"><a data-content="inbox" class="selected" href="#0"><i class="fa fa-circle fa-lg" ></i><br>Active</a></li>
-				<li class="upcoming"><a data-content="new" href="#0"><i class="fa fa-calendar fa-lg"></i><br>Upcoming</a></li>
-				<li class="archived"><a data-content="gallery" href="#0"><i class="fa fa-archive  fa-lg"></i><br>Archived</a></li>
-			</ul> <!-- cd-tabs-navigation -->
-		</nav>
+          <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+          <center><h1><font color="white">Challenge Hunt</font></h1></center>
+            <li class=""><a href="#home" data-toggle="tab" aria-expanded="false">Home<div class="ripple-container"></div></a></li>
+            <li class="active"><a href="#profile" data-toggle="tab" aria-expanded="true">Profile<div class="ripple-container"></div></a></li>
+            <li class="disabled"><a>Disabled<div class="ripple-container"></div></a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="bootstrap-elements.html" data-target="#" aria-expanded="false">
+                Dropdown <span class="caret"></span>
+              <div class="ripple-container"></div></a>
+              <ul class="dropdown-menu">
+                <li><a href="#dropdown1" data-toggle="tab">Action</a></li>
+                <li class="divider"></li>
+                <li><a href="#dropdown2" data-toggle="tab">Another action</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade" id="home">
+              <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+            </div>
+            <div class="tab-pane fade active in" id="profile">
+              <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+            </div>
+            <div class="tab-pane fade" id="dropdown1">
+              <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+            </div>
+          </div>
+        </div>
 
-		<ul class="cd-tabs-content">
-			<li data-content="inbox" class="selected" id="active-contests">
-			
-			</li>
-
-			<li data-content="new" id="pending-contests">
-			
-			</li>
-
-			<li data-content="gallery" id="archived-contests">
-			</li>
-		</ul> <!-- cd-tabs-content -->
-	</div>
 </div>
 
-<footer>
-  <a href='https://github.com/ChallengeHunt/challengehunt/issues/new' target='_blank' style="float:left;">Bugs/Suggestions?</a>
-  <a href="https://github.com/ChallengeHunt/challengehunt" target='_blank' id="center"><i class="fa fa-github"></i> Star Repo</a>
-  <a href='http://challengehunt.github.io/challengehunt/help.html' target='_blank' style="float:right;">Help</a> 
-</footer>
-
-</div> <!-- cd-tabs -->
-<script type="text/javascript" src="/js/helpers.js"></script>
-<script type="text/javascript" src="/js/jquery.tokenize.js"></script>
-<script src="/js/tokenize-plugin.js"></script>
-<script type="text/javascript" src="data.js"></script>
-<script src="js/main.js"></script> <!-- Resource jQuery -->
+<script src="/js/jquery-1.11.2.min.js"></script>
+<script src="/js/material.min.js"></script>
+<script src="/js/ripples.min.js"></script>
+<script src="/js/snackbar.min.js"></script>
+<script src="/js/init.js"></script>
+<!-- <script type="text/javascript" src="/js/helpers.js"></script>
+<script type="text/javascript" src="data.js"></script> -->
+<!-- <script src="js/main.js"></script> -->
 <script src="js/ga.js"></script>
 </body>
 </html>
