@@ -14,8 +14,6 @@
   <!-- Bootstrap Material Design -->
   <link href="/css/bootstrap-material-design.css" rel="stylesheet">
   <link href="/css/ripples.min.css" rel="stylesheet">
-  <link href="http://fezvrasta.github.io/snackbarjs/dist/snackbar.min.css" rel="stylesheet">
-
 
   <!-- Custom CSS files -->
   <link rel="stylesheet" type="text/css" href="/css/style.css">
@@ -23,62 +21,55 @@
 	<title>Challenge Hunt</title>
 </head>
 <body style="width: 500px;">
- <div class="bs-component">
+  <div class="bs-component">
 
-          <ul class="nav nav-tabs" style="margin-bottom: 15px;">
-          <center><h1><font color="white">Challenge Hunt</font></h1></center>
-            <li class=""><a href="#home" data-toggle="tab" aria-expanded="false">Contests<div class="ripple-container"></div></a></li>
-            <li class="active"><a href="#profile" data-toggle="tab" aria-expanded="true">Hackathons<div class="ripple-container"></div></a></li>
-            <li class="disabled"><a>Hiring Challenges<div class="ripple-container"></div></a></li>
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="bootstrap-elements.html" data-target="#" aria-expanded="false">
-                Data Science(?) <span class="caret"></span>
-              <div class="ripple-container"></div></a>
-              <ul class="dropdown-menu">
-                <li><a href="#dropdown1" data-toggle="tab">Action</a></li>
-                <li class="divider"></li>
-                <li><a href="#dropdown2" data-toggle="tab">Another action</a></li>
-              </ul>
-            </li>
-          </ul>
-          <div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade" id="home">
-              <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-            </div>
-            <div class="tab-pane fade active in" id="profile">
-              <div class="card">
-              <div class="col-lg-3"></div>
+	  <ul class="nav nav-tabs" style="margin-bottom: 15px;" role="tablist" data-tabs="tabs">
+	  <center><h1><font color="white">Challenge Hunt</font></h1></center>
+	    <li role="tab" class=""><a href="#home" data-toggle="tab" aria-expanded="false">home<div class="ripple-container"></div></a></li>
+	    <li role="tab" class="active"><a href="#profile" data-toggle="tab" aria-expanded="true">profile<div class="ripple-container"></div></a></li>
+	    <li role="tab" class=""><a href="#feed" data-toggle="tab" aria-expanded="false">feed<div class="ripple-container"></div></a></li>
+	    <li role="tab" class=""><a href="#notifs" data-toggle="tab" aria-expanded="false">notifs</a><div class="ripple-container"></div></a></li>
+	  </ul>
+	  <div id="myTabContent" class="tab-content">
+	    <div class="tab-pane active fade in" id="home">
+	      <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+	    </div>
+	    <div class="tab-pane fade in" id="profile">
+	      <div class="card">
+	      <div class="col-lg-3"></div>
 
-						    <div class="card-content">
+			    <div class="card-content">
 
-						        <!-- <div class="card-image">
-						            <img src="./image.jpg" alt="Loading image...">
-						            <h3 class="card-image-headline">Lorem Ipsum Dolor</h3>
-						        </div> -->
+			        <!-- <div class="card-image">
+			            <img src="./image.jpg" alt="Loading image...">
+			            <h3 class="card-image-headline">Lorem Ipsum Dolor</h3>
+			        </div> -->
 
-						        <div class="card-body">
-						            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-						        </div>
+			        <div class="card-body">
+			            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+			        </div>
 
-						        <footer class="card-footer">
-						            <button class="btn btn-flat">Share</button>
-						            <button class="btn btn-flat btn-warning">Learn More</button>
-						        </footer>
+			        <footer class="card-footer">
+			            <button class="btn btn-flat">Share</button>
+			            <button class="btn btn-flat btn-warning">Learn More</button>
+			        </footer>
 
-						    </div>
-						    </div>
+		      </div>
+		    </div>
 
-							</div>
-            </div>
-            <div class="tab-pane fade" id="dropdown1">
-              <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
-            </div>
-          </div>
-        </div>
+			</div>
+	    <div class="tab-pane fade in" id="feed">
+	      <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+	    </div>
+	    <div class="tab-pane fade in" id="notifs">
+	      <p>It's Leciester vs Man City today!</p>
+	    </div>
+	  </div>
 
-</div>
+  </div>
 
-<script src="/js/jquery-1.11.2.min.js"></script>
+<script src="/js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script src="/js/material.min.js"></script>
 <script src="/js/ripples.min.js"></script>
 <script src="/js/snackbar.min.js"></script>

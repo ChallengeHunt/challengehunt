@@ -1,1 +1,2 @@
 $.material.init();
+$.material.ripples();
