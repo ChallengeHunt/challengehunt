@@ -1,3 +1,5 @@
+var CONTESTS = {}
+
 function getChallengeData() {
 	$.ajax({
 		type:'GET',
@@ -6,7 +8,11 @@ function getChallengeData() {
 	    // $("#target").loadingOverlay();
 		},
     success: function (data) {
-    	console.log(data);
+    	challengeData = JSON.parse(data);
+    	localStorage.cache = data;
+    	localStorage.HACKATHONS = JSON.stringify(challengeData['hackathons']);
+    	localStorage.HIRING = JSON.stringify(challengeData['hiring']);
+    	localStorage.CONTESTS = JSON.stringify(challengeData['contests']);
     },
     error: function(jq, status, message) {
     }
