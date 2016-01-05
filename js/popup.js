@@ -1,6 +1,6 @@
 var CONTESTS = {}
 
-var challengeData = getChallengeData() {
+var challengeData = function () {
 	$.ajax({
 		type:'GET',
 		url: 'http://testchallengehunt.appspot.com/v1/all',
