@@ -12,7 +12,7 @@ var cards = function (data) {
 				$('<div/>', {
 					class: 'panel-heading',
 					role: 'tab',
-					id: 'headingOne', 
+					id: 'heading' + i, 
 					style: 'background-color:white;',
 			  }).append(
 			  	$('<h4/>', {
@@ -21,10 +21,10 @@ var cards = function (data) {
 			  		$('<a/>', {
 			  			'data-toggle': 'collapse',
 			  			'data-parent': '#accordion',
-			  			'href': '#collapseOne',
+			  			'href': '#collapse' + i,
 			  			'aria-expanded': 'true',
-			  			'aria-controls': 'collapseOne',
-			  			'text': 'Collapsible Group Item #1'
+			  			'aria-controls': 'collapse' + i,
+			  			'text': challengeData[i]['contest_name']
 			  		})
 			  	)
 			  )
@@ -32,8 +32,8 @@ var cards = function (data) {
 				$('<div/>', {
 					'class': 'panel-collapse collapse',
 					'role': 'tabpanel',
-					'id': 'collapseOne', 
-					'aria-labelledby': 'headingOne',
+					'id': 'collapse' + i, 
+					'aria-labelledby': 'heading' + i,
 			  }).append(
 			  	$('<ul/>', {
 			  		class: 'list-group list-group-flush',
