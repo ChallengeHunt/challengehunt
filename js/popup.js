@@ -1,18 +1,27 @@
-var CONTESTS = {}
+var CHALLENGEHUNT = {}
 
-var cards = function (data) {
+CHALLENGEHUNT.contests = {
+	HACKATHONS: 'Hackathons',
+	CONTESTS: 'Contests',
+	HIRING: 'Hiring',
+	DATASCIENCE: 'DS',
+}
 
-	challengeData = data['contests']['active'];
-	console.log(challengeData);
+var cards = function (data, type) {
+
+	// console.log(data);
+	console.log(type);
+	challengeData = data['upcoming'];
+	// console.log(challengeData);
 	for (var i = 0; i < challengeData.length; i++) {
-		$('#accordion').append(
+		$('#accordion' + type).append(
 		  $('<div/>',{
 			class: 'panel panel-default',
 		  }).append(
 				$('<div/>', {
 					class: 'panel-heading',
 					role: 'tab',
-					id: 'heading' + i, 
+					id: 'heading' + type + i, 
 					style: 'background-color:white;',
 			  }).append(
 			  	$('<h4/>', {
@@ -20,10 +29,10 @@ var cards = function (data) {
 			  	}).append(
 			  		$('<a/>', {
 			  			'data-toggle': 'collapse',
-			  			'data-parent': '#accordion',
-			  			'href': '#collapse' + i,
+			  			'data-parent': '#accordion' + type,
+			  			'href': '#collapse' + type + i,
 			  			'aria-expanded': 'true',
-			  			'aria-controls': 'collapse' + i,
+			  			'aria-controls': 'collapse' + type + i,
 			  			'text': challengeData[i]['contest_name']
 			  		})
 			  	)
@@ -32,8 +41,8 @@ var cards = function (data) {
 				$('<div/>', {
 					'class': 'panel-collapse collapse',
 					'role': 'tabpanel',
-					'id': 'collapse' + i, 
-					'aria-labelledby': 'heading' + i,
+					'id': 'collapse' + type + i, 
+					'aria-labelledby': 'heading' + type + i,
 			  }).append(
 			  	$('<ul/>', {
 			  		class: 'list-group list-group-flush',
@@ -80,7 +89,12 @@ var challengeData = function () {
     	localStorage.HIRING = JSON.stringify(challengeData['hiring']);
     	localStorage.CONTESTS = JSON.stringify(challengeData['contests']);
     	console.log('yo');
-    	cards(challengeData);
+    	contestsData = challengeData['contests'];
+    	hiringData = challengeData['hiring'];
+    	hackathonData = challengeData['hackathons'];
+    	cards(contestsData, CHALLENGEHUNT.contests.CONTESTS);
+    	cards(hackathonData, CHALLENGEHUNT.contests.HACKATHONS);
+    	cards(hiringData, CHALLENGEHUNT.contests.HIRING);
     	console.log('bo');
     },
     error: function(jq, status, message) {
