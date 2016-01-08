@@ -49,11 +49,11 @@ var cards = function (data, type) {
 			  	}).append(
 			  		$('<li/>', {
 			  			'class': 'list-group-item',
-			  			'text': 'Ends: saturday, bla blah time'
+			  			'text': 'Starts: ' + challengeData[i]['start']
 			  		}),
 			  		$('<li/>', {
 			  			'class': 'list-group-item',
-			  			'text': 'Duration: 4h'
+			  			'text': 'Duration:' + challengeData[i]['duration']
 			  		}),
 			  		$('<li/>', {
 			  			'class': 'list-group-item',
