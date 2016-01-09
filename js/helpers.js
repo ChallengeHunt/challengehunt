@@ -12,7 +12,6 @@ function imageExists(image_url){
 
 // convert utc to local time zone of browser
 function toTimeZone(time) {
-
 	var dateTimeTimezone = time.split("T");
 	var date = dateTimeTimezone[0].split("-");
 	var timeAndTimeZone = dateTimeTimezone[1].split("T");
@@ -20,7 +19,7 @@ function toTimeZone(time) {
 	var d = new Date(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]), parseInt(time[0]), parseInt(time[1]), parseInt(time[2]), 0);
 	var offset = -(d.getTimezoneOffset());
 	var newD = new Date(d.getTime() + offset*60000);
-    return newD.toLocaleString();
+  return newD.toLocaleString();
 }
 
 function dateFormatted(date, time){
@@ -107,4 +106,29 @@ function dateForCalendar(date, time) {
 		// console.log("" + formattedDate[2] + formattedDate[1] + formattedDate[0]);
 		return "" + formattedDate[2] + formattedDate[1] + formattedDate[0];
 	}
+}
+
+function verboseDuration(duration) {
+  if (!(duration.indexOf('days') > -1)) {
+  	var hrs = parseInt(duration.split(':')[0]);
+  	var days = Math.floor(hrs / 24);
+  	var hrs = hrs % 24;
+  	var minutes = parseInt(duration.split(':')[1]);
+  	if (minutes == 0) {
+	  	if (days > 0 && hrs > 0) 
+	  		duration = days + ' days, ' + hrs + ' hrs';
+	  	else if (days > 0 && hrs == 0)
+	  		duration = days + ' days';
+	  	else
+	  		duration = hrs + ' hrs';
+	  } else {
+	  	if (days > 0 && hrs > 0) 
+	  		duration = days + ' days, ' + hrs + ' hrs ' + minutes + ' mins';
+	  	else if (days > 0 && hrs == 0)
+	  		duration = days + ' days'+ minutes + ' mins';
+	  	else
+	  		duration = hrs + ' hrs'+ minutes + ' mins';
+	  }
+  }
+  return duration;
 }

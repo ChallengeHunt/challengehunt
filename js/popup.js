@@ -14,6 +14,14 @@ var cards = function (data, type) {
 	challengeData = data['upcoming'];
 	// console.log(challengeData);
 	for (var i = 0; i < challengeData.length; i++) {
+
+		console.log(challengeData[i]['start']);
+		var startDateTime = toTimeZone(challengeData[i]['start']).split(",");
+		var startDate = dateFormatted(startDateTime[0], startDateTime[1]);
+		var startTime = timeFormatted(startDateTime[1]);
+		var startDateTime = startDate + ', ' + startTime;
+		var duration = verboseDuration(challengeData[i]['duration']);
+
 		$('#accordion' + type).append(
 		  $('<div/>',{
 			class: 'panel panel-default',
@@ -49,11 +57,11 @@ var cards = function (data, type) {
 			  	}).append(
 			  		$('<li/>', {
 			  			'class': 'list-group-item',
-			  			'text': 'Starts: ' + challengeData[i]['start']
+			  			'text': 'Starts: ' + startDateTime,
 			  		}),
 			  		$('<li/>', {
 			  			'class': 'list-group-item',
-			  			'text': 'Duration:' + challengeData[i]['duration']
+			  			'text': 'Duration:' + duration,
 			  		}),
 			  		$('<li/>', {
 			  			'class': 'list-group-item',
@@ -93,8 +101,8 @@ var challengeData = function () {
     	hiringData = challengeData['hiring'];
     	hackathonData = challengeData['hackathons'];
     	cards(contestsData, CHALLENGEHUNT.contests.CONTESTS);
-    	cards(hackathonData, CHALLENGEHUNT.contests.HACKATHONS);
-    	cards(hiringData, CHALLENGEHUNT.contests.HIRING);
+    	// cards(hackathonData, CHALLENGEHUNT.contests.HACKATHONS);
+    	// cards(hiringData, CHALLENGEHUNT.contests.HIRING);
     	console.log('bo');
     },
     error: function(jq, status, message) {
