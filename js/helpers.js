@@ -108,7 +108,9 @@ function dateForCalendar(date, time) {
 	}
 }
 
+
 function verboseDuration(duration) {
+	// TODO: make the code tidy
   if (!(duration.indexOf('days') > -1)) {
   	var hrs = parseInt(duration.split(':')[0]);
   	var days = Math.floor(hrs / 24);
