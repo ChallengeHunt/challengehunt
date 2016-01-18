@@ -1,0 +1,27 @@
+a{
+
+  border:0px;
+  border-radius: 0px; 
+  padding: 0px !important;
+  background-color: #000 !important;
+}
+
+a:hover{
+  
+  border:0px;
+  background-color: #000 !important;
+}
+
+.navAnchor{
+
+  color:#fff !important;
+  font-size: 16px;
+  padding-bottom: 1px !important;
+  font-weight: 500;
+}
+
+.nav li{
+
+  width:auto;
+  margin: auto;
+}
