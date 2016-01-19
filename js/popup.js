@@ -113,9 +113,9 @@ var challengeData = function () {
 $(document).ready(function(){
 	challengeData();
 
-	$('.navAnchor').click(function(){
+	$('.navItem').click(function(){
 
-		$('.navAnchor').css("border-bottom","0px");	
-		$(this).css("border-bottom", "4px solid #00ADEE");
+		$('.navItem').parent().css("border-bottom","");	
+		$(this).parent().css("border-bottom","4px solid #fff");
 	})
 });
