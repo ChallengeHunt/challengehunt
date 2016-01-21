@@ -3,7 +3,7 @@
 
   display: flex;
   justify-content: space-between;
-  border-bottom: 2px solid #9DAAA6;
+  border-bottom: 2px solid #000;
   padding-bottom: 6px;
 }
 
@@ -17,7 +17,7 @@
   font-size: 20px;
   font-weight: 500;
   font-style: italic;
-  color: #848492;
+  color: #000;
   width: 145px;
   justify-content: center;
 }
@@ -36,7 +36,7 @@
 
   display: flex;
   justify-content: space-between;
-  background-color: #A0A6A8;
+  background-color: #000080;
   padding-bottom: 1px;
 }
 
@@ -45,24 +45,91 @@
   color: #fff;
   font-size: 16px;
   font-weight: 500;
-  background-color: #A0A6A8 !important;
+  background-color: #000080 !important;
 }
 
 .nav a:hover{
 
-  background-color: #A0A6A8 !important;  
+  background-color: #000080 !important;  
 }
 /*Navbar Ends*/
 
 /*Cards Begin*/
 
+.card{
+
+  width: 90%;
+  margin: 4% 5%;
+}
+
+.cardTitle{
+
+  font-size: 15px;
+  font-weight: 500;
+  display: inline-block;
+  color: #1b809e;
+  width: 82%;
+  margin: 14px 8px 0px 9px;
+}
+
 .cardHeader{
 
-  background-color: rgba(233,233,233,1);
+  padding-bottom: 10px;
+}
+
+.dateSlider{
+
+  width: 96%;
+  margin: auto;
+  margin-top: 2px;
+}
+
+.titleBlock{
+
+  display: flex;
+}
+
+.cardOrganiser{
+
+  margin: 9px 0px 8px 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.cardOrganiserPic{
+
+  width: 36px;
+  height: 36px;
+  box-shadow: 3px 3px 8px #175e7c;
+  margin: 8px 8px 3px 0px;
+}
+
+.date{
+
+  display: flex;
+}
+
+.dateLabel,.dateTitle{
+
+  margin-left: 7px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .cardFooter{
 
-  background-color: rgba(204,204,204,1);
+  background-color: #000080;
+  display: flex;
+  padding: 6px;
+  justify-content: center;
+}
+
+.calenderTitle{
+
+    margin-bottom: 0px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 6px;
 }
 /*Cards Ends*/
