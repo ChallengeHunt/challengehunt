@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Bootstrap Progress Bar</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="trial.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bootstrap Progress Bar</h1>
+
+        <input data-toggle="progressbar" data-target="#myProgressbar" type="text" id="textBox" style="margin-bottom:10px"/>
+        
+        <div class="cardprogress">
+			<div id="myProgressbar" class="progress" style="height:10px;width: 100%;">
+				<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;height:10px;">
+					<span class="sr-only">0% Complete</span>
+				</div>
+			</div>
+			<div class="circle progress-bar">
+			</div> 
+	    </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="trial.js"></script>
+</body>
+</html>

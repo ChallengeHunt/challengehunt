@@ -53,3 +53,16 @@
   background-color: #A0A6A8 !important;  
 }
 /*Navbar Ends*/
+
+/*Cards Begin*/
+
+.cardHeader{
+
+  background-color: rgba(233,233,233,1);
+}
+
+.cardFooter{
+
+  background-color: rgba(204,204,204,1);
+}
+/*Cards Ends*/
