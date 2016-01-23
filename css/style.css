@@ -1,4 +1,10 @@
 /*Header begins*/
+.bs-component{
+
+  background: url('../img/Background.jpg') no-repeat;
+  background-size: 100%;
+}
+
 .header{
 
   display: flex;
@@ -36,7 +42,7 @@
 
   display: flex;
   justify-content: space-between;
-  background-color: #000080;
+  background-color: #673AB7;
   padding-bottom: 1px;
 }
 
@@ -45,12 +51,12 @@
   color: #fff;
   font-size: 16px;
   font-weight: 500;
-  background-color: #000080 !important;
+  background-color: #673AB7 !important;
 }
 
 .nav a:hover{
 
-  background-color: #000080 !important;  
+  background-color: #673AB7 !important;  
 }
 /*Navbar Ends*/
 
@@ -118,7 +124,7 @@
 
 .cardFooter{
 
-  background-color: #000080;
+  background-color: #673AB7;
   display: flex;
   padding: 6px;
   justify-content: center;
