@@ -116,6 +116,6 @@ $(document).ready(function(){
 	$('.navItem').click(function(){
 
 		$('.navItem').parent().css("border-bottom","");	
-		$(this).parent().css("border-bottom","4px solid #fff");
+		$(this).parent().css("border-bottom","3px solid #fff");
 	})
 });

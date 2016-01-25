@@ -17,8 +17,8 @@
     position: relative;
 }
 
-#progressCss{
+.progressCss{
 
-    margin-bottom: 0px;
+    margin-bottom: 4px;
 }
 
