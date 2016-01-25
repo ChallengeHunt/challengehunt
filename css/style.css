@@ -1,8 +1,15 @@
+body{
+
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 500px; 
+  background-color: #fff;
+  height: 547px;
+  margin: 21px;
+}
+
 /*Header begins*/
 .bs-component{
 
-  background: url('../img/Background.jpg') no-repeat;
-  background-size: 100%;
 }
 
 .header{
@@ -42,7 +49,7 @@
 
   display: flex;
   justify-content: space-between;
-  background-color: #673AB7;
+  background-color: #9575CD;
   padding-bottom: 1px;
 }
 
@@ -51,12 +58,12 @@
   color: #fff;
   font-size: 16px;
   font-weight: 500;
-  background-color: #673AB7 !important;
+  background-color: #9575CD !important;
 }
 
 .nav a:hover{
 
-  background-color: #673AB7 !important;  
+  background-color: #9575CD !important;  
 }
 /*Navbar Ends*/
 
@@ -65,7 +72,7 @@
 .card{
 
   width: 90%;
-  margin: 4% 5%;
+  margin: 4% 5% 0% 5%;
 }
 
 .cardTitle{
@@ -118,13 +125,56 @@
 .dateLabel,.dateTitle{
 
   margin-left: 7px;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.timeTile{
+
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.durationTile{
+
+  display: flex;
+  margin-left: 7px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.durationIcon{
+
+  margin: auto;
+}
+
+.durationLabel{
+
+  margin-left: 4px;
+}
+
+.timeIcon{
+
+  margin: auto;
+  margin-right: 4px;
+}
+
+.time{
+
+  margin-right: 8px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.timeStamp{
+
+  display: flex;
 }
 
 .cardFooter{
 
-  background-color: #673AB7;
+  background-color: #9575CD;
   display: flex;
   padding: 6px;
   justify-content: center;
