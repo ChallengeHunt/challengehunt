@@ -1,6 +1,6 @@
 body{
 
-  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 17px 0 rgba(0, 0, 0, 0.2), 0 4px 16px 0 rgba(0, 0, 0, 0.19);
   width: 500px; 
   background-color: #fff;
   height: 547px;
@@ -73,6 +73,7 @@ body{
 
   width: 90%;
   margin: 4% 5% 0% 5%;
+  box-shadow: 0 4px 17px 0 rgba(0, 0, 0, 0.2), 0 4px 16px 0 rgba(0, 0, 0, 0.19);
 }
 
 .cardTitle{
@@ -113,7 +114,7 @@ body{
 
   width: 36px;
   height: 36px;
-  box-shadow: 3px 3px 8px #175e7c;
+  box-shadow: 1px 1px 10px #175e7c;
   margin: 8px 8px 3px 0px;
 }
 
