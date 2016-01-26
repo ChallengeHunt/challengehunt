@@ -10,59 +10,485 @@
 
   <!-- Bootstrap -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
   <!-- Bootstrap Material Design -->
   <link href="css/bootstrap-material-design.css" rel="stylesheet">
   <link href="css/ripples.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/slider.css">
+
+  <!-- Font Awesome-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
   <!-- Custom CSS files -->
   <link rel="stylesheet" type="text/css" href="css/style.css">
 	<title>Challenge Hunt</title>
 </head>
-<body style="width: 500px; background-color: #fff;height: 600px;border: 6px solid #7E807B;margin: 21px;">
+<body>
 
   <!-- Main component -->
   <div class="bs-component">
-  
-    <div class="header">
-      <div class="headerName">
-        <p class="headerTitle">Challenge Hunt</p>
-      </div>
-      <div class="headerPic">
-        <img src="img/icon1.png" alt="icon">
-      </div>
-    </div>
     <!-- Navbar Begins-->
     <ul class="nav">
-      <li role="presentation" style="border-bottom: 4px solid #fff;"><a class="navItem" href="#contests">Contests</a></li>
+      <li role="presentation" style="border-bottom: 3px solid #fff;"><a class="navItem" href="#contests">Contests</a></li>
       <li role="presentation"><a class="navItem" href="#hackathons">Hackathons</a></li>
       <li role="presentation"><a class="navItem" href="#hiring">Hiring</a></li>
       <li role="presentation"><a class="navItem" href="#datascience">Data Science</a></li>
     </ul>  
-    <!-- Navbar ends-->
+    <!-- Navbar Ends-->
 
-    <!-- Cards Begins-->
-    <div class="cards">
+    <!-- Cards Begin-->
+    <div class="cards" style="height:476px;overflow:scroll;">
       <div class="card">
-        <div class="header">
-          <img class="orgLogo" src="img/hackerearth.com.png" alt="HackerEarth">
-          <p class="contestName">Online</p>
-          <p class="org">by HackerEarth</p>
-          
+        <div class="cardHeader">
+          <div class="titleBlock">
+            <div class="cardTitle">IndiaHacks : Internet Of Things</div>
+            <img class="cardOrganiserPic" style="margin: 8px 8px 3px 18px;" src="img/hackerearth.com.png" alt="HackerEarth" />
+          </div>
+          <div class="cardOrganiser">HackerEarth</div>
+          <div class="cardDate">
+            <div class="timeTile">
+              <div class="durationTile">
+                <!-- <div class="durationTitle">Duration: </div> -->
+                <i class="fa fa-hourglass-half durationIcon"></i>  
+                <div class="durationLabel">10 days</div>  
+              </div>
+              <div class="timeStamp">
+                <i class="fa fa-clock-o timeIcon"></i>
+                <div class="time">
+                  25 Jan 2016 11:00pm
+                </div>
+              </div>
+            </div> 
+            <div class="date">
+              <div class="dateTitle">Begins in: </div>
+              <div class="dateLabel">2 days</div>
+            </div> 
+            <div class="dateSlider">
+              <div class="cardprogress">
+                <div id="myProgressbar"  class="progressCss progress" style="height:10px;width: 100%;">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;height:10px;">
+                    <span class="sr-only">0% Complete</span>
+                  </div>
+                </div>
+                <div class="circle">
+                </div> 
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="footer">
-
+        <div class="cardFooter">
+          <i class="fa fa-calendar-check-o" style="color:#fff"></i>
+          <p class="calenderTitle">Add To Calender</p> 
         </div>
       </div>
-    </div>
-    <!-- Cards Ends-->
 
-  </div>
+      <div class="card">
+        <div class="cardHeader">
+          <div class="titleBlock">
+            <div class="cardTitle" style="color:#745a46">ACM-ICPC Asia-Amritapuri Online Contest 2015</div>
+            <img class="cardOrganiserPic" style="width:58px;box-shadow: 1px 1px 5px #745a46" src="img/codechef.com.png" alt="CodeChef" />
+          </div>
+          <div class="cardOrganiser">CodeChef</div>
+          <div class="cardDate">
+            <div class="timeTile">
+              <div class="durationTile">
+                <!-- <div class="durationTitle">Duration: </div> -->
+                <i class="fa fa-hourglass-half durationIcon"></i>  
+                <div class="durationLabel">10 days</div>  
+              </div>
+              <div class="timeStamp">
+                <i class="fa fa-clock-o timeIcon"></i>
+                <div class="time">
+                  25 Jan 2016 11:00pm
+                </div>
+              </div>
+            </div>
+            <div class="date">
+              <div class="dateTitle">45% Complete</div>
+              <!-- <div class="dateLabel">2 days</div> -->
+            </div>
+            <div class="dateSlider">
+              <div class="cardprogress">
+                <div id="myProgressbar1" class="progressCss progress" style="height:10px;width: 100%;">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;height:10px;width: 45%;background-color:#745a46">
+                    <span class="sr-only">0% Complete</span>
+                  </div>
+                </div>
+                <div class="circle" style="left: 44%;">
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cardFooter">
+          <i class="fa fa-calendar-check-o" style="color:#fff"></i>
+          <p class="calenderTitle">Add To Calender</p> 
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardHeader">
+          <div class="titleBlock">
+            <div class="cardTitle" style="color:#288bc9">ACM-ICPC Asia-Amritapuri Online Contest 2015</div>
+            <img class="cardOrganiserPic" style="width:67px;box-shadow: 1px 1px 5px #288bc9" src="img/codeforces.com.png" alt="CodeForces" />
+          </div>
+          <div class="cardOrganiser">CodeForces</div>
+          <div class="cardDate">
+            <div class="timeTile">
+              <div class="durationTile">
+                <!-- <div class="durationTitle">Duration: </div> -->
+                <i class="fa fa-hourglass-half durationIcon"></i>  
+                <div class="durationLabel">10 days</div>  
+              </div>
+              <div class="timeStamp">
+                <i class="fa fa-clock-o timeIcon"></i>
+                <div class="time">
+                  25 Jan 2016 11:00pm
+                </div>
+              </div>
+            </div>
+            <div class="date">
+              <div class="dateTitle">45% Complete</div>
+              <!-- <div class="dateLabel">2 days</div> -->
+            </div>
+            <div class="dateSlider">
+              <div class="cardprogress">
+                <div id="myProgressbar1" class="progressCss progress" style="height:10px;width: 100%;">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;height:10px;width: 45%;background-color:#288bc9">
+                    <span class="sr-only">0% Complete</span>
+                  </div>
+                </div>
+                <div class="circle" style="left: 44%;">
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cardFooter">
+          <i class="fa fa-calendar-check-o" style="color:#fff"></i>
+          <p class="calenderTitle">Add To Calender</p> 
+        </div>
+      </div>   
+
+      <div class="card">
+        <div class="cardHeader">
+          <div class="titleBlock">
+            <div class="cardTitle" style="color:#161213">ACM-ICPC Asia-Amritapuri Online Contest 2015</div>
+            <img class="cardOrganiserPic" style="width:65px;box-shadow: 1px 1px 5px #161213" src="img/codejam.png" alt="CodeJam" />
+          </div>
+          <div class="cardOrganiser">CodeJam</div>
+          <div class="cardDate">
+            <div class="timeTile">
+              <div class="durationTile">
+                <!-- <div class="durationTitle">Duration: </div> -->
+                <i class="fa fa-hourglass-half durationIcon"></i>  
+                <div class="durationLabel">10 days</div>  
+              </div>
+              <div class="timeStamp">
+                <i class="fa fa-clock-o timeIcon"></i>
+                <div class="time">
+                  25 Jan 2016 11:00pm
+                </div>
+              </div>
+            </div>
+            <div class="date">
+              <div class="dateTitle">45% Complete</div>
+              <!-- <div class="dateLabel">2 days</div> -->
+            </div>
+            <div class="dateSlider">
+              <div class="cardprogress">
+                <div id="myProgressbar1" class="progressCss progress" style="height:10px;width: 100%;">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;height:10px;width: 45%;background-color:#161213">
+                    <span class="sr-only">0% Complete</span>
+                  </div>
+                </div>
+                <div class="circle" style="left: 44%;">
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cardFooter">
+          <i class="fa fa-calendar-check-o" style="color:#fff"></i>
+          <p class="calenderTitle">Add To Calender</p> 
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardHeader">
+          <div class="titleBlock">
+            <div class="cardTitle" style="color:#fc0f3c">ACM-ICPC Asia-Amritapuri Online Contest 2015</div>
+            <img class="cardOrganiserPic" style="width: 46px;box-shadow: 1px 1px 5px #fc0f3c;margin: 8px 8px 3px 9px;" src="img/ctftime.org.png" alt="Ctftime" />
+          </div>
+          <div class="cardOrganiser">Ctftime</div>
+          <div class="cardDate">
+            <div class="timeTile">
+              <div class="durationTile">
+                <!-- <div class="durationTitle">Duration: </div> -->
+                <i class="fa fa-hourglass-half durationIcon"></i>  
+                <div class="durationLabel">10 days</div>  
+              </div>
+              <div class="timeStamp">
+                <i class="fa fa-clock-o timeIcon"></i>
+                <div class="time">
+                  25 Jan 2016 11:00pm
+                </div>
+              </div>
+            </div>
+            <div class="date">
+              <div class="dateTitle">45% Complete</div>
+              <!-- <div class="dateLabel">2 days</div> -->
+            </div>
+            <div class="dateSlider">
+              <div class="cardprogress">
+                <div id="myProgressbar1" class="progressCss progress" style="height:10px;width: 100%;">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;height:10px;width: 45%;background-color:#fc0f3c">
+                    <span class="sr-only">0% Complete</span>
+                  </div>
+                </div>
+                <div class="circle" style="left: 44%;">
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cardFooter">
+          <i class="fa fa-calendar-check-o" style="color:#fff"></i>
+          <p class="calenderTitle">Add To Calender</p> 
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardHeader">
+          <div class="titleBlock">
+            <div class="cardTitle" style="color:#3e5d95">ACM-ICPC Asia-Amritapuri Online Contest 2015</div>
+            <img class="cardOrganiserPic" style="width:65px;box-shadow: 1px 1px 5px #3e5d95" src="img/hackercup.jpg" alt="HackerCup" />
+          </div>
+          <div class="cardOrganiser">HackerCup</div>
+          <div class="cardDate">
+            <div class="timeTile">
+              <div class="durationTile">
+                <!-- <div class="durationTitle">Duration: </div> -->
+                <i class="fa fa-hourglass-half durationIcon"></i>  
+                <div class="durationLabel">10 days</div>  
+              </div>
+              <div class="timeStamp">
+                <i class="fa fa-clock-o timeIcon"></i>
+                <div class="time">
+                  25 Jan 2016 11:00pm
+                </div>
+              </div>
+            </div>
+            <div class="date">
+              <div class="dateTitle">45% Complete</div>
+              <!-- <div class="dateLabel">2 days</div> -->
+            </div>
+            <div class="dateSlider">
+              <div class="cardprogress">
+                <div id="myProgressbar1" class="progressCss progress" style="height:10px;width: 100%;">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;height:10px;width: 45%;background-color:#3e5d95">
+                    <span class="sr-only">0% Complete</span>
+                  </div>
+                </div>
+                <div class="circle" style="left: 44%;">
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cardFooter">
+          <i class="fa fa-calendar-check-o" style="color:#fff"></i>
+          <p class="calenderTitle">Add To Calender</p> 
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardHeader">
+          <div class="titleBlock">
+            <div class="cardTitle" style="color:#1bb663">ACM-ICPC Asia-Amritapuri Online Contest 2015</div>
+            <img class="cardOrganiserPic" style="box-shadow: 1px 1px 5px #1bb663;margin: 8px 8px 3px 19px;" src="img/hackerrank.com.png" alt="HackerRank" />
+          </div>
+          <div class="cardOrganiser">HackerRank</div>
+          <div class="cardDate">
+            <div class="timeTile">
+              <div class="durationTile">
+                <!-- <div class="durationTitle">Duration: </div> -->
+                <i class="fa fa-hourglass-half durationIcon"></i>  
+                <div class="durationLabel">10 days</div>  
+              </div>
+              <div class="timeStamp">
+                <i class="fa fa-clock-o timeIcon"></i>
+                <div class="time">
+                  25 Jan 2016 11:00pm
+                </div>
+              </div>
+            </div>
+            <div class="date">
+              <div class="dateTitle">45% Complete</div>
+              <!-- <div class="dateLabel">2 days</div> -->
+            </div>
+            <div class="dateSlider">
+              <div class="cardprogress">
+                <div id="myProgressbar1" class="progressCss progress" style="height:10px;width: 100%;">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;height:10px;width: 45%;background-color:#1bb663">
+                    <span class="sr-only">0% Complete</span>
+                  </div>
+                </div>
+                <div class="circle" style="left: 44%;">
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cardFooter">
+          <i class="fa fa-calendar-check-o" style="color:#fff"></i>
+          <p class="calenderTitle">Add To Calender</p> 
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardHeader">
+          <div class="titleBlock">
+            <div class="cardTitle" style="color:#40bae5">ACM-ICPC Asia-Amritapuri Online Contest 2015</div>
+            <img class="cardOrganiserPic" style="box-shadow: 1px 1px 5px #40bae5;margin: 8px 8px 3px 19px;" src="img/kaggle.com.png" alt="kaggle" />
+          </div>
+          <div class="cardOrganiser">Kaggle</div>
+          <div class="cardDate">
+            <div class="timeTile">
+              <div class="durationTile">
+                <!-- <div class="durationTitle">Duration: </div> -->
+                <i class="fa fa-hourglass-half durationIcon"></i>  
+                <div class="durationLabel">10 days</div>  
+              </div>
+              <div class="timeStamp">
+                <i class="fa fa-clock-o timeIcon"></i>
+                <div class="time">
+                  25 Jan 2016 11:00pm
+                </div>
+              </div>
+            </div>
+            <div class="date">
+              <div class="dateTitle">45% Complete</div>
+              <!-- <div class="dateLabel">2 days</div> -->
+            </div>
+            <div class="dateSlider">
+              <div class="cardprogress">
+                <div id="myProgressbar1" class="progressCss progress" style="height:10px;width: 100%;">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;height:10px;width: 45%;background-color:#40bae5">
+                    <span class="sr-only">0% Complete</span>
+                  </div>
+                </div>
+                <div class="circle" style="left: 44%;">
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cardFooter">
+          <i class="fa fa-calendar-check-o" style="color:#fff"></i>
+          <p class="calenderTitle">Add To Calender</p> 
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardHeader">
+          <div class="titleBlock">
+            <div class="cardTitle" style="color:#303F9F">ACM-ICPC Asia-Amritapuri Online Contest 2015</div>
+            <img class="cardOrganiserPic" style="box-shadow: 1px 1px 5px #303F9F;margin: 8px 8px 3px 19px;" src="img/spoj.png" alt="Spoj" />
+          </div>
+          <div class="cardOrganiser">Spoj</div>
+          <div class="cardDate">
+            <div class="timeTile">
+              <div class="durationTile">
+                <!-- <div class="durationTitle">Duration: </div> -->
+                <i class="fa fa-hourglass-half durationIcon"></i>  
+                <div class="durationLabel">10 days</div>  
+              </div>
+              <div class="timeStamp">
+                <i class="fa fa-clock-o timeIcon"></i>
+                <div class="time">
+                  25 Jan 2016 11:00pm
+                </div>
+              </div>
+            </div>
+            <div class="date">
+              <div class="dateTitle">45% Complete</div>
+              <!-- <div class="dateLabel">2 days</div> -->
+            </div>
+            <div class="dateSlider">
+              <div class="cardprogress">
+                <div id="myProgressbar1" class="progressCss progress" style="height:10px;width: 100%;">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;height:10px;width: 45%;background-color:#303F9F">
+                    <span class="sr-only">0% Complete</span>
+                  </div>
+                </div>
+                <div class="circle" style="left: 44%;">
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cardFooter">
+          <i class="fa fa-calendar-check-o" style="color:#fff"></i>
+          <p class="calenderTitle">Add To Calender</p> 
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardHeader">
+          <div class="titleBlock">
+            <div class="cardTitle" style="color:#FF9800">ACM-ICPC Asia-Amritapuri Online Contest 2015</div>
+            <img class="cardOrganiserPic" style="width:58px;box-shadow: 1px 1px 5px #FF9800;" src="img/topcoder.com.png" alt="TopCoder" />
+          </div>
+          <div class="cardOrganiser">TopCoder</div>
+          <div class="cardDate">
+            <div class="timeTile">
+              <div class="durationTile">
+                <!-- <div class="durationTitle">Duration: </div> -->
+                <i class="fa fa-hourglass-half durationIcon"></i>  
+                <div class="durationLabel">10 days</div>  
+              </div>
+              <div class="timeStamp">
+                <i class="fa fa-clock-o timeIcon"></i>
+                <div class="time">
+                  25 Jan 2016 11:00pm
+                </div>
+              </div>
+            </div>
+            <div class="date">
+              <div class="dateTitle">45% Complete</div>
+              <!-- <div class="dateLabel">2 days</div> -->
+            </div>
+            <div class="dateSlider">
+              <div class="cardprogress">
+                <div id="myProgressbar1" class="progressCss progress" style="height:10px;width: 100%;">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;height:10px;width: 45%;background-color:#FF9800">
+                    <span class="sr-only">0% Complete</span>
+                  </div>
+                </div>
+                <div class="circle" style="left: 44%;">
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cardFooter">
+          <i class="fa fa-calendar-check-o" style="color:#fff"></i>
+          <p class="calenderTitle">Add To Calender</p> 
+        </div>
+      </div>
+
+    </div>       
+  </div>   
+    <!-- Cards Ends-->
   <!-- main component ends -->
 
 <script src="js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script src="js/material.min.js"></script>
+<script src="js/slider.js"></script>
 <script src="js/ripples.min.js"></script>
 <!-- <script src="/js/materialicons.min.js"></script> -->
 <script src="js/init.js"></script>

@@ -1,9 +1,22 @@
+body{
+
+  box-shadow: 0 4px 17px 0 rgba(0, 0, 0, 0.2), 0 4px 16px 0 rgba(0, 0, 0, 0.19);
+  width: 500px; 
+  background-color: #fff;
+  height: 547px;
+  margin: 21px;
+}
+
 /*Header begins*/
+.bs-component{
+
+}
+
 .header{
 
   display: flex;
   justify-content: space-between;
-  border-bottom: 2px solid #9DAAA6;
+  border-bottom: 2px solid #000;
   padding-bottom: 6px;
 }
 
@@ -17,7 +30,7 @@
   font-size: 20px;
   font-weight: 500;
   font-style: italic;
-  color: #563D76;
+  color: #000;
   width: 145px;
   justify-content: center;
 }
@@ -36,7 +49,7 @@
 
   display: flex;
   justify-content: space-between;
-  background-color: #563D76;
+  background-color: #9575CD;
   padding-bottom: 1px;
 }
 
@@ -45,11 +58,135 @@
   color: #fff;
   font-size: 16px;
   font-weight: 500;
-  background-color: #563D76 !important;
+  background-color: #9575CD !important;
 }
 
 .nav a:hover{
 
-  background-color: #563D76 !important;  
+  background-color: #9575CD !important;  
 }
 /*Navbar Ends*/
+
+/*Cards Begin*/
+
+.card{
+
+  width: 90%;
+  margin: 4% 5% 0% 5%;
+  box-shadow: 0 4px 17px 0 rgba(0, 0, 0, 0.2), 0 4px 16px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cardTitle{
+
+  font-size: 15px;
+  font-weight: 500;
+  display: inline-block;
+  color: #1b809e;
+  width: 82%;
+  margin: 14px 8px 0px 9px;
+}
+
+.cardHeader{
+
+  padding-bottom: 10px;
+}
+
+.dateSlider{
+
+  width: 96%;
+  margin: auto;
+  margin-top: 2px;
+}
+
+.titleBlock{
+
+  display: flex;
+}
+
+.cardOrganiser{
+
+  margin: 9px 0px 8px 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.cardOrganiserPic{
+
+  width: 36px;
+  height: 36px;
+  box-shadow: 1px 1px 5px #175e7c;
+  margin: 8px 8px 3px 0px;
+}
+
+.date{
+
+  display: flex;
+}
+
+.dateLabel,.dateTitle{
+
+  margin-left: 7px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.timeTile{
+
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.durationTile{
+
+  display: flex;
+  margin-left: 7px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.durationIcon{
+
+  margin: auto;
+}
+
+.durationLabel{
+
+  margin-left: 4px;
+}
+
+.timeIcon{
+
+  margin: auto;
+  margin-right: 4px;
+}
+
+.time{
+
+  margin-right: 8px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.timeStamp{
+
+  display: flex;
+}
+
+.cardFooter{
+
+  background-color: #9575CD;
+  display: flex;
+  padding: 6px;
+  justify-content: center;
+}
+
+.calenderTitle{
+
+    margin-bottom: 0px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 6px;
+}
+/*Cards Ends*/

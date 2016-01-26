@@ -1,0 +1,24 @@
+.circle{
+	
+	width: 16px;
+    height: 16px;
+    background-color: #000;
+    border-radius: 8px;
+    border: 2px solid #fff;
+    position: absolute;
+    left: -3px;
+    top: -3px;
+    -webkit-transition: left .6s ease;
+}
+
+.cardprogress{
+
+	display: flex;
+    position: relative;
+}
+
+.progressCss{
+
+    margin-bottom: 4px;
+}
+
