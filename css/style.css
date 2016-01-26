@@ -17,7 +17,7 @@
   font-size: 20px;
   font-weight: 500;
   font-style: italic;
-  color: #848492;
+  color: #563D76;
   width: 145px;
   justify-content: center;
 }
@@ -36,7 +36,7 @@
 
   display: flex;
   justify-content: space-between;
-  background-color: #A0A6A8;
+  background-color: #563D76;
   padding-bottom: 1px;
 }
 
@@ -45,11 +45,11 @@
   color: #fff;
   font-size: 16px;
   font-weight: 500;
-  background-color: #A0A6A8 !important;
+  background-color: #563D76 !important;
 }
 
 .nav a:hover{
 
-  background-color: #A0A6A8 !important;  
+  background-color: #563D76 !important;  
 }
 /*Navbar Ends*/
