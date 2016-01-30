@@ -212,3 +212,76 @@ body{
     margin-left: 6px;
 }
 /*Cards Ends*/
+
+/*Modal Begins*/
+
+#optionsModal{
+
+  width: 44%;
+  margin: 80px 0px 0px 92px;
+}
+
+.headerCheckbox{
+
+  display: flex;
+}
+
+.checkboxIcon{
+    margin: 3px 0px 0px 4px;
+    font-size: 15px;
+}
+
+.checkboxHeader{
+
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.check{
+
+  width: 15px !important;
+  height: 15px !important;
+  margin-right: 6px !important;
+}
+
+.checkbox .checkbox-material .check:before {
+
+    margin-top: -7px !important;
+    margin-left: 5px !important;
+}  
+
+.oddCheckbox{
+
+  width: 50%;
+  float: left;
+  margin-top: 10px !important;
+} 
+
+.evenCheckbox{
+
+  width: 50%;
+  float: right;
+  margin-top: 10px !important;
+} 
+
+.modal-dialog{
+
+  width: 100%;
+}
+
+.modal-body{
+
+  height: 316px;
+}
+  
+.checkbox label, .radio label, label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #242424;
+}
+
+.modal-title{
+
+  font-weight: 500;
+}
+/*Modal Ends*/
