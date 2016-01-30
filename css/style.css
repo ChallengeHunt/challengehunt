@@ -3,7 +3,7 @@ body{
   box-shadow: 0 4px 17px 0 rgba(0, 0, 0, 0.2), 0 4px 16px 0 rgba(0, 0, 0, 0.19);
   width: 500px; 
   background-color: #fff;
-  height: 547px;
+  height: 590px;
   margin: 21px;
 }
 
@@ -67,8 +67,30 @@ body{
 }
 /*Navbar Ends*/
 
+.settingsPane{
+
+  display: flex;
+  justify-content:flex-end;
+  margin-top: 14px;
+}
+
+.fa-Icon{
+
+  font-size: 24px;
+  color:#9575CD;
+}
+
+.settings{
+
+  margin: 1px 25px 0px 18px;
+}
+
 /*Cards Begin*/
 
+.card:first-child{
+
+  margin:2% 5% 0% 5%;
+}
 .card{
 
   width: 90%;
