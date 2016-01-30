@@ -130,9 +130,20 @@ $(document).ready(function(){
 		}
 	});
 
+	$('#saveButton').click(function(){
+
+		var checkedUsers=[];
+		$('input:checkbox[name="hosts"]:checked').each(function(){
+
+			checkedUsers.push($(this).attr("id"));
+		});
+
+		console.log(checkedUsers);
+	});
+
 	$('.navItem').click(function(){
 
 		$('.navItem').parent().css("border-bottom","");	
 		$(this).parent().css("border-bottom","3px solid #fff");
-	})
+	});
 });
