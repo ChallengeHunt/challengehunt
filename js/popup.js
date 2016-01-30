@@ -113,7 +113,23 @@ var challengeData = function () {
 $(document).ready(function(){
 	challengeData();
 
-	$('.dropdown-toggle').dropdown()	
+	$('.dropdown-toggle').dropdown();
+
+	$("#cmn-toggle-4").click(function(){
+
+		var element=$("#cmn-toggle-4").prop("checked");
+		if(element==true){
+
+			$(".activeCategory").css("display","none");
+			$(".upcomingCategory").css("display","block");
+		}
+		if(element==false){
+
+			$(".upcomingCategory").css("display","none");	
+			$(".activeCategory").css("display","block");
+		}
+	});
+
 	$('.navItem').click(function(){
 
 		$('.navItem').parent().css("border-bottom","");	

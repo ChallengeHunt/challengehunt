@@ -74,6 +74,22 @@ body{
   margin-top: 14px;
 }
 
+.upcomingCategory{
+
+  display: none;
+}
+
+.categories{
+
+  color: #242424;
+  font-weight: 500;
+  font-size: 15px;
+  margin: 4px 0px 0px;
+  height: 20px;
+  position: absolute;
+  left: 51px;
+}
+
 .fa-Icon{
 
   font-size: 24px;
