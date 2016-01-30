@@ -3,7 +3,7 @@ body{
   box-shadow: 0 4px 17px 0 rgba(0, 0, 0, 0.2), 0 4px 16px 0 rgba(0, 0, 0, 0.19);
   width: 500px; 
   background-color: #fff;
-  height: 547px;
+  height: 590px;
   margin: 21px;
 }
 
@@ -67,8 +67,30 @@ body{
 }
 /*Navbar Ends*/
 
+.settingsPane{
+
+  display: flex;
+  justify-content:flex-end;
+  margin-top: 14px;
+}
+
+.fa-Icon{
+
+  font-size: 24px;
+  color:#9575CD;
+}
+
+.settings{
+
+  margin: 1px 25px 0px 18px;
+}
+
 /*Cards Begin*/
 
+.card:first-child{
+
+  margin:2% 5% 0% 5%;
+}
 .card{
 
   width: 90%;
@@ -114,7 +136,7 @@ body{
 
   width: 36px;
   height: 36px;
-  box-shadow: 1px 1px 10px #175e7c;
+  box-shadow: 1px 1px 5px #175e7c;
   margin: 8px 8px 3px 0px;
 }
 
@@ -190,3 +212,76 @@ body{
     margin-left: 6px;
 }
 /*Cards Ends*/
+
+/*Modal Begins*/
+
+#optionsModal{
+
+  width: 335px;
+  margin: 80px 0px 0px 92px;
+}
+
+.headerCheckbox{
+
+  display: flex;
+}
+
+.checkboxIcon{
+    margin: 3px 0px 0px 4px;
+    font-size: 15px;
+}
+
+.checkboxHeader{
+
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.check{
+
+  width: 15px !important;
+  height: 15px !important;
+  margin-right: 6px !important;
+}
+
+.checkbox .checkbox-material .check:before {
+
+    margin-top: -7px !important;
+    margin-left: 5px !important;
+}  
+
+.oddCheckbox{
+
+  width: 50%;
+  float: left;
+  margin-top: 10px !important;
+} 
+
+.evenCheckbox{
+
+  width: 50%;
+  float: right;
+  margin-top: 10px !important;
+} 
+
+.modal-dialog{
+
+  width: 100%;
+}
+
+.modal-body{
+
+  height: 316px;
+}
+  
+.checkbox label, .radio label, label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #242424;
+}
+
+.modal-title{
+
+  font-weight: 500;
+}
+/*Modal Ends*/

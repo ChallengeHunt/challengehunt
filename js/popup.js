@@ -113,6 +113,7 @@ var challengeData = function () {
 $(document).ready(function(){
 	challengeData();
 
+	$('.dropdown-toggle').dropdown()	
 	$('.navItem').click(function(){
 
 		$('.navItem').parent().css("border-bottom","");	
