@@ -113,10 +113,37 @@ var challengeData = function () {
 $(document).ready(function(){
 	challengeData();
 
-	$('.dropdown-toggle').dropdown()	
+	$('.dropdown-toggle').dropdown();
+
+	$("#cmn-toggle-4").click(function(){
+
+		var element=$("#cmn-toggle-4").prop("checked");
+		if(element==true){
+
+			$(".activeCategory").css("display","none");
+			$(".upcomingCategory").css("display","block");
+		}
+		if(element==false){
+
+			$(".upcomingCategory").css("display","none");	
+			$(".activeCategory").css("display","block");
+		}
+	});
+
+	$('#saveButton').click(function(){
+
+		var checkedUsers=[];
+		$('input:checkbox[name="hosts"]:checked').each(function(){
+
+			checkedUsers.push($(this).attr("id"));
+		});
+
+		console.log(checkedUsers);
+	});
+
 	$('.navItem').click(function(){
 
 		$('.navItem').parent().css("border-bottom","");	
 		$(this).parent().css("border-bottom","3px solid #fff");
-	})
+	});
 });
