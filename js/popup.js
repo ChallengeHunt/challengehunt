@@ -90,24 +90,29 @@ var challengeData = function () {
 		beforeSend: function () {
 	    // $("#target").loadingOverlay();
 		},
-    success: function (data) {
-    	challengeData = JSON.parse(data);
-    	localStorage.cache = data;
-    	localStorage.HACKATHONS = JSON.stringify(challengeData['hackathons']);
-    	localStorage.HIRING = JSON.stringify(challengeData['hiring']);
-    	localStorage.CONTESTS = JSON.stringify(challengeData['contests']);
-    	console.log('yo');
-    	contestsData = challengeData['contests'];
-    	hiringData = challengeData['hiring'];
-    	hackathonData = challengeData['hackathons'];
-    	cards(contestsData, CHALLENGEHUNT.contests.CONTESTS);
-    	// cards(hackathonData, CHALLENGEHUNT.contests.HACKATHONS);
-    	// cards(hiringData, CHALLENGEHUNT.contests.HIRING);
-    	console.log('bo');
-    },
-    error: function(jq, status, message) {
-    }
+	    success: function (data) {
+	    	console.log(data)
+	    	challengeData = JSON.parse(data);
+	    	localStorage.cache = data;
+	    	localStorage.HACKATHONS = JSON.stringify(challengeData['hackathons']);
+	    	localStorage.HIRING = JSON.stringify(challengeData['hiring']);
+	    	localStorage.CONTESTS = JSON.stringify(challengeData['contests']);
+	    	console.log('yo');
+	    	contestsData = challengeData['contests'];
+	    	console.log(contestsData);
+	    	hiringData = challengeData['hiring'];
+	    	hackathonData = challengeData['hackathons'];
+	    	cards(contestsData, CHALLENGEHUNT.contests.CONTESTS);
+	    	// cards(hackathonData, CHALLENGEHUNT.contests.HACKATHONS);
+	    	// cards(hiringData, CHALLENGEHUNT.contests.HIRING);
+	    	console.log('bo');
+	    },
+	    error: function(jq, status, message) {
+	    }
 	});
+
+	
+
 }
 
 $(document).ready(function(){

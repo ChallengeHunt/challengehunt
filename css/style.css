@@ -74,6 +74,12 @@ body{
   margin-top: 14px;
 }
 
+.optionsMenu{
+
+  font-size: 15px;
+  font-weight: 400;
+}
+
 .upcomingCategory{
 
   display: none;

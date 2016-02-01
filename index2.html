@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	 <!-- Material Design fonts -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+  <!-- Bootstrap Material Design -->
+  <link href="css/bootstrap-material-design.css" rel="stylesheet">
+  <link href="css/ripples.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/slider.css">
+
+  <!-- Font Awesome-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- Custom CSS files -->
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="css/switch.css">
+	<title>Challenge Hunt</title>
+</head>
+<body>
+
+  <!-- Main component -->
+  <div class="bs-component">
+    <!-- Navbar Begins-->
+    <ul class="nav">
+      <li role="presentation" style="border-bottom: 3px solid #fff;"><a class="navItem" href="#contests">Contests</a></li>
+      <li role="presentation"><a class="navItem" href="#hackathons">Hackathons</a></li>
+      <li role="presentation"><a class="navItem" href="#hiring">Hiring</a></li>
+      <li role="presentation"><a class="navItem" href="#datascience">Data Science</a></li>
+    </ul>  
+    <!-- Navbar Ends-->
+
+    <div class="settingsPane">
+      <div class="categories">
+        <p class="activeCategory">Active(Ongoing)</p>
+        <p class="upcomingCategory">Upcoming</p>   
+      </div>
+      <div class="switch">
+        <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+        <label for="cmn-toggle-4"></label>
+      </div>
+      <div class="settings dropdown">
+        <i class="fa fa-cog fa-Icon dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></i>
+       <ul class="dropdown-menu" style="position: absolute; left: -127px;" aria-labelledby="dropdownMenu1">
+        <li><a href="#" data-toggle="modal" class="optionsMenu" data-target="#optionsModal">Options</a></li>
+        <li role="separator" class="divider"></li>
+        <li style="margin-left: 19px;"><a class="github-button" href="https://github.com/ChallengeHunt/challengehunt" data-icon="octicon-star" data-style="mega" data-count-href="/ChallengeHunt/challengehunt/stargazers" data-count-api="/repos/ChallengeHunt/challengehunt#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star ChallengeHunt/challengehunt on GitHub">Star</a></li>
+      </ul>
+      </div>
+    </div>
+
+    <!-- Cards Begin-->
+    <!-- Contests Cards Begins-->  
+    <div class="cards" id="Contests" style="height:476px;overflow:scroll;">
+      <div id="Contests_Active">
+        
+      </div>
+      <div id="Contests_Upcoming">
+
+      </div>
+    </div> 
+    <!-- Contests Cards Ends-->
+    <!-- Hackathons Cards Begins-->  
+    <div class="cards" id="Hackathons" style="height:476px;overflow:scroll;">
+      <div id="Contests_Active">
+
+      </div>
+      <div id="Contests_Upcoming">
+
+      </div>
+    </div> 
+    <!-- Hackathons Cards Ends-->
+    <!-- Hiring Cards Begins-->  
+    <div class="cards" id="Hiring" style="height:476px;overflow:scroll;">
+      <div id="Contests_Active">
+
+      </div>
+      <div id="Contests_Upcoming">
+
+      </div>
+    </div> 
+    <!-- Hiring Cards Ends-->
+    <!-- DataScience Cards Begins-->  
+    <div class="cards" id="DataScience" style="height:476px;overflow:scroll;">
+      <div id="Contests_Active">
+
+      </div>
+      <div id="Contests_Upcoming">
+        
+      </div>
+    </div> 
+    <!-- DataScience Cards Ends-->      
+  </div>   
+    <!-- Cards Ends-->
+  <!-- main component ends -->
+
+  <!-- Modal Begins-->
+  <div class="modal fade" id="optionsModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Options</h4>
+        </div>
+        <div class="modal-body">
+          <div class="checkBoxes">
+            <div class="headerCheckbox">
+              <p class="checkboxHeader">Choose Your Favourites</p>
+              <i class="fa fa-heart checkboxIcon"></i>
+            </div>  
+            <div class="checkbox oddCheckbox">
+              <label>
+                <input name="hosts" id="CtfTime" type="checkbox">CftTime
+              </label>
+            </div>
+            <div class="checkbox evenCheckbox">
+              <label>
+                <input name="hosts" id="CodeChef" type="checkbox">CodeChef
+              </label>
+            </div>
+            <div class="checkbox oddCheckbox">
+              <label>
+                <input name="hosts" id="CodeForces" type="checkbox">CodeForces
+              </label>
+            </div>
+            <div class="checkbox evenCheckbox">
+              <label>
+                <input name="hosts" id="CodeJam" type="checkbox">CodeJam
+              </label>
+            </div>
+            <div class="checkbox oddCheckbox">
+              <label>
+                <input name="hosts" id="HackerCup" type="checkbox">HackerCup
+              </label>
+            </div>
+            <div class="checkbox evenCheckbox">
+              <label>
+                <input name="hosts" id="HackerEarth" type="checkbox">HackerEarth
+              </label>
+            </div>
+            <div class="checkbox oddCheckbox">
+              <label>
+                <input name="hosts" id="HackerRank" type="checkbox">HackerRank
+              </label>
+            </div>
+            <div class="checkbox evenCheckbox">
+              <label>
+                <input name="hosts" id="Kaggle" type="checkbox">Kaggle
+              </label>
+            </div>
+            <div class="checkbox oddCheckbox">
+              <label>
+                <input name="hosts" id="Marathon24" type="checkbox">Marathon24
+              </label>
+            </div>
+            <div class="checkbox evenCheckbox">
+              <label>
+                <input name="hosts" id="RussianCodecup" type="checkbox">RussianCodecup
+              </label>
+            </div>
+            <div class="checkbox oddCheckbox">
+              <label>
+                <input name="hosts" id="TopCoder" type="checkbox">TopCoder
+              </label>
+            </div>
+          </div>  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="saveButton">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Ends-->
+
+<script src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!-- Place this tag right after the last button or just before your close body tag. -->
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+<script src="js/material.min.js"></script>
+<script src="js/slider.js"></script>
+<script src="js/ripples.min.js"></script>
+<!-- <script src="/js/materialicons.min.js"></script> -->
+<script src="js/init.js"></script>
+<script src="js/helpers.js"></script>
+<script src="js/popup1.js"></script>
+<script src="js/ga.js"></script>
+</body>
+</html>
