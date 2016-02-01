@@ -1,8 +1,3 @@
-html, body{
-    height: 590px;
-    overflow:hidden;
-}
-
 body{
 
   box-shadow: 0 4px 17px 0 rgba(0, 0, 0, 0.2), 0 4px 16px 0 rgba(0, 0, 0, 0.19);
@@ -114,10 +109,20 @@ body{
 
 /*Cards Begin*/
 
+#Hackathons, #Hiring, #DataScience{
+
+  display: none;
+}
+
+#Hackathons_Active , #Hackathons_Upcoming , #Hiring_Active, #Hiring_Upcoming, #DataScience_Active, #DataScience_Upcoming, #Contests_Upcoming{
+
+  display: none;
+}
+
 .cards{
 
   overflow-y: scroll;
-  width: 99.9%;
+  width: 99.7%;
   height: 476px;
 }
 
@@ -307,6 +312,11 @@ body{
 .modal-body{
 
   height: 316px;
+}
+
+.modal-open{
+
+  padding-right: 0px !important;
 }
   
 .checkbox label, .radio label, label {

@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
   <!-- Custom CSS files -->
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/style1.css">
   <link rel="stylesheet" href="css/switch.css">
 	<title>Challenge Hunt</title>
 </head>
@@ -32,10 +32,10 @@
   <div class="bs-component">
     <!-- Navbar Begins-->
     <ul class="nav">
-      <li role="presentation" style="border-bottom: 3px solid #fff;"><a class="navItem" href="#contests">Contests</a></li>
+      <li role="presentation" style="border-bottom: 3px solid #fff;"><a class="navItem selected" href="#contests">Contests</a></li>
       <li role="presentation"><a class="navItem" href="#hackathons">Hackathons</a></li>
       <li role="presentation"><a class="navItem" href="#hiring">Hiring</a></li>
-      <li role="presentation"><a class="navItem" href="#datascience">Data Science</a></li>
+      <li role="presentation"><a class="navItem" href="#datascience">DataScience</a></li>
     </ul>  
     <!-- Navbar Ends-->
 
@@ -60,41 +60,41 @@
 
     <!-- Cards Begin-->
     <!-- Contests Cards Begins-->  
-    <div class="cards" id="Contests" style="height:476px;overflow:scroll;">
-      <div id="Contests_Active">
+    <div class="cards" id="Contests">
+      <div id="Contests_Active" class="categoryCards">
         
       </div>
-      <div id="Contests_Upcoming">
+      <div id="Contests_Upcoming" class="categoryCards">
 
       </div>
     </div> 
     <!-- Contests Cards Ends-->
     <!-- Hackathons Cards Begins-->  
-    <div class="cards" id="Hackathons" style="height:476px;overflow:scroll;">
-      <div id="Contests_Active">
+    <div class="cards" id="Hackathons">
+      <div id="Hackathons_Active" class="categoryCards">
 
       </div>
-      <div id="Contests_Upcoming">
+      <div id="Hackathons_Upcoming" class="categoryCards">
 
       </div>
     </div> 
     <!-- Hackathons Cards Ends-->
     <!-- Hiring Cards Begins-->  
-    <div class="cards" id="Hiring" style="height:476px;overflow:scroll;">
-      <div id="Contests_Active">
+    <div class="cards" id="Hiring">
+      <div id="Hiring_Active" class="categoryCards">
 
       </div>
-      <div id="Contests_Upcoming">
+      <div id="Hiring_Upcoming" class="categoryCards">
 
       </div>
     </div> 
     <!-- Hiring Cards Ends-->
     <!-- DataScience Cards Begins-->  
-    <div class="cards" id="DataScience" style="height:476px;overflow:scroll;">
-      <div id="Contests_Active">
+    <div class="cards" id="DataScience">
+      <div id="DataScience_Active" class="categoryCards">
 
       </div>
-      <div id="Contests_Upcoming">
+      <div id="DataScience_Upcoming" class="categoryCards">
         
       </div>
     </div> 
@@ -119,57 +119,72 @@
             </div>  
             <div class="checkbox oddCheckbox">
               <label>
-                <input name="hosts" id="CtfTime" type="checkbox">CftTime
+                <input name="hosts" value="ctftime.org" id="CftTime" type="checkbox">CftTime
               </label>
             </div>
             <div class="checkbox evenCheckbox">
               <label>
-                <input name="hosts" id="CodeChef" type="checkbox">CodeChef
+                <input name="hosts" value="codechef.com" id="CodeChef" type="checkbox">CodeChef
               </label>
             </div>
             <div class="checkbox oddCheckbox">
               <label>
-                <input name="hosts" id="CodeForces" type="checkbox">CodeForces
+                <input name="hosts" value="codeforces.com" id="CodeForces" type="checkbox">CodeForces
               </label>
             </div>
             <div class="checkbox evenCheckbox">
               <label>
-                <input name="hosts" id="CodeJam" type="checkbox">CodeJam
+                <input name="hosts" value="google.com/codejam" id="CodeJam" type="checkbox">CodeJam
               </label>
             </div>
             <div class="checkbox oddCheckbox">
               <label>
-                <input name="hosts" id="HackerCup" type="checkbox">HackerCup
+                <input name="hosts" value="facebook.com/hackercup" id="HackerCup" type="checkbox">HackerCup
               </label>
             </div>
             <div class="checkbox evenCheckbox">
               <label>
-                <input name="hosts" id="HackerEarth" type="checkbox">HackerEarth
+                <input name="hosts" value="hackerearth.com" id="HackerEarth" type="checkbox">HackerEarth
               </label>
             </div>
             <div class="checkbox oddCheckbox">
               <label>
-                <input name="hosts" id="HackerRank" type="checkbox">HackerRank
+                <input name="hosts" value="hackerrank.com" id="HackerRank" type="checkbox">HackerRank
               </label>
             </div>
             <div class="checkbox evenCheckbox">
               <label>
-                <input name="hosts" id="Kaggle" type="checkbox">Kaggle
+                <input name="hosts" value="kaggle.com" id="Kaggle" type="checkbox">Kaggle
               </label>
             </div>
             <div class="checkbox oddCheckbox">
               <label>
-                <input name="hosts" id="Marathon24" type="checkbox">Marathon24
+                <input name="hosts" value="spoj.com" id="Spoj" type="checkbox">Spoj
               </label>
             </div>
             <div class="checkbox evenCheckbox">
               <label>
-                <input name="hosts" id="RussianCodecup" type="checkbox">RussianCodecup
+                <input name="hosts" value="russiancodecup.ru" id="RussianCodecup" type="checkbox">RussianCodecup
               </label>
             </div>
             <div class="checkbox oddCheckbox">
               <label>
-                <input name="hosts" id="TopCoder" type="checkbox">TopCoder
+                <input name="hosts" value="topcoder.com" id="TopCoder" type="checkbox">TopCoder
+              </label>
+            </div>
+            <div class="checkbox evenCheckbox">
+              <label>
+                <input name="hosts" value="ipsc.ksp.sk" id="IPSC" type="checkbox">IPSC
+              </label>
+            </div>
+            <div class="checkbox oddCheckbox">
+              <label>
+                <input name="hosts" value="usaco.org" id="USACO" type="checkbox">USACO
+              </label>
+            </div>
+            <div class="checkbox evenCheckbox">
+              <label>
+                <input name="hosts" value="marathon24.com" id="Marathon24" type="checkbox">Marathon24
               </label>
             </div>
           </div>  
