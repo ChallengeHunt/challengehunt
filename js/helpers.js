@@ -22,6 +22,18 @@ function toTimeZone(time) {
   return newD.toLocaleString();
 }
 
+// convert utc to local time zone of browser
+function toTimeZone1(time) {
+	var dateTimeTimezone = time.split("T");
+	var date = dateTimeTimezone[0].split("-");
+	var timeAndTimeZone = dateTimeTimezone[1].split("T");
+	var time = timeAndTimeZone[0].split(":");
+	var d = new Date(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]), parseInt(time[0]), parseInt(time[1]), parseInt(time[2]), 0);
+	var offset = -(d.getTimezoneOffset());
+	var newD = new Date(d.getTime() + offset*60000);
+  return newD;
+}
+
 function dateFormatted(date, time){
 	// console.log(time);
 	var timeOfDay = time.split(":");

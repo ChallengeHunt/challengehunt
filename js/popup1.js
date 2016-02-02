@@ -98,10 +98,12 @@ var cards = function (data, type) {
 
 			var val1 = object['end'].split('T')[0];
 			var val2 = object['end'].split('T')[1];
+			var date1= toTimeZone1(object['end']);
+			
 			var date= val1.split("-");
 			var time= val2.split(":");
 			var d1 = new Date(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]), parseInt(time[0]), parseInt(time[1]), parseInt(time[2]), 0); 
-			var diff = d1 - currentTime;
+			var diff = date1 - currentTime;
 
 			var dur1=duration;
 			var a= dur1.split(":");
