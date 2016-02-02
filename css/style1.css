@@ -119,6 +119,16 @@ body{
   display: none;
 }
 
+#DataScience .date{
+
+  display: none !important;
+}
+
+#DataScience .dateSlider{
+
+  display: none !important;
+}
+
 .cards{
 
   overflow-y: scroll;
