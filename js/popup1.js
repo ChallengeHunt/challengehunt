@@ -93,17 +93,24 @@ var cards = function (data, type) {
 			var timeLeft = diff / durationInMs;
 			var progress = Math.floor((1-timeLeft)*100);
 			if(parseInt(progress)>=100){progress=100;}
+			val1='';
 		}
 		else{
 
 			var val1 = object['end'].split('T')[0];
 			var val2 = object['end'].split('T')[1];
-			var date1= toTimeZone1(object['end']);
+			var datetime1= toTimeZone1(object['end']);
 			
+			var timeZone= toTimeZone(object['end']);
+			timeZone=timeZone.split(',');
+
+			val1=dateFormatted(timeZone[0],timeZone[1]); 
+			val2=(timeZone[1]).trim();
+
 			var date= val1.split("-");
 			var time= val2.split(":");
 			var d1 = new Date(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]), parseInt(time[0]), parseInt(time[1]), parseInt(time[2]), 0); 
-			var diff = date1 - currentTime;
+			var diff = datetime1 - currentTime;
 
 			var dur1=duration;
 			var a= dur1.split(":");
@@ -311,6 +318,7 @@ var cards = function (data, type) {
 			a=0;
 		}
 
+		var location='';
 		var startDuration="";
 		if(type=="Hackathons"){
 
@@ -324,20 +332,34 @@ var cards = function (data, type) {
 
 			var duration= (parseInt(endDate - startDate)/(1000*60*60));
 			duration= (duration).toString() + ":00";
-					
+			
+			val2=dateCreated(val1);
+			val1='';
+
+			var beginTime= (parseInt(startDate-currentTime)/(1000*60*60));	
+			beginTime=Math.round(beginTime);
+
+			var location = object['location']; 	
 		}
 		else{
 
 			var val1 = object['start'].split('T')[0];
 			var val2 = object['start'].split('T')[1];
+			var datetime1= toTimeZone1(object['start']);
+			
+			var timeZone= toTimeZone(object['start']);
+			timeZone=timeZone.split(',');
+
+			val1=dateFormatted(timeZone[0],timeZone[1]); 
+			val2=(timeZone[1]).trim();
 
 			var date= val1.split("-");
 			var time= val2.split(":");
 			var d1 = new Date(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]), parseInt(time[0]), parseInt(time[1]), parseInt(time[2]), 0); 
+			var beginTime = (parseInt(datetime1 - currentTime) / (1000*60*60));
+			beginTime=Math.round(beginTime);
 
-			var diff = d1- currentTime;
-			diff_hours=(parseInt(diff)/(60*60*1000));
-			diff_days=(parseInt(diff)/(24*60*60*1000));
+
 		}
 
 		var host_color="";
@@ -364,6 +386,7 @@ var cards = function (data, type) {
 		$('' + upcomingContainer).append(
 		  $('<div/>',{
 			class: 'card',
+			id:''+contest_url,
 		  }).append(
 				$('<div/>', {
 					class: 'cardHeader',
@@ -438,8 +461,26 @@ var cards = function (data, type) {
 			  			$('<div/>', {
 
 			  				class:'dateLabel',
-			  				'text':'Begins in 2 Days',
+			  				'text':'Begins in '+beginTime+' hours',
 			  			})
+			  		).append(
+			  			$('<div/>', {
+
+			  				class:'location',
+			  				'style': 'display:flex;'
+
+			  			}).append(
+			  				$('<i/>', {
+
+			  					class:"fa fa-map-marker fa-locate"
+			  				})
+			  			).append(
+			  				$('<div/>', {
+
+			  					class:'locationText',
+			  					'text':''+location,
+			  				})
+			  			)
 			  		)
 			  	).append(
 			  		$('<div/>', {

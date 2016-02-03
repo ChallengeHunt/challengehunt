@@ -57,6 +57,22 @@ function dateFormatted(date, time){
 	return dd + " " + mm + " " + yyyy;
 }
 
+function dateCreated(date){
+	// console.log(time);
+	var start = date.split("-");
+	// console.log(start);
+	var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep","Oct", "Nov", "Dec"];
+
+	var dd = start[2];
+	if(dd.length == 1){
+		dd = "0" + dd;
+	}
+	var mm = months[start[1]-1];
+	var yyyy = start[0];
+	// console.log(dd + " " + mm + " " + yyyy);
+	return dd + " " + mm + " " + yyyy;
+}
+
 function timeFormatted(time){
 	var start = time.split(":");
 	var hour = start[0];
