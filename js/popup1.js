@@ -1,3 +1,7 @@
+window.onload = function(){
+	main();
+}
+
 var CHALLENGEHUNT = {}
 
 CHALLENGEHUNT.contests = {
@@ -589,6 +593,7 @@ var challengeData = function () {
 	    	datascienceData = challengeData['ds_q'];
 			
 			cards(contestsData, CHALLENGEHUNT.contests.CONTESTS);
+			$('.loader').css("display","none");	
 			cards(hiringData, CHALLENGEHUNT.contests.HIRING);
 			cards(hackathonData, CHALLENGEHUNT.contests.HACKATHONS);
 			cards(datascienceData, CHALLENGEHUNT.contests.DATASCIENCE);
@@ -598,7 +603,8 @@ var challengeData = function () {
 	});
 };
 
-$(document).ready(function(){
+function main (){
+		
 	challengeData();
 	selectedHosts();
 
@@ -664,4 +670,4 @@ $(document).ready(function(){
 
 
 
-});
+};
