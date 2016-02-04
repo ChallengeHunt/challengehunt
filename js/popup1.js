@@ -338,6 +338,12 @@ var cards = function (data, type) {
 
 			var beginTime= (parseInt(startDate-currentTime)/(1000*60*60));	
 			beginTime=Math.round(beginTime);
+			beginTimeString = beginTime + ' hours';
+
+			if (beginTime > 24) {
+				beginTime = Math.floor(beginTime/24);
+				beginTimeString = beginTime + ' day(s)';
+			}
 
 			var location = object['location']; 	
 		}
@@ -358,6 +364,12 @@ var cards = function (data, type) {
 			var d1 = new Date(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]), parseInt(time[0]), parseInt(time[1]), parseInt(time[2]), 0); 
 			var beginTime = (parseInt(datetime1 - currentTime) / (1000*60*60));
 			beginTime=Math.round(beginTime);
+			beginTimeString = beginTime + ' hours';
+
+			if (beginTime > 24) {
+				beginTime = Math.floor(beginTime/24);
+				beginTimeString = beginTime + ' day(s)';
+			}
 
 
 		}
@@ -461,7 +473,7 @@ var cards = function (data, type) {
 			  			$('<div/>', {
 
 			  				class:'dateLabel',
-			  				'text':'Begins in '+beginTime+' hours',
+			  				'text':'Begins in '+beginTimeString,
 			  			})
 			  		).append(
 			  			$('<div/>', {
