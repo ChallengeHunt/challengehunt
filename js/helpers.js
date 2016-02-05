@@ -118,24 +118,41 @@ function timeForCalendar(time) {
 }
 
 function dateForCalendar(date, time) {
-	var timeOfDay = time.split(":");
 	var start = date.split("/");
+	var timeOfDay = time.split(":");
 	// console.log(start);
 	var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep","Oct", "Nov", "Dec"];
 	var formattedDate = date.split('/');
-	if (timeOfDay[2].split(" ").length == 2) { 
+	console.log('formattedDate '+ formattedDate);
+	// again an edge case
+	// time is different for different systems
+	if (timeOfDay[2].split(" ").length == 2) {
+		// Eg if month is 5 then make it `05`
 		if(parseInt(formattedDate[0]) < 10) {
 			formattedDate[0] = "0" + formattedDate[0];
+		}
+		// Eg if date is 5 the make it `05`
+		if(parseInt(formattedDate[1]) < 10) {
+			formattedDate[1] = "0" + formattedDate[1];
 		}
 		// console.log("" + formattedDate[2] + formattedDate[0] + formattedDate[1]);
 		return "" + formattedDate[2] + formattedDate[0] + formattedDate[1];
 	} else {
-		// return
-		// console.log("" + formattedDate[2] + formattedDate[1] + formattedDate[0]);
-		return "" + formattedDate[2] + formattedDate[1] + formattedDate[0];
+		return "" + formattedDate[2] + formattedDate[0] + formattedDate[1];
 	}
 }
 
+
+function dateForCalendarHackathons(date) {
+	// Eg if date is 5 the make it `05`
+	if(parseInt(date[2]) < 10) {
+		date[2] = "0" + date[2];
+	}
+	// return
+	console.log("" + date[0] + date[1] + date[2]);
+	return "" + date[0] + date[1] + date[2];
+
+}
 
 function verboseDuration(duration) {
 	// TODO: make the code tidy

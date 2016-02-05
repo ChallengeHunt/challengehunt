@@ -327,6 +327,29 @@ var cards = function (data, type) {
 		var host_url = object['host_url']; 
 		var host_name = object['host_name'];
 		var duration = object['duration']; 
+		//console.log(object['start']);
+		console.log(contest_name);
+		//console.log(object['end']);
+		if (type == 'Hackathons') {
+			console.log(object['start_date']);
+			console.log(object['end_date']);
+			var startDateTime = object['start_date'].split("-");
+			var endDateTime = object['end_date'].split("-");
+			var startDateForCalender = dateForCalendarHackathons(startDateTime) + 'T000000';
+			var endDateForCalendar = dateForCalendarHackathons(endDateTime) + 'T000000';
+			var calendarTime = startDateForCalender + '/' + endDateForCalendar;
+			console.log(calendarTime);
+		} else {
+			var startDateTime = toTimeZone(object['start']).split(",");
+			
+			// if condition for an edge case, don't know which
+			if(startDateTime.length == 1) {
+				startDateTime = toTimeZone(object['start']).split(" ");
+			}
+			var startDateForCalender = dateForCalendar(startDateTime[0], startDateTime[1]) + 'T' + timeForCalendar(startDateTime[1]);
+			var calendarTime = startDateForCalender + '/' + startDateForCalender;
+			console.log(calendarTime);
+		}
 
 		if(type!="Hackathons"){
 
@@ -352,6 +375,7 @@ var cards = function (data, type) {
 
 			var val1 = object['start_date'];
 			var val2 = object['end_date'];
+
 			var startdate= val1.split("-");
 			var enddate= val2.split("-");
 
@@ -376,6 +400,20 @@ var cards = function (data, type) {
 			var location = object['location']; 	
 		}
 		else{
+		// 	console.log(contest_name);
+		// //console.log(object['end']);
+		// var startDateTime = toTimeZone(object['start']).split(",");
+		// //var endDateTime = toTimeZone(object['end']).split(",");
+		
+		// // if condition for an edge case, don't know which
+		// if(startDateTime.length == 1) {
+		// 	startDateTime = toTimeZone(object['start']).split(" ");
+		// 	//endDateTime = toTimeZone(object['end_date']).split(" ");
+		// }
+		// console.log(startDateTime);
+		// var startDateForCalender = dateForCalendar(startDateTime[0], startDateTime[1]) + 'T' + timeForCalendar(startDateTime[1]);
+		// //var endDateForCalendar = dateForCalendar(endDateTime[0]) + 'T' + timeForCalendar(endDateTime[1]);
+		// var calendarTime = startDateForCalender;
 
 			var val1 = object['start'].split('T')[0];
 			var val2 = object['start'].split('T')[1];
@@ -576,8 +614,12 @@ var cards = function (data, type) {
 			  		$('<p/>', {
 
 			  			class:'calenderTitle',
-			  			'text':'Add To Calender'
-			  		})
+			  		}).append(
+			  			$('<a/>',{
+			  				'text':'Add To Calender',
+			  				'href': "https://www.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(contest_name)+"&dates="+calendarTime+"&location="+contest_url+"&pli=1&uid=&sf=true&output=xml#eventpage_6"
+			  			})
+			  		)
 			  	)
 			)
 		);
