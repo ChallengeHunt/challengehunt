@@ -102,8 +102,8 @@ var cards = function (data, type) {
 		}
 		else{
 
-			var val1 = object['end'].split('T')[0];
-			var val2 = object['end'].split('T')[1];
+			var dateObject = object['end'].split('T')[0];
+			var timeObject = object['end'].split('T')[1];
 			var datetime1= toTimeZone1(object['end']);
 			
 			var timeZone= toTimeZone(object['end']);
@@ -112,12 +112,14 @@ var cards = function (data, type) {
 			val1=dateFormatted(timeZone[0],timeZone[1]); 
 			val2=(timeZone[1]).trim();
 
-			var date= val1.split("-");
-			var time= val2.split(":");
+			var date= dateObject.split("-");
+			//console.log(date[0]);
+			var time= timeObject.split(":");
 			var d1 = new Date(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]), parseInt(time[0]), parseInt(time[1]), parseInt(time[2]), 0); 
 			var diff = datetime1 - currentTime;
 
 			var dur1=duration;
+			//console.log(dur1);
 			var a= dur1.split(":");
 			var b= dur1.split(" ");
 
@@ -192,7 +194,7 @@ var cards = function (data, type) {
 			  ).append(
 			  	$('<div/>', {
 			  		class: 'cardOrganiser',
-			  		text: ''+host_name		
+			  		text: ''+host_name,	
 			  	})
 			  ).append(
 			  	$('<div/>', {
@@ -427,8 +429,8 @@ var cards = function (data, type) {
 			  	)		
 			  ).append(
 			  	$('<div/>', {
-			  		class: 'cardOrganiser',
-			  		text: ''+host_name		
+			  		class: 'cardOrganiser',	
+			  		text: ''+host_name,	
 			  	})
 			  ).append(
 			  	$('<div/>', {
