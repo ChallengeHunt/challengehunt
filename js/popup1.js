@@ -92,13 +92,16 @@ var cards = function (data, type) {
 
 			var duration= (parseInt(endDate - startDate)/(1000*60*60));
 			duration= (duration).toString() + ":00";
+
+			val2=dateCreated(val1);
+			val1='';
 			
 			var diff = endDate - currentTime;
 			var durationInMs = parseInt(endDate - startDate);
 			var timeLeft = diff / durationInMs;
 			var progress = Math.floor((1-timeLeft)*100);
-			if(parseInt(progress)>=100){progress=100;}
-			val1='';
+			if(parseInt(progress)>=100){progress=100;};
+			var location = object['location']; 	
 		}
 		else{
 
@@ -246,6 +249,24 @@ var cards = function (data, type) {
 			  				class:'dateTitle',
 			  				'text':progress+'% Complete',
 			  			})
+			  		).append(
+			  			$('<div/>', {
+
+			  				class:'location',
+			  				'style': 'display:flex;'
+
+			  			}).append(
+			  				$('<i/>', {
+
+			  					class:"fa fa-map-marker fa-locate"
+			  				})
+			  			).append(
+			  				$('<div/>', {
+
+			  					class:'locationText',
+			  					'text':''+location,
+			  				})
+			  			)
 			  		)
 			  	).append(
 			  		$('<div/>', {
@@ -661,7 +682,6 @@ function main (){
 		});
 
 		localStorage.setItem("hosts", JSON.stringify(checkedHosts));
-        console.log(JSON.parse(localStorage.getItem("hosts")));
         $('#optionsModal').modal('hide')
 	});
 

@@ -303,7 +303,7 @@ body{
 #optionsModal{
 
   width: 335px;
-  margin: 80px 0px 0px 92px;
+  margin: 66px 0px 0px 92px;
 }
 
 .headerCheckbox{
@@ -356,7 +356,7 @@ body{
 
 .modal-body{
 
-  height: 316px;
+  height: 336px;
 }
 
 .modal-open{
@@ -394,7 +394,7 @@ body{
   height: 30px;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 40%;
   z-index: 100000;
 }
 
@@ -540,7 +540,7 @@ body{
     font-size: 18px;
     font-weight: 500;
     top: 70%;
-    left: 40%;
+    left: 36%;
 }
 
 .loader{
