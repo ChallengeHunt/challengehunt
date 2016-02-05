@@ -1,4 +1,4 @@
-window.onload = function(){
+window.onload = function () {
 	main();
 }
 
@@ -51,6 +51,7 @@ var cards = function (data, type) {
 	var activeContainer=('#'+type+"_Active");
 	var upcomingContainer=('#'+type+"_Upcoming");
 
+	var Hosts=JSON.parse(localStorage.getItem("hosts"));
 	for(var i=0; i < activeCategories.length ; i++){
 
 		var object = activeCategories[i];
@@ -63,9 +64,9 @@ var cards = function (data, type) {
 		if(type!="Hackathons"){
 
 			var a=0;
-			for(var k=0;k<selectedHost.length;k++){
+			for(var k=0;k<Hosts.length;k++){
 
-				if(host_name==selectedHost[k]['host']){
+				if(host_name==Hosts[k]['host']){
 
 					a=1;
 					break;
@@ -307,9 +308,9 @@ var cards = function (data, type) {
 		if(type!="Hackathons"){
 
 			var a=0;
-			for(var k=0;k<selectedHost.length;k++){
+			for(var k=0;k<Hosts.length;k++){
 
-				if(host_name==selectedHost[k]['host']){
+				if(host_name==Hosts[k]['host']){
 
 					a=1;
 					break;
@@ -562,16 +563,29 @@ var cards = function (data, type) {
 
 }
 
+var setHostData = function(){
+
+	var data = JSON.parse(localStorage.getItem("hosts"));
+	if(data==null){
+
+		localStorage.setItem("hosts", JSON.stringify(selectedHost));
+	}
+}
+
 var selectedHosts = function () {
 
-	for(var i=0 ;i< selectedHost.length; i++){
+	var data= JSON.parse(localStorage.getItem("hosts"))
+	console.log(data);
+	for(var i=0 ;i< data.length; i++){
 
-		$('input[value="'+selectedHost[i]['host']+'"]').prop("checked",true);
+		$('input[value="'+data[i]['host']+'"]').prop("checked",true);
 	}
 
 };
 
 var challengeData = function () {
+    
+    $('.loader').css("display","block");	
 	$.ajax({
 		type:'GET',
 		url: 'http://testchallengehunt.appspot.com/v1/all',
@@ -604,7 +618,9 @@ var challengeData = function () {
 };
 
 function main (){
-		
+	
+	$('.loader').css("display","block");	
+	setHostData();	
 	challengeData();
 	selectedHosts();
 
@@ -632,13 +648,19 @@ function main (){
 
 	$('#saveButton').click(function(){
 
-		var checkedUsers=[];
+		var checkedHosts=[];
+		var data=JSON.parse(localStorage.getItem("hosts"));
 		$('input:checkbox[name="hosts"]:checked').each(function(){
 
-			checkedUsers.push($(this).attr("id"));
+			var id=($(this).attr("id"));
+			var value=($(this).attr("value"));
+			var obj={"name":id,"host":value};
+			checkedHosts.push(obj);
 		});
 
-		console.log(checkedUsers);
+		localStorage.setItem("hosts", JSON.stringify(checkedHosts));
+        console.log(JSON.parse(localStorage.getItem("hosts")));
+        $('#optionsModal').modal('hide')
 	});
 
 	$('.navItem').click(function(){
