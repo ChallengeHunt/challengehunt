@@ -276,10 +276,20 @@ body{
 .calenderTitle{
 
     margin-bottom: 0px;
-    color: #fff;
     font-size: 13px;
     font-weight: 500;
     margin-left: 6px;
+}
+
+.calenderTitle a{
+
+    color: #fff !important;
+}
+
+.calenderTitle a{
+
+    color: #fff !important;
+    text-decoration: none;
 }
 
 .fa-locate{

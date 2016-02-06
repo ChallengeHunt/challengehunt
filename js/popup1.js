@@ -608,7 +608,7 @@ var cards = function (data, type) {
 					$('<i/>', {
 
 						class: 'fa fa-calendar-check-o',
-						'style': 'color:#fff'
+						'style': 'color:#fff;margin-top:2px;'
 					})
 			  	).append(
 			  		$('<p/>', {
@@ -749,8 +749,8 @@ function main (){
 		
 	});
 
-	$(".cards").on("click", "div.card", function(){
-		var url = $(this).attr("id");
+	$(".cards").on("click", "div.cardHeader", function(){
+		var url = $(this).parent().attr("id");
 		window.open(url);
 	});
 
