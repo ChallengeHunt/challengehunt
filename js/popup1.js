@@ -608,7 +608,7 @@ var cards = function (data, type) {
 					$('<i/>', {
 
 						class: 'fa fa-calendar-check-o',
-						'style': 'color:#fff;margin-top:2px;'
+						'style': 'color:#fff;margin-top:1px;'
 					})
 			  	).append(
 			  		$('<p/>', {
@@ -617,7 +617,8 @@ var cards = function (data, type) {
 			  		}).append(
 			  			$('<a/>',{
 			  				'text':'Add To Calender',
-			  				'href': "https://www.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(contest_name)+"&dates="+calendarTime+"&location="+contest_url+"&pli=1&uid=&sf=true&output=xml#eventpage_6"
+			  				'href': "https://www.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(contest_name)+"&dates="+calendarTime+"&location="+contest_url+"&pli=1&uid=&sf=true&output=xml#eventpage_6",
+			  				'target':'_blank'
 			  			})
 			  		)
 			  	)
