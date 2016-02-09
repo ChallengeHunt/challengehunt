@@ -581,3 +581,40 @@ body{
   padding: 10px 0px;
 }
 /*Footer Begins*/
+
+/*EmptyCards Begins*/
+
+.emptyCards{
+
+  margin-top: 22%;
+  display: flex;
+}
+
+.emptyCardsPic{
+
+  width: 200px;
+  height: 200px;
+  margin-left: 20px;
+}
+
+.emptyCardsContent{
+
+  margin: auto;
+  text-align: center;
+}
+
+.text1{
+
+  color: #666170;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.text2{
+
+  color: #9575CD;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/*EmptyCards Ends*/

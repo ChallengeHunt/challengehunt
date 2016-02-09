@@ -52,6 +52,21 @@ var cards = function (data, type) {
 	var upcomingContainer=('#'+type+"_Upcoming");
 
 	var Hosts=JSON.parse(localStorage.getItem("hosts"));
+
+	if(activeCategories.length == 0){
+
+		var element='No Active '+type+' Contests yet!';
+		var elementBody="<div class='emptyCards'><img class='emptyCardsPic' src='img/emptyCards.png'><div class='emptyCardsContent'><p class='text1'>It's a beautiful day to start a new</p><p class='text1'>project, don't you think?</p><p class='text2'>"+element+"</p></div></div>"				
+		$(''+activeContainer).append(elementBody);
+	}
+
+	if(upcomingCategories.length == 0){
+
+		var element='No UpComing '+type+' Contests yet!';
+		var elementBody="<div class='emptyCards'><img class='emptyCardsPic' src='img/emptyCards.png'><div class='emptyCardsContent'><p class='text1'>It's a beautiful day to start a new</p><p class='text1'>project, don't you think?</p><p class='text2'>"+element+"</p></div></div>"				
+		$(''+upcomingContainer).append(elementBody);
+	}
+
 	for(var i=0; i < activeCategories.length ; i++){
 
 		var object = activeCategories[i];
@@ -184,7 +199,6 @@ var cards = function (data, type) {
 			host_style="box-shadow: 1px 1px 5px #292929;margin: 8px 8px 3px 19px;";
 			host_image="img/default.jpg";		
 		}
-		
 		$('' + activeContainer).append(
 		  $('<div/>',{
 			class: 'card',
