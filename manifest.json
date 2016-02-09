@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Challenge Hunt",
-  "description": "All programming challenges at one place",
+  "description": "One app. All coding contests.",
   "version": "0.3.4",
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
 
@@ -18,8 +18,6 @@
   },
 
   "permissions": [
-    "http://testchallengehunt.appspot.com/*",
-    "https://github.com/ChallengeHunt/challengehunt/*",
-    "https://buttons.github.io/buttons.js"
+    "http://testchallengehunt.appspot.com/*"
   ]
 }
