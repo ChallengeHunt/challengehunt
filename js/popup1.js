@@ -149,13 +149,18 @@ var cards = function (data, type) {
 			// console.log(durationInMs);
 			var timeLeft = diff / durationInMs;
 			// console.log(timeLeft);
-			if (timeLeft > 1) {
-				durationInMs = (dur2+24)*60*60*1000; // duration in milliseconds
-				// console.log(durationInMs);
-				timeLeft = diff / durationInMs;
-			}
+			// if (timeLeft > 1) {
+			// 	durationInMs = (dur2+24)*60*60*1000; // duration in milliseconds
+			// 	// console.log(durationInMs);
+			// 	timeLeft = diff / durationInMs;
+			// }
 			var progress = Math.floor((1-timeLeft)*100);
-			if((parseInt(progress))>=100){progress=100;}
+
+			if((parseInt(progress))>=100){
+				progress=100;
+			} else if (parseInt(progress) < 0) {
+				progress = 0;
+			}
 			// console.log(progress);
 		}
 		
