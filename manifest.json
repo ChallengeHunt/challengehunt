@@ -7,15 +7,19 @@
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
 
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "img/brackets_64.png",
     "default_popup": "index2.html"
   },
   "icons": { 
-    "16": "icon.png",
-    "48": "icon48.png"
+    "16": "img/brackets_16.png",
+    "48": "img/brackets_48.png",
+    "64": "img/brackets_64.png",
+    "128": "img/brackets_128.png"
   },
 
   "permissions": [
-    "http://testchallengehunt.appspot.com/*"
+    "http://testchallengehunt.appspot.com/*",
+    "https://github.com/ChallengeHunt/challengehunt/*",
+    "https://buttons.github.io/buttons.js"
   ]
 }
