@@ -18,6 +18,9 @@
   <!-- Font Awesome-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
+  <!-- Into.js CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/introjs.min.css">
+
   <!-- Custom CSS files -->
   <link rel="stylesheet" type="text/css" href="css/style1.css">
   <link rel="stylesheet" href="css/switch.css">
@@ -29,7 +32,7 @@
   <!-- Main component -->
   <div class="bs-component">
     <!-- Navbar Begins-->
-    <ul class="nav">
+    <ul class="nav" data-step="1" data-intro="Welcome to the redesigned Challenge Hunt app! We've added some major new features! Let's start with category bar. You can easily switch between different types of challenges from here.">
       <li role="presentation" style="border-bottom: 3px solid #fff;"><a class="navItem selected" href="#contests">Contests</a></li>
       <li role="presentation"><a class="navItem" href="#hackathons">Hackathons</a></li>
       <li role="presentation"><a class="navItem" href="#hiring">Hiring</a></li>
@@ -42,11 +45,11 @@
         <p class="activeCategory">Active(Ongoing)</p>
         <p class="upcomingCategory">Upcoming</p>   
       </div>
-      <div class="switch">
+      <div class="switch" data-step="2" data-intro="Easily change from active to upcoming challenges">
         <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
         <label for="cmn-toggle-4"></label>
       </div>
-      <div class="settings dropdown">
+      <div class="settings dropdown" data-step="3" data-intro="Opens the settings menu. You can select your favorite platforms from here.">
         <i class="fa fa-cog fa-Icon dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></i>
        <ul class="dropdown-menu" style="position: absolute; left: -127px;" aria-labelledby="dropdownMenu1">
         <li><a href="#" data-toggle="modal" class="optionsMenu" data-target="#optionsModal">Options</a></li>
@@ -99,7 +102,7 @@
     <div class="footer">  
       <a href="https://github.com/ChallengeHunt/challengehunt/issues/new" target="_blank" class="footerLinks" style="width: 30%;text-align: center;">Bugs/Suggestions?</a>
       <a href="https://github.com/ChallengeHunt/challengehunt" target="_blank" class="footerLinks" style="width: 30%;text-align: center;"><i class="fa fa-github"></i> Star Repo</a>
-      <a href="http://challengehunt.github.io/challengehunt/help.html" target="_blank" class="footerLinks" style="width: 20%;text-align: right;margin-right:18px;">Help</a>    
+      <a href="#" id="help" class="footerLinks" style="width: 20%;text-align: right;margin-right:18px;" data-step="4" data-intro="If you want to restart this tutorial just click here. Visit http://bit.ly/chhelp for more information." data-position="top">Help</a>    
     </div>
   </div>   
     <!-- Cards Ends-->
@@ -224,6 +227,7 @@
 
 <script src="js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script src="js/intro.min.js"></script>
 <script src="js/material.min.js"></script>
 <script src="js/ripples.min.js"></script>
 <script src="js/popup1.js"></script>

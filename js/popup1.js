@@ -56,6 +56,7 @@ var cards = function (data, type) {
 
 		var object = activeCategories[i];
 		var contest_name = object['contest_name'];
+		// console.log(contest_name);
 		var contest_url = object['contest_url']; 
 		var host_url = object['host_url']; 
 		var host_name = object['host_name'];
@@ -107,7 +108,7 @@ var cards = function (data, type) {
 
 			var dateObject = object['end'].split('T')[0];
 			var timeObject = object['end'].split('T')[1];
-			var datetime1= toTimeZone1(object['end']);
+			var datetime1= toUTCTimeZone(object['end']);
 			
 			var timeZone= toTimeZone(object['end']);
 			timeZone=timeZone.split(',');
@@ -116,13 +117,14 @@ var cards = function (data, type) {
 			val2=(timeZone[1]).trim();
 
 			var date= dateObject.split("-");
-			//console.log(date[0]);
+			// console.log(date[0]);
 			var time= timeObject.split(":");
 			var d1 = new Date(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]), parseInt(time[0]), parseInt(time[1]), parseInt(time[2]), 0); 
 			var diff = datetime1 - currentTime;
+			// console.log("diff is" + diff);
 
 			var dur1=duration;
-			//console.log(dur1);
+			// console.log(dur1);
 			var a= dur1.split(":");
 			var b= dur1.split(" ");
 
@@ -142,10 +144,24 @@ var cards = function (data, type) {
 				var dur2=parseInt(a[0]);
 			}
 
-			var durationInMs = dur2*60*60*1000; // duration in milliseconds
+			// console.log(dur2);
+			var durationInMs = (dur2)*60*60*1000; // duration in milliseconds
+			// console.log(durationInMs);
 			var timeLeft = diff / durationInMs;
+			// console.log(timeLeft);
+			// if (timeLeft > 1) {
+			// 	durationInMs = (dur2+24)*60*60*1000; // duration in milliseconds
+			// 	// console.log(durationInMs);
+			// 	timeLeft = diff / durationInMs;
+			// }
 			var progress = Math.floor((1-timeLeft)*100);
-			if((parseInt(progress))>=100){progress=100;}
+
+			if((parseInt(progress))>=100){
+				progress=100;
+			} else if (parseInt(progress) < 0) {
+				progress = 0;
+			}
+			// console.log(progress);
 		}
 		
 		var host_color="";
@@ -328,17 +344,17 @@ var cards = function (data, type) {
 		var host_name = object['host_name'];
 		var duration = object['duration']; 
 		//console.log(object['start']);
-		console.log(contest_name);
+		// console.log(contest_name);
 		//console.log(object['end']);
 		if (type == 'Hackathons') {
-			console.log(object['start_date']);
-			console.log(object['end_date']);
+			// console.log(object['start_date']);
+			// console.log(object['end_date']);
 			var startDateTime = object['start_date'].split("-");
 			var endDateTime = object['end_date'].split("-");
 			var startDateForCalender = dateForCalendarHackathons(startDateTime) + 'T000000';
 			var endDateForCalendar = dateForCalendarHackathons(endDateTime) + 'T000000';
 			var calendarTime = startDateForCalender + '/' + endDateForCalendar;
-			console.log(calendarTime);
+			//console.log(calendarTime);
 		} else {
 			var startDateTime = toTimeZone(object['start']).split(",");
 			
@@ -348,7 +364,7 @@ var cards = function (data, type) {
 			}
 			var startDateForCalender = dateForCalendar(startDateTime[0], startDateTime[1]) + 'T' + timeForCalendar(startDateTime[1]);
 			var calendarTime = startDateForCalender + '/' + startDateForCalender;
-			console.log(calendarTime);
+			//console.log(calendarTime);
 		}
 
 		if(type!="Hackathons"){

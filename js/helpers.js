@@ -22,7 +22,17 @@ function toTimeZone(time) {
   return newD.toLocaleString();
 }
 
-// convert utc to local time zone of browser
+// converts the recieved date time object to a UTC date time object
+function toUTCTimeZone(time) {
+	var dateTimeTimezone = time.split("T");
+	var date = dateTimeTimezone[0].split("-");
+	var timeAndTimeZone = dateTimeTimezone[1].split("T");
+	var time = timeAndTimeZone[0].split(":");
+	var d = new Date(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]), parseInt(time[0]), parseInt(time[1]), parseInt(time[2]), 0);
+	return d;
+}
+
+// returns the date time object instead of locale string
 function toTimeZone1(time) {
 	var dateTimeTimezone = time.split("T");
 	var date = dateTimeTimezone[0].split("-");
@@ -123,7 +133,7 @@ function dateForCalendar(date, time) {
 	// console.log(start);
 	var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep","Oct", "Nov", "Dec"];
 	var formattedDate = date.split('/');
-	console.log('formattedDate '+ formattedDate);
+	// console.log('formattedDate '+ formattedDate);
 	// again an edge case
 	// time is different for different systems
 	if (timeOfDay[2].split(" ").length == 2) {
@@ -149,7 +159,7 @@ function dateForCalendarHackathons(date) {
 		date[2] = "0" + date[2];
 	}
 	// return
-	console.log("" + date[0] + date[1] + date[2]);
+	// console.log("" + date[0] + date[1] + date[2]);
 	return "" + date[0] + date[1] + date[2];
 
 }
