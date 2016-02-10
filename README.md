@@ -1,12 +1,16 @@
 # Challenge Hunt
 
-##### All programming challenges at one place
+## One app. All coding contests.
+Challenge Hunt keeps you updated with all active and upcoming coding competitions and hackathons from around the world.
 
-Challenge Hunt is your companion in hunting online programming challenges. It shows you all the active, upcoming and archived challenges from over 25 platforms. You can set your preferred online challenge platforms and Challenge Hunt will show you challenges from only those platforms. To save you from the pain of visiting the extension just to check the active contest we have included a red badge which does that for you.
+## Download
+* [Chrome Extension](https://bit.ly/challengehunt)	
 
-Happy Hunting!
-
-You can install Challenge Hunt from [here](https://chrome.google.com/webstore/detail/challenge-hunt/cgbnhngdlmhjbmgkekedepoapmoingjj?utm_source=chrome-app-launcher-info-dialog).
+## Screenshots
+![](http://imgur.com/dBnhUGN)
+![](http://i.imgur.com/RH0kzPO.png?1)
+![](http://i.imgur.com/kSK4xNV.png?1)
+![](http://i.imgur.com/nHXgRQP.png?1)
 
 ###Made By:
 
