@@ -7,7 +7,7 @@ Challenge Hunt keeps you updated with all active and upcoming coding competition
 * [Chrome Extension](https://bit.ly/challengehunt)	
 
 ## Screenshots
-![](http://imgur.com/dBnhUGN)
+![](http://imgur.com/dBnhUGN.png?1)
 ![](http://i.imgur.com/RH0kzPO.png?1)
 ![](http://i.imgur.com/kSK4xNV.png?1)
 ![](http://i.imgur.com/nHXgRQP.png?1)
