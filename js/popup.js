@@ -196,8 +196,8 @@ var cards = function (data, type) {
 		if(host_color.length ==0){
 
 			host_color="#292929";
-			host_style="box-shadow: 1px 1px 5px #292929;margin: 8px 8px 3px 19px;";
-			host_image="img/default.jpg";		
+			host_style="box-shadow: 1px 1px 5px #292929;margin: 8px 8px 3px 19px;border-radius: 20px;width:39px;height:39px;";
+			host_image="img/default.png";		
 		}
 		$('' + activeContainer).append(
 		  $('<div/>',{
@@ -487,8 +487,8 @@ var cards = function (data, type) {
 		if(host_color.length ==0){
 
 			host_color="#292929";
-			host_style="box-shadow: 1px 1px 5px #292929;margin: 8px 8px 3px 19px;";
-			host_image="img/default.jpg";	
+			host_style="box-shadow: 1px 1px 5px #292929;margin: 8px 8px 3px 19px;border-radius: 20px;width:39px;height:39px;";
+			host_image="img/default.png";	
 		}
 		
 		$('' + upcomingContainer).append(
