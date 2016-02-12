@@ -782,7 +782,8 @@ function main (){
 
 	$(".cards").on("click", "div.cardHeader", function(){
 		var url = $(this).parent().attr("id");
-		window.open(url);
+		chrome.tabs.create({url: url, active: false});
+		// window.open(url);
 	});
 
 
