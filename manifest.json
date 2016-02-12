@@ -4,7 +4,7 @@
   "name": "Challenge Hunt",
   "short_name": "Challenge Hunt",
   "description": "One app. All coding contests. Keeps you updated with all active & upcoming coding competitions and hackathons from around the world",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
 
   "browser_action": {

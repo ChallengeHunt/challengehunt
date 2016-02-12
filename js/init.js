@@ -19,10 +19,10 @@ function getVersion() {
 function checkVersion(){
   
   var currVersion = getVersion();
-  console.log(currVersion);
+  // console.log(currVersion);
   var prevVersion = localStorage.version;
-   // Check if the version has changed.
-  if (currVersion != prevVersion) {
+  // Check if the version has changed.
+  if (!prevVersion) {
   	chrome.tabs.create({ url: "http://challengehunt.github.io/" });
     localStorage.version = currVersion;
   }
