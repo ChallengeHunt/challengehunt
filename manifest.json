@@ -11,6 +11,12 @@
     "default_icon": "img/image_64.png",
     "default_popup": "index.html"
   },
+
+  "background": {
+    "persistent": false,
+    "scripts": ["js/ga.js"]
+  },
+
   "icons": { 
     "16": "img/image_16.png",
     "48": "img/image_48.png",
