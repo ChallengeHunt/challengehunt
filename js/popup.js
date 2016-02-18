@@ -422,6 +422,10 @@ var cards = function (data, type) {
 			beginTime=Math.round(beginTime);
 			beginTimeString = beginTime + ' hours';
 
+			if (beginTime < 0) {
+				beginTimeString = 'moments';
+			}
+
 			if (beginTime >= 24) {
 				beginTime = Math.floor(beginTime/24);
 				beginTimeString = beginTime + ' day(s)';
