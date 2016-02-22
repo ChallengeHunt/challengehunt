@@ -25,6 +25,7 @@
   },
 
   "permissions": [
-    "http://testchallengehunt.appspot.com/*"
+    "http://testchallengehunt.appspot.com/*",
+    "history"  
   ]
 }
