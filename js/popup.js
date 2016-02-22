@@ -785,6 +785,14 @@ function main (){
 		chrome.tabs.create({url: url, active: false});
 		// window.open(url);
 	});
+    
+    
+    var data=JSON.parse(localStorage.getItem("hosts"));
+    for(var i=0;i<data.length;i++){
+        
+        chrome.history.search({text: (data[i]['host']).toString(), maxResults:20}, function(results) { console.log(results) })    
+    }
+    
 
 
 
