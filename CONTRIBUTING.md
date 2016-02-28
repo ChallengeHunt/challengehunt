@@ -1,4 +1,4 @@
-	# Contributing to Chaleneg Hunt
+# Contributing to Challenge Hunt
 
 Looking to contribute something to Font Awesome? **Here's how you can help.**
 
