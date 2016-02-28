@@ -8,7 +8,7 @@ Looking to contribute something to Font Awesome? **Here's how you can help.**
 
 New hosts are added by requests by the [Challenge Hunt community on GitHub](../../issues). Want to request a new host? Here are some things to keep in mind:
 
-1. Please [search](../../search?type=Issues) to see if your icon request already exists. If a request is found, please +1 that one.
+1. Please [search](../../search?type=Issues) to see if your host request already exists. If a request is found, please +1 that one.
 2. Please make requests for one host at a time
 3. Please and thank you if you include the following:
   - Title your [new issue](../../issues/new?title=Add%20host-%20) `Add host - hostname` (e.g., `Add host - codingame.com`).
