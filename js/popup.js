@@ -44,8 +44,13 @@ ChallengeHunt.cardLayout = function() {
 		var activeCategories = data['active'];
 		var upcomingCategories = data['upcoming'];
 
-		var activeContainer=('#'+type+"_Active");
-		var upcomingContainer=('#'+type+"_Upcoming");
+		var contestsContainer = $('#'+type);
+		var idActive = '' + type+"_Active";
+		var activeContainer = $("<div id="+idActive+" class='categoryCards'></div>");
+		var idUpcoming = '' + type+"_Upcoming";
+		var upcomingContainer = $("<div id="+idUpcoming+" class='categoryCards'></div>");
+		// var activeContainer=('#'+type+"_Active");
+		// var upcomingContainer=('#'+type+"_Upcoming");
 
 		var Hosts=JSON.parse(localStorage.getItem("hosts"));
 
@@ -53,14 +58,14 @@ ChallengeHunt.cardLayout = function() {
 
 			var element='No Active '+type+' Contests yet!';
 			var elementBody="<div class='emptyCards'><img class='emptyCardsPic' src='img/emptyCards.png'><div class='emptyCardsContent'><p class='text1'>It's a beautiful day to start a new</p><p class='text1'>project, don't you think?</p><p class='text2'>"+element+"</p></div></div>"				
-			$(''+activeContainer).append(elementBody);
+			$(activeContainer).append(elementBody);
 		}
 
 		if(upcomingCategories.length == 0){
 
 			var element='No UpComing '+type+' Contests yet!';
 			var elementBody="<div class='emptyCards'><img class='emptyCardsPic' src='img/emptyCards.png'><div class='emptyCardsContent'><p class='text1'>It's a beautiful day to start a new</p><p class='text1'>project, don't you think?</p><p class='text2'>"+element+"</p></div></div>"				
-			$(''+upcomingContainer).append(elementBody);
+			$(upcomingContainer).append(elementBody);
 		}
 
 		for(var i=0; i < activeCategories.length ; i++){
@@ -195,7 +200,7 @@ ChallengeHunt.cardLayout = function() {
 				host_style="box-shadow: 1px 1px 5px #292929;margin: 8px 8px 3px 19px;border-radius: 20px;width:39px;height:39px;";
 				host_image="img/default.png";		
 			}
-			$('' + activeContainer).append(
+			$(activeContainer).append(
 			  $('<div/>',{
 				class: 'card',
 				id:''+contest_url,
@@ -342,7 +347,6 @@ ChallengeHunt.cardLayout = function() {
 				  })
 				)
 			);
-			
 		}
 
 		for(var i=0; i < upcomingCategories.length ; i++){
@@ -491,7 +495,7 @@ ChallengeHunt.cardLayout = function() {
 				host_image="img/default.png";	
 			}
 			
-			$('' + upcomingContainer).append(
+			$(upcomingContainer).append(
 			  $('<div/>',{
 				class: 'card',
 				id:''+contest_url,
@@ -656,6 +660,10 @@ ChallengeHunt.cardLayout = function() {
 			);
 			
 		}	
+
+		// append the active and upcoming containers in contest container
+		$(contestsContainer).append(activeContainer);	
+		$(contestsContainer).append(upcomingContainer);
 
 	}
 
