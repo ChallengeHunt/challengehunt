@@ -13,6 +13,10 @@
 		console.log(data);
 
 		console.log(data['contests']);
+
+		//reset contest type toggle
+		document.getElementById("cmn-toggle-4").checked = false;
+
 		var element=$("#sort-toggle").prop("checked");
 
 		if(element==true){
@@ -42,46 +46,51 @@ function sortEventArrayOnDuration(array)
 
 		var durInt1;
 		var durInt2;
-		if(dur1.includes('hour'))
-		{
-				durInt1=dur1.split(' ')[0] * 1;
+
+		if(elem1.calculatedDuration === undefined) {
+			if(dur1.includes('hour'))
+			{
+					durInt1=dur1.split(' ')[0] * 1;
+					//console.log(durInt1);
+			}
+			else if(dur1.includes('day')){
+				durInt1=dur1.split(' ')[0] * 24;
 				//console.log(durInt1);
-		}
-		else if(dur1.includes('day')){
-			durInt1=dur1.split(' ')[0] * 24;
-			//console.log(durInt1);
-		}
-		else if(dur1.includes('year')){
-			durInt1=dur1.split(' ')[0] * 8764;
-			//console.log(durInt1);
-		}
-		else if(dur1.includes(':')){  //Converting hh:mm type to comparable integer
-			var split = dur1.split(':');
-			durInt1 = split[0]*1+split[1]*0.016666667;
-		}
-		else durInt1=9999999;
+			}
+			else if(dur1.includes('year')){
+				durInt1=dur1.split(' ')[0] * 8764;
+				//console.log(durInt1);
+			}
+			else if(dur1.includes(':')){  //Converting hh:mm type to comparable integer
+				var split = dur1.split(':');
+				durInt1 = split[0]*1+split[1]*0.016666667;
+			}
+			else durInt1=9999999;
+		} else durInt1 = elem1.calculatedDuration;
 
-		if(dur2.includes('hour'))
-		{
-				durInt2=dur2.split(' ')[0] * 1;
+		if(elem2.calculatedDuration === undefined) {
+			if(dur2.includes('hour'))
+			{
+					durInt2=dur2.split(' ')[0] * 1;
+					//console.log(durInt2);
+			}
+			else if(dur2.includes('day')){
+				durInt2=dur2.split(' ')[0] * 24;
 				//console.log(durInt2);
-		}
-		else if(dur2.includes('day')){
-			durInt2=dur2.split(' ')[0] * 24;
-			//console.log(durInt2);
-		}
-		else if(dur2.includes('year')){
-			durInt2=dur2.split(' ')[0] * 8764;
-			//console.log(durInt2);
-		}
-		else if(dur2.includes(':')){  //Converting hh:mm type to comparable integer
-			var split = dur1.split(':');
-			durInt2 = split[0]*1+split[1]*0.016666667;
-		}
-	  else durInt2=999999;
+			}
+			else if(dur2.includes('year')){
+				durInt2=dur2.split(' ')[0] * 8764;
+				//console.log(durInt2);
+			}
+			else if(dur2.includes(':')){  //Converting hh:mm type to comparable integer
+				var split = dur2.split(':');
+				durInt2 = split[0]*1+split[1]*0.016666667;
+			}
+		  else durInt2=999999;
+		} else durInt2 = elem2.calculatedDuration;
 
-		 elem1.calculated=durInt1;
-		 elem2.calculated=durInt2;
+		 elem1.calculatedDuration=durInt1;
+		 elem2.calculatedDuration=durInt2;
 
 		if (durInt1<=durInt2) return -1;
 		else return 1;
