@@ -1,5 +1,7 @@
 var ChallengeHunt = ChallengeHunt || {};
 
+var callCardsFunction = null;
+
 ChallengeHunt.cardLayout = function() {
 
 	var contests = {
@@ -666,6 +668,9 @@ ChallengeHunt.cardLayout = function() {
 		$(contestsContainer).append(upcomingContainer);
 
 	}
+
+	//Added by Shashank for direct call from sort.js for post-sorting refresh
+	callCardsFunction = cards;
 
 	var setHostData = function(){
 		var data = JSON.parse(localStorage.getItem("hosts"));

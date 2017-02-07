@@ -1,19 +1,33 @@
+// Author : Shashank Singh (github.com/shashankatgit)
+// Contributed code for ChallengeHunt Extension
+
 	$('#sort-toggle').click(function()
 	{
 		console.log('sort baby');
-		//console.log(localStorage.getItem('data'));
 
-		data = JSON.parse(localStorage.getItem('data'));
+		selectedCategory = $(".selected")[0].text;
+		selectedCategoryLowerCase = selectedCategory.toLowerCase();
+
+		dataObject = JSON.parse(localStorage.getItem('data'));
+		data = dataObject[''+selectedCategoryLowerCase];
 		console.log(data);
-		console.log(data['contests']['active']);
-		sortEventArrayOnDuration(data['contests']['active']);
 
-		console.log(data['contests']['active']);
-		var element=$("#sort-toggle-4").prop("checked");
+		console.log(data['contests']);
+		var element=$("#sort-toggle").prop("checked");
 
 		if(element==true){
-
+			sortEventArrayOnDuration(data['active']);
+			sortEventArrayOnDuration(data['upcoming']);
 		}
+
+		var activeContainer = document.getElementById(''+selectedCategory+'_Active');
+		var upcomingContainer = document.getElementById(''+selectedCategory+'_Upcoming');
+
+		activeContainer.parentNode.removeChild(activeContainer);
+		upcomingContainer.parentNode.removeChild(upcomingContainer);
+
+		console.log(data['contests']);
+		callCardsFunction(data,selectedCategory);
 	});
 
 
@@ -41,6 +55,10 @@ function sortEventArrayOnDuration(array)
 			durInt1=dur1.split(' ')[0] * 8764;
 			//console.log(durInt1);
 		}
+		else if(dur1.includes(':')){  //Converting hh:mm type to comparable integer
+			var split = dur1.split(':');
+			durInt1 = split[0]*1+split[1]*0.016666667;
+		}
 		else durInt1=9999999;
 
 		if(dur2.includes('hour'))
@@ -55,6 +73,10 @@ function sortEventArrayOnDuration(array)
 		else if(dur2.includes('year')){
 			durInt2=dur2.split(' ')[0] * 8764;
 			//console.log(durInt2);
+		}
+		else if(dur2.includes(':')){  //Converting hh:mm type to comparable integer
+			var split = dur1.split(':');
+			durInt2 = split[0]*1+split[1]*0.016666667;
 		}
 	  else durInt2=999999;
 
