@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "Challenge Hunt",
+  "name": "Challenge Hunt (mod)",
   "short_name": "Challenge Hunt",
   "description": "One app. All coding contests. Keeps you updated with all active & upcoming coding competitions and hackathons from around the world",
   "version": "1.0.1",
