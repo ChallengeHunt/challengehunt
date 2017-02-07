@@ -8,12 +8,13 @@ function getData(callback) {
 	           	var active_contest_data = JSON.parse(data)["active"];
 				var hosts = JSON.parse(localStorage.getItem('hosts'));
 				var activeContestCount = 0;
-				
+
 				if(!((typeof localStorage["data"]) === 'undefined')) {
 					localStorage.removeItem('data');
 				}
 		    	localStorage.setItem('data', data);
-				
+					console.log('data is ::: ' + localStorage.getItem('data'));
+
 				var prevContestName = "";
 
 				for (var i = 0; i < active_contest_data.length; i++) {
@@ -31,7 +32,7 @@ function getData(callback) {
 				callback(activeContestCount);
 	       	}
 	       	else {
-	           
+
 	       	}
 	    }
 	}
@@ -53,7 +54,7 @@ function getHosts(callback) {
 		    	callback(data);
 		    }
 	       	else {
-	           
+
 	       	}
 	    }
 	}
@@ -65,9 +66,9 @@ function isFirstInstall() {
 
 	if(!localStorage.settings) {
 	   settings = {};
-	   settings["firstuse"] = 1;     
+	   settings["firstuse"] = 1;
 	   localStorage.settings = JSON.stringify(settings);
-	   console.log("yo install");	
+	   console.log("yo install");
 	   return true;
 	}
 	return false;
@@ -77,9 +78,9 @@ function isUpdated() {
 	updatedVersion = JSON.parse(localStorage.getItem('updated'));
 	if(!localStorage.updated || updatedVersion["version"] < 3) {
 	   updated = {};
-	   updated["version"] = 3;     
+	   updated["version"] = 3;
 	   localStorage.updated = JSON.stringify(updated);
-	   console.log("yo updated");	
+	   console.log("yo updated");
 	   return true;
 	}
 	return false;
@@ -107,6 +108,6 @@ function startRequest() {
 	initialize();
 	// console.log(pollInterval);
 	window.setTimeout(startRequest, pollInterval);
-} 
+}
 
 startRequest();
