@@ -618,3 +618,9 @@ body{
 }
 
 /*EmptyCards Ends*/
+
+/* Link pointer */
+
+a{
+  cursor: pointer;
+}

@@ -19,15 +19,16 @@ If you have any bugs or suggestions, we would love to hear them from you. Add th
 ![](http://i.imgur.com/kSK4xNV.png?1)
 ![](http://i.imgur.com/nHXgRQP.png?1)
 
-##Website:
+## Website:
 [Challenge Hunt home page](http://challengehunt.github.io)
 
-###Made By:
+### Made By:
 
 * [Archit Verma](https://github.com/architv)
 * [Sukhmeet Singh](https://github.com/sukhmeet032795)
 * [Chirrag Nangia](https://github.com/chirrag03)
+* [Piyush Mehta](https://github.com/piyush97)
 
-###License:
+### License:
 
 Open sourced under [MIT License](https://github.com/ChallengeHunt/challengehunt/blob/master/LICENSE.md).
