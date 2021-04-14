@@ -8,10 +8,10 @@ Challenge Hunt keeps you updated with all active and upcoming coding competition
 ## Download
 * [Chrome Extension](https://bit.ly/challengehunt)
 
-##Contribution
+## Contribution
 For contributing to Challenge Hunt refer to [How to contribute?](CONTRIBUTING.md).
 
-##Bugs/Suggestions
+## Bugs/Suggestions
 If you have any bugs or suggestions, we would love to hear them from you. Add them [here](https://github.com/ChallengeHunt/challengehunt/issues/new).
 
 ## More Screenshots
