@@ -10,11 +10,11 @@
 
   <!-- Bootstrap -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-  
+
   <!-- Bootstrap Material Design -->
   <link href="css/bootstrap-material-design.css" rel="stylesheet">
   <link href="css/ripples.min.css" rel="stylesheet">
-  
+
   <!-- Font Awesome-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
@@ -38,13 +38,13 @@
       <li role="presentation"><a class="navItem" href="#hackathons">Hackathons</a></li>
       <li role="presentation"><a class="navItem" href="#hiring">Hiring</a></li>
       <li role="presentation"><a class="navItem" href="#datascience">DataScience</a></li>
-    </ul>  
+    </ul>
     <!-- Navbar Ends-->
 
     <div class="settingsPane">
       <div class="categories">
         <p class="activeCategory">Active(Ongoing)</p>
-        <p class="upcomingCategory">Upcoming</p>   
+        <p class="upcomingCategory">Upcoming</p>
       </div>
       <div class="switch" data-step="2" data-intro="Easily change fromactive to upcoming challenges">
         <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
@@ -56,38 +56,48 @@
         <li><a href="#" data-toggle="modal" class="optionsMenu" data-target="#optionsModal">Options</a></li>
         <li role="separator" class="divider"></li>
         <li><a href="#" data-toggle="modal" class="optionsMenu" data-target="#optionsModal">Add a contest/hackathon</a></li>
-        
+
       </ul>
+      </div>
+    </div>
+    <div class="settingsPane" id="sortPane">
+      <div class="categories">
+        <p class="sortLabel">Sort by Duration(Shorter First) - beta</p>
+      </div>
+      <div class="switch" data-step="2" data-intro="Easily change fromactive to upcoming challenges" style="margin-right:63px">
+        <input id="sort-toggle" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+        <label for="sort-toggle"></label>
+      </div>
       </div>
     </div>
 
     <!-- Cards Begin-->
-    <!-- Contests Cards Begins-->  
+    <!-- Contests Cards Begins-->
     <div class="cards" id="Contests">
-     
-    </div> 
+
+    </div>
     <!-- Contests Cards Ends-->
-    <!-- Hackathons Cards Begins-->  
+    <!-- Hackathons Cards Begins-->
     <div class="cards" id="Hackathons">
-      
-    </div> 
+
+    </div>
     <!-- Hackathons Cards Ends-->
-    <!-- Hiring Cards Begins-->  
+    <!-- Hiring Cards Begins-->
     <div class="cards" id="Hiring">
-     
-    </div> 
+
+    </div>
     <!-- Hiring Cards Ends-->
-    <!-- DataScience Cards Begins-->  
+    <!-- DataScience Cards Begins-->
     <div class="cards" id="DataScience">
-     
-    </div> 
+
+    </div>
     <!-- DataScience Cards Ends-->
-    <div class="footer">  
+    <div class="footer">
       <a href="https://github.com/ChallengeHunt/challengehunt/issues/new" target="_blank" class="footerLinks" style="width: 30%;text-align: center;">Bugs/Suggestions?</a>
       <a href="https://github.com/ChallengeHunt/challengehunt" target="_blank" class="footerLinks" style="width: 30%;text-align: center;"><i class="fa fa-github"></i> Star Repo</a>
-      <a href="#" id="help" class="footerLinks" style="width: 20%;text-align: right;margin-right:18px;" data-step="4" data-intro="If you want to restart this tutorial just click here. Visit http://bit.ly/chhelp for more information." data-position="top">Help</a>    
+      <a href="#" id="help" class="footerLinks" style="width: 20%;text-align: right;margin-right:18px;" data-step="4" data-intro="If you want to restart this tutorial just click here. Visit http://bit.ly/chhelp for more information." data-position="top">Help</a>
     </div>
-  </div>   
+  </div>
     <!-- Cards Ends-->
   <!-- main component ends -->
 
@@ -104,7 +114,7 @@
             <div class="headerCheckbox">
               <p class="checkboxHeader">Choose Your Favourites</p>
               <i class="fa fa-heart checkboxIcon"></i>
-            </div>  
+            </div>
             <div class="checkbox oddCheckbox">
               <label>
                 <input name="hosts" value="ctftime.org" id="CftTime" type="checkbox">CftTime
@@ -175,7 +185,7 @@
                 <input name="hosts" value="marathon24.com" id="Marathon24" type="checkbox">Marathon24
               </label>
             </div>
-          </div>  
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -217,5 +227,6 @@
 <script src="/js/materialicons.min.js"></script>
 <script src="js/init.js"></script>
 <script src="js/helpers.js"></script>
+<script src="js/sort.js"></script>
 </body>
 </html>

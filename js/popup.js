@@ -1,5 +1,7 @@
 var ChallengeHunt = ChallengeHunt || {};
 
+var callCardsFunction = null;
+
 ChallengeHunt.cardLayout = function() {
 
 	var contests = {
@@ -57,14 +59,14 @@ ChallengeHunt.cardLayout = function() {
 		if(activeCategories.length == 0){
 
 			var element='No Active '+type+' Contests yet!';
-			var elementBody="<div class='emptyCards'><img class='emptyCardsPic' src='img/emptyCards.png'><div class='emptyCardsContent'><p class='text1'>It's a beautiful day to start a new</p><p class='text1'>project, don't you think?</p><p class='text2'>"+element+"</p></div></div>"				
+			var elementBody="<div class='emptyCards'><img class='emptyCardsPic' src='img/emptyCards.png'><div class='emptyCardsContent'><p class='text1'>It's a beautiful day to start a new</p><p class='text1'>project, don't you think?</p><p class='text2'>"+element+"</p></div></div>"
 			$(activeContainer).append(elementBody);
 		}
 
 		if(upcomingCategories.length == 0){
 
 			var element='No UpComing '+type+' Contests yet!';
-			var elementBody="<div class='emptyCards'><img class='emptyCardsPic' src='img/emptyCards.png'><div class='emptyCardsContent'><p class='text1'>It's a beautiful day to start a new</p><p class='text1'>project, don't you think?</p><p class='text2'>"+element+"</p></div></div>"				
+			var elementBody="<div class='emptyCards'><img class='emptyCardsPic' src='img/emptyCards.png'><div class='emptyCardsContent'><p class='text1'>It's a beautiful day to start a new</p><p class='text1'>project, don't you think?</p><p class='text2'>"+element+"</p></div></div>"
 			$(upcomingContainer).append(elementBody);
 		}
 
@@ -73,10 +75,10 @@ ChallengeHunt.cardLayout = function() {
 			var object = activeCategories[i];
 			var contest_name = object['contest_name'];
 			// console.log(contest_name);
-			var contest_url = object['contest_url']; 
-			var host_url = object['host_url']; 
+			var contest_url = object['contest_url'];
+			var host_url = object['host_url'];
 			var host_name = object['host_name'];
-			var duration = object['duration']; 
+			var duration = object['duration'];
 
 			if(type!="Hackathons"){
 
@@ -95,47 +97,47 @@ ChallengeHunt.cardLayout = function() {
 				}
 				a=0;
 			}
-			
+
 			if(type=="Hackathons"){
 
 				var val1 = object['start_date'];
-				var val2 = object['end_date'];	
+				var val2 = object['end_date'];
 
 				var startdate= val1.split("-");
 				var enddate= val2.split("-");
 
 				var startDate = new Date(parseInt(startdate[0]), parseInt(startdate[1]) - 1, parseInt(startdate[2]));
-				var endDate = new Date(parseInt(enddate[0]), parseInt(enddate[1]) - 1, parseInt(enddate[2]));	
+				var endDate = new Date(parseInt(enddate[0]), parseInt(enddate[1]) - 1, parseInt(enddate[2]));
 
 				var duration= (parseInt(endDate - startDate)/(1000*60*60));
 				duration= (duration).toString() + ":00";
 
 				val2=dateCreated(val1);
 				val1='';
-				
+
 				var diff = endDate - currentTime;
 				var durationInMs = parseInt(endDate - startDate);
 				var timeLeft = diff / durationInMs;
 				var progress = Math.floor((1-timeLeft)*100);
 				if(parseInt(progress)>=100){progress=100;};
-				var location = object['location']; 	
+				var location = object['location'];
 			}
 			else{
 
 				var dateObject = object['end'].split('T')[0];
 				var timeObject = object['end'].split('T')[1];
 				var datetime1= toUTCTimeZone(object['end']);
-				
+
 				var timeZone= toTimeZone(object['end']);
 				timeZone=timeZone.split(',');
 
-				val1=dateFormatted(timeZone[0],timeZone[1]); 
+				val1=dateFormatted(timeZone[0],timeZone[1]);
 				val2=(timeZone[1]).trim();
 
 				var date= dateObject.split("-");
 				// console.log(date[0]);
 				var time= timeObject.split(":");
-				var d1 = new Date(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]), parseInt(time[0]), parseInt(time[1]), parseInt(time[2]), 0); 
+				var d1 = new Date(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]), parseInt(time[0]), parseInt(time[1]), parseInt(time[2]), 0);
 				var diff = datetime1 - currentTime;
 				// console.log("diff is" + diff);
 
@@ -179,7 +181,7 @@ ChallengeHunt.cardLayout = function() {
 				}
 				// console.log(progress);
 			}
-			
+
 			var host_color="";
 			var host_style="";
 			var host_image="";
@@ -189,8 +191,8 @@ ChallengeHunt.cardLayout = function() {
 				if(hosts[j]['host_name'] == host_name){
 
 					host_color=hosts[j]['color'];
-					host_style=hosts[j]['style'];	
-					host_image=hosts[j]['image'];	
+					host_style=hosts[j]['style'];
+					host_image=hosts[j]['image'];
 				}
 			}
 
@@ -198,7 +200,7 @@ ChallengeHunt.cardLayout = function() {
 
 				host_color="#292929";
 				host_style="box-shadow: 1px 1px 5px #292929;margin: 8px 8px 3px 19px;border-radius: 20px;width:39px;height:39px;";
-				host_image="img/default.png";		
+				host_image="img/default.png";
 			}
 			$(activeContainer).append(
 			  $('<div/>',{
@@ -209,11 +211,11 @@ ChallengeHunt.cardLayout = function() {
 						class: 'cardHeader',
 				  }).append(
 				  	$('<div/>', {
-				  		class: 'titleBlock',	
+				  		class: 'titleBlock',
 				  	}).append(
 				  		$('<div/>', {
 				  			class: 'cardTitle',
-				  			'style': ''+host_color,	
+				  			'style': ''+host_color,
 				  			'text': ''+contest_name
 				  		})
 				  	)
@@ -222,58 +224,58 @@ ChallengeHunt.cardLayout = function() {
 				  			class: 'cardOrganiserPic',
 				  			style: ''+host_style,
 				  			'src': ''+host_image,
-				  			'alt':''+host_name	
+				  			'alt':''+host_name
 				  		})
-				  	)		
+				  	)
 				  ).append(
 				  	$('<div/>', {
 				  		class: 'cardOrganiser',
-				  		text: ''+host_name,	
+				  		text: ''+host_name,
 				  	})
 				  ).append(
 				  	$('<div/>', {
-				  		class: 'cardDate',	
+				  		class: 'cardDate',
 				  	}).append(
 				  		$('<div/>', {
 
-				  			class: 'timeTile',	
+				  			class: 'timeTile',
 				  		}).append(
 				  			$('<div/>', {
 
-				  				class: 'durationTile',	
+				  				class: 'durationTile',
 				  			}).append(
 				  				$('<i/>', {
 
-					  				class: 'fa fa-hourglass-half durationIcon',	
+					  				class: 'fa fa-hourglass-half durationIcon',
 					  			})
 				  			).append(
 				  				$('<div/>', {
 
 					  				class: 'durationLabel',
-					  				'text': duration, 	
+					  				'text': duration,
 					  			})
 				  			)
 				  		).append(
 				  			$('<div/>', {
 
-				  				class: 'timeStamp',	
+				  				class: 'timeStamp',
 				  			}).append(
 				  				$('<i/>', {
 
-					  				class: 'fa fa-clock-o timeIcon',	
+					  				class: 'fa fa-clock-o timeIcon',
 					  			})
 				  			).append(
 				  				$('<div/>', {
 
 					  				class: 'time',
-					  				'text': ''+val1+' '+val2, 	
+					  				'text': ''+val1+' '+val2,
 					  			})
 				  			)
 				  		)
 				  	).append(
 				  		$('<div/>', {
 
-				  			class: 'date',	
+				  			class: 'date',
 				  		}).append(
 				  			$('<div/>', {
 
@@ -302,7 +304,7 @@ ChallengeHunt.cardLayout = function() {
 				  	).append(
 				  		$('<div/>', {
 
-				  			class: 'dateSlider',	
+				  			class: 'dateSlider',
 				  		}).append(
 				  			$('<div/>', {
 
@@ -319,14 +321,14 @@ ChallengeHunt.cardLayout = function() {
 						  				class: 'progress-bar',
 						  				role: 'progressbar',
 						  				'aria-valuenow': "0",
-						  				'aria-valuemi':"0", 
+						  				'aria-valuemi':"0",
 						  				'aria-valuemax':"100",
 						  				'style':'height:10px;width: '+progress+"%"+';background-color:#70B230'
 						  			}).append(
 						  				$('<span/>', {
 
 							  				class: 'sr-only',
-							  				'text': progress+'% Complete', 
+							  				'text': progress+'% Complete',
 						  				})
 						  			)
 						  		)
@@ -353,10 +355,10 @@ ChallengeHunt.cardLayout = function() {
 
 			var object = upcomingCategories[i];
 			var contest_name = object['contest_name'];
-			var contest_url = object['contest_url']; 
-			var host_url = object['host_url']; 
+			var contest_url = object['contest_url'];
+			var host_url = object['host_url'];
 			var host_name = object['host_name'];
-			var duration = object['duration']; 
+			var duration = object['duration'];
 			//console.log(object['start']);
 			// console.log(contest_name);
 			//console.log(object['end']);
@@ -371,7 +373,7 @@ ChallengeHunt.cardLayout = function() {
 				//console.log(calendarTime);
 			} else {
 				var startDateTime = toTimeZone(object['start']).split(",");
-				
+
 				// if condition for an edge case, don't know which
 				if(startDateTime.length == 1) {
 					startDateTime = toTimeZone(object['start']).split(" ");
@@ -410,15 +412,15 @@ ChallengeHunt.cardLayout = function() {
 				var enddate= val2.split("-");
 
 				var startDate = new Date(parseInt(startdate[0]), parseInt(startdate[1]) - 1, parseInt(startdate[2]));
-				var endDate = new Date(parseInt(enddate[0]), parseInt(enddate[1]) - 1, parseInt(enddate[2]));	
+				var endDate = new Date(parseInt(enddate[0]), parseInt(enddate[1]) - 1, parseInt(enddate[2]));
 
 				var duration= (parseInt(endDate - startDate)/(1000*60*60));
 				duration= (duration).toString() + ":00";
-				
+
 				val2=dateCreated(val1);
 				val1='';
 
-				var beginTime= (parseInt(startDate-currentTime)/(1000*60*60));	
+				var beginTime= (parseInt(startDate-currentTime)/(1000*60*60));
 				beginTime=Math.round(beginTime);
 				beginTimeString = beginTime + ' hours';
 
@@ -431,14 +433,14 @@ ChallengeHunt.cardLayout = function() {
 					beginTimeString = beginTime + ' day(s)';
 				}
 
-				var location = object['location']; 	
+				var location = object['location'];
 			}
 			else{
 			// 	console.log(contest_name);
 			// //console.log(object['end']);
 			// var startDateTime = toTimeZone(object['start']).split(",");
 			// //var endDateTime = toTimeZone(object['end']).split(",");
-			
+
 			// // if condition for an edge case, don't know which
 			// if(startDateTime.length == 1) {
 			// 	startDateTime = toTimeZone(object['start']).split(" ");
@@ -452,16 +454,16 @@ ChallengeHunt.cardLayout = function() {
 				var val1 = object['start'].split('T')[0];
 				var val2 = object['start'].split('T')[1];
 				var datetime1= toTimeZone1(object['start']);
-				
+
 				var timeZone= toTimeZone(object['start']);
 				timeZone=timeZone.split(',');
 
-				val1=dateFormatted(timeZone[0],timeZone[1]); 
+				val1=dateFormatted(timeZone[0],timeZone[1]);
 				val2=(timeZone[1]).trim();
 
 				var date= val1.split("-");
 				var time= val2.split(":");
-				var d1 = new Date(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]), parseInt(time[0]), parseInt(time[1]), parseInt(time[2]), 0); 
+				var d1 = new Date(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]), parseInt(time[0]), parseInt(time[1]), parseInt(time[2]), 0);
 				var beginTime = (parseInt(datetime1 - currentTime) / (1000*60*60));
 				beginTime=Math.round(beginTime);
 				beginTimeString = beginTime + ' hours';
@@ -477,14 +479,14 @@ ChallengeHunt.cardLayout = function() {
 			var host_color="";
 			var host_style="";
 			var host_image="";
-			
+
 			for(var j=0;j<hosts.length;j++){
 
 				if(hosts[j]['host_name'] == host_name){
 
 					host_color=hosts[j]['color'];
-					host_style=hosts[j]['style'];	
-					host_image=hosts[j]['image'];	
+					host_style=hosts[j]['style'];
+					host_image=hosts[j]['image'];
 				}
 			}
 
@@ -492,9 +494,9 @@ ChallengeHunt.cardLayout = function() {
 
 				host_color="#292929";
 				host_style="box-shadow: 1px 1px 5px #292929;margin: 8px 8px 3px 19px;border-radius: 20px;width:39px;height:39px;";
-				host_image="img/default.png";	
+				host_image="img/default.png";
 			}
-			
+
 			$(upcomingContainer).append(
 			  $('<div/>',{
 				class: 'card',
@@ -504,11 +506,11 @@ ChallengeHunt.cardLayout = function() {
 						class: 'cardHeader',
 				  }).append(
 				  	$('<div/>', {
-				  		class: 'titleBlock',	
+				  		class: 'titleBlock',
 				  	}).append(
 				  		$('<div/>', {
 				  			class: 'cardTitle',
-				  			'style': ''+host_color,	
+				  			'style': ''+host_color,
 				  			'text': ''+contest_name
 				  		})
 				  	)
@@ -517,58 +519,58 @@ ChallengeHunt.cardLayout = function() {
 				  			class: 'cardOrganiserPic',
 				  			style: ''+host_style,
 				  			'src': ''+host_image,
-				  			'alt':''+host_name	
+				  			'alt':''+host_name
 				  		})
-				  	)		
+				  	)
 				  ).append(
 				  	$('<div/>', {
-				  		class: 'cardOrganiser',	
-				  		text: ''+host_name,	
+				  		class: 'cardOrganiser',
+				  		text: ''+host_name,
 				  	})
 				  ).append(
 				  	$('<div/>', {
-				  		class: 'cardDate',	
+				  		class: 'cardDate',
 				  	}).append(
 				  		$('<div/>', {
 
-				  			class: 'timeTile',	
+				  			class: 'timeTile',
 				  		}).append(
 				  			$('<div/>', {
 
-				  				class: 'durationTile',	
+				  				class: 'durationTile',
 				  			}).append(
 				  				$('<i/>', {
 
-					  				class: 'fa fa-hourglass-half durationIcon',	
+					  				class: 'fa fa-hourglass-half durationIcon',
 					  			})
 				  			).append(
 				  				$('<div/>', {
 
 					  				class: 'durationLabel',
-					  				'text': duration, 	
+					  				'text': duration,
 					  			})
 				  			)
 				  		).append(
 				  			$('<div/>', {
 
-				  				class: 'timeStamp',	
+				  				class: 'timeStamp',
 				  			}).append(
 				  				$('<i/>', {
 
-					  				class: 'fa fa-clock-o timeIcon',	
+					  				class: 'fa fa-clock-o timeIcon',
 					  			})
 				  			).append(
 				  				$('<div/>', {
 
 					  				class: 'time',
-					  				'text': ''+val1+' '+val2, 	
+					  				'text': ''+val1+' '+val2,
 					  			})
 				  			)
 				  		)
 				  	).append(
 				  		$('<div/>', {
 
-				  			class: 'date',	
+				  			class: 'date',
 				  		}).append(
 				  			$('<div/>', {
 
@@ -597,7 +599,7 @@ ChallengeHunt.cardLayout = function() {
 				  	).append(
 				  		$('<div/>', {
 
-				  			class: 'dateSlider',	
+				  			class: 'dateSlider',
 				  		}).append(
 				  			$('<div/>', {
 
@@ -614,14 +616,14 @@ ChallengeHunt.cardLayout = function() {
 						  				class: 'progress-bar',
 						  				role: 'progressbar',
 						  				'aria-valuenow': "0",
-						  				'aria-valuemi':"0", 
+						  				'aria-valuemi':"0",
 						  				'aria-valuemax':"100",
 						  				'style':'width: 0%;height:10px;width:0%;background-color:#70B230'
 						  			}).append(
 						  				$('<span/>', {
 
 							  				class: 'sr-only',
-							  				'text': '45% Complete', 
+							  				'text': '45% Complete',
 						  				})
 						  			)
 						  		)
@@ -658,14 +660,17 @@ ChallengeHunt.cardLayout = function() {
 				  	)
 				)
 			);
-			
-		}	
+
+		}
 
 		// append the active and upcoming containers in contest container
-		$(contestsContainer).append(activeContainer);	
+		$(contestsContainer).append(activeContainer);
 		$(contestsContainer).append(upcomingContainer);
 
 	}
+
+	//Added by Shashank for direct call from sort.js for post-sorting refresh
+	callCardsFunction = cards;
 
 	var setHostData = function(){
 		var data = JSON.parse(localStorage.getItem("hosts"));
@@ -685,7 +690,7 @@ ChallengeHunt.cardLayout = function() {
 	};
 
 	var challengeData = function () {
-	    $('.loader').css("display","block");	
+	    $('.loader').css("display","block");
 		$.ajax({
 			type:'GET',
 			url: 'http://testchallengehunt.appspot.com/v1/all',
@@ -700,14 +705,21 @@ ChallengeHunt.cardLayout = function() {
 		    	localStorage.HIRING = JSON.stringify(challengeData['hiring']);
 		    	localStorage.CONTESTS = JSON.stringify(challengeData['contests']);
 		    	localStorage.DATASCIENCE = JSON.stringify(challengeData['ds_q']);
-		    	
+
+					//Added by Shashank to store data for sorting purpose
+					if(!((typeof localStorage["data"]) === 'undefined')) {
+						localStorage.removeItem('data');
+					}
+			    	localStorage.setItem('data', data);
+
+
 		    	contestsData = challengeData['contests'];
 		    	hiringData = challengeData['hiring'];
 		    	hackathonData = challengeData['hackathons'];
 		    	datascienceData = challengeData['ds_q'];
-				
+
 				cards(contestsData, contests.CONTESTS);
-				$('.loader').css("display","none");	
+				$('.loader').css("display","none");
 				cards(hiringData, contests.HIRING);
 				cards(hackathonData, contests.HACKATHONS);
 				cards(datascienceData, contests.DATASCIENCE);
@@ -718,8 +730,8 @@ ChallengeHunt.cardLayout = function() {
 	};
 
 	var init = function() {
-		$('.loader').css("display","block");	
-		setHostData();	
+		$('.loader').css("display","block");
+		setHostData();
 		challengeData();
 		selectedHosts();
 
@@ -738,7 +750,7 @@ ChallengeHunt.cardLayout = function() {
 			}
 			if(element==false){
 
-				$(".upcomingCategory").css("display","none");	
+				$(".upcomingCategory").css("display","none");
 				$(".activeCategory").css("display","block");
 				$("#"+category+"_Upcoming").css("display","none");
 				$("#"+category+"_Active").css("display","block");
@@ -764,8 +776,8 @@ ChallengeHunt.cardLayout = function() {
 		$('.navItem').click(function(){
 
 			var element=$("#cmn-toggle-4").prop("checked");
-			$('.navItem').parent().css("border-bottom","");	
-			$('.navItem').removeClass("selected");	
+			$('.navItem').parent().css("border-bottom","");
+			$('.navItem').removeClass("selected");
 			$(this).parent().css("border-bottom","3px solid #fff");
 			$(this).addClass("selected");
 			$('.cards').css("display","none");
@@ -780,7 +792,7 @@ ChallengeHunt.cardLayout = function() {
 				$("#"+category+"_Active").css("display","none");
 				$("#"+category+"_Upcoming").css("display","block");
 			}
-			
+
 		});
 
 		$(".cards").on("click", "div.cardHeader", function(){
